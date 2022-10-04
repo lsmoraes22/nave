@@ -53,7 +53,7 @@ function animate(){
         }
     });
     /* colision */
-    
+
     jewels.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -255,7 +255,7 @@ function animate(){
          var p6 = Nave[0].points(6);
          var p7 = Nave[0].points(7);
          var p8 = Nave[0].points(8);
-         
+
          if(
              obj.colision(p1.x,p1.y) ||
              obj.colision(p2.x,p2.y) ||
@@ -292,8 +292,8 @@ function animate(){
              }
          })
     })
-    
-    
+
+
     lavas.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -318,7 +318,7 @@ function animate(){
              } else if(Nave[0].nameSprite==null){die();}
          }
     })
-    
+
     drops.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -343,7 +343,7 @@ function animate(){
              } else if(Nave[0].nameSprite==null){die();}
          }
     })
-    
+
     waters.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -368,7 +368,7 @@ function animate(){
              } else if(Nave[0].nameSprite==null){die();}
          }
     })
-    
+
     bubbles.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -415,7 +415,7 @@ function animate(){
              }
          })
     })
-    
+
     tiles.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -453,11 +453,11 @@ function animate(){
              ){
                  //sht.nameSprite = "r_impact";
                  sht.impact();
-                 
+
              }
          })
     })
-    
+
     shocks.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -498,7 +498,7 @@ function animate(){
              }
          })
     })
-    
+
     buildings.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -576,7 +576,7 @@ function animate(){
              }
          })
     })
-    
+
     satelites.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -622,7 +622,7 @@ function animate(){
              }
         })
     })
-    
+
     drones.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -674,7 +674,7 @@ function animate(){
              }
         })
     })
-    
+
     trees.forEach(obj =>{
         var p1 = Nave[0].points(1);
         var p2 = Nave[0].points(2);
@@ -684,7 +684,7 @@ function animate(){
         var p6 = Nave[0].points(6);
         var p7 = Nave[0].points(7);
         var p8 = Nave[0].points(8);
-        
+
         if(
             obj.colision(p1.x,p1.y) ||
             obj.colision(p2.x,p2.y) ||
@@ -716,7 +716,7 @@ function animate(){
              }
         })
     })
-    
+
     energy_houses.forEach(obj =>{
         var p1 = Nave[0].points(1);
         var p2 = Nave[0].points(2);
@@ -764,7 +764,7 @@ function animate(){
              }
         })
     })
-    
+
     gates.forEach(obj =>{
          var p1 = Nave[0].points(1);
          var p2 = Nave[0].points(2);
@@ -809,7 +809,7 @@ function animate(){
             mousePosition = {x:null,y:null};
         }
     });
-    
+
     plays.forEach(obj =>{
         if(obj.colision(mousePosition.x,mousePosition.y) || obj.colision(touchLeft.x,touchLeft.y) ){
             level = 1;
@@ -817,7 +817,7 @@ function animate(){
             mousePosition = {x:null,y:null};
         }
     });
-    
+
     nexts.forEach(obj =>{
         if(obj.colision(mousePosition.x,mousePosition.y) || obj.colision(touchLeft.x,touchLeft.y) ){
             level++;
@@ -825,7 +825,7 @@ function animate(){
             mousePosition = {x:null,y:null};
         }
     });
-    
+
     btns.forEach(obj =>{
       if(Nave[0].nameSprite != 'explosion' && Nave[0].nameSprite != 'invisible' && Nave[0].nameSprite!=null ){
         switch(obj.imgName) {
@@ -866,5 +866,8 @@ function animate(){
   }
 }
 }
-init(level);
-document.addEventListener("load",animate());
+
+if (preload()) {
+    init(level);
+    document.addEventListener("load",animate());
+}

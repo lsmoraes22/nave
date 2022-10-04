@@ -7,11 +7,15 @@ c.fillStyle = "white";
 c.textAlign = "center";
 c.fillText("Loading...", canvas.width/2, canvas.height/2);
 
-img = new imageCanvas();
-img.preloadImage(img.resources);
+function preload() {
+    img = new imageCanvas();
+    img.preloadImage(img.resources);
 
-snd = new audioCanvas();
-snd.preloadAudio();
+    snd = new audioCanvas();
+    snd.preloadAudio();
+
+    return true;
+}
 
 const gravity = 0;
 let varScore = 0;
