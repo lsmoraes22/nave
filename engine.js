@@ -342,6 +342,14 @@ function animate(){
                  Nave[0].lifeBarr -=20; obj.nameSprite = 'set'; obj.position.y=obj.initialPosition.y;
              } else if(Nave[0].nameSprite==null){die();}
          }
+         tiles.forEach(tl =>{
+             var p1 = tl.points(1);
+             if(
+                 obj.colision(p1.x,p1.y)
+             ){
+                 obj.reset();
+             }
+         })
     })
 
     waters.forEach(obj =>{
@@ -392,28 +400,6 @@ function animate(){
                  Nave[0].explode();
              } else if(Nave[0].nameSprite==null){die();}
          }
-         tiles.forEach(tl =>{
-             var p1 = tl.points(1);
-             var p2 = tl.points(2);
-             var p3 = tl.points(3);
-             var p4 = tl.points(4);
-             var p5 = tl.points(5);
-             var p6 = tl.points(6);
-             var p7 = tl.points(7);
-             var p8 = tl.points(8);
-             if(
-                 obj.colision(p1.x,p1.y) ||
-                 obj.colision(p2.x,p2.y) ||
-                 obj.colision(p3.x,p3.y) ||
-                 obj.colision(p4.x,p4.y) ||
-                 obj.colision(p5.x,p5.y) ||
-                 obj.colision(p6.x,p6.y) ||
-                 obj.colision(p7.x,p7.y) ||
-                 obj.colision(p8.x,p8.y)
-             ){
-                 obj.nameSprite = null;
-             }
-         })
     })
 
     tiles.forEach(obj =>{

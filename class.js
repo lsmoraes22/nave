@@ -1,7 +1,7 @@
 class sprite{
     constructor({x, y, imgName, assX, assY, imgFrm, loop, next, end, speedAnimation}){
         this.frames = 0                                //
-        this.speedAnimation = speedAnimation           //velocidade da animação 1=100%=60fps; 0.5=50%=30fps
+        this.speedAnimation = speedAnimation           //velocidade da animaï¿½ï¿½o 1=100%=60fps; 0.5=50%=30fps
         this.imgName = imgName                         //
         this.position ={x:x, y:y}                      //-scenario.y
         this.sprite = {                                //
@@ -12,7 +12,7 @@ class sprite{
             width: gridSize,                           //largura da colagem da imagem
             height: gridSize,                          //altura da colagem da imagem
             imgFrm: imgFrm,                            //quantidade de imagens da animacao
-            loop: loop,                                //true repetição infinita da animacao false: animacao apresenta uma vez
+            loop: loop,                                //true repetiï¿½ï¿½o infinita da animacao false: animacao apresenta uma vez
             next: next,                                //proxima animacao caso loop = false
             end: end                                   //fim da animacao true / false
         }
@@ -224,7 +224,7 @@ class nave extends character {
         super({x: x,y: y, colx:8, coly:12, colw:27, colh:12})
         this.nameSprite = 'right'                              //nome do sprite a ser executado
         this.shotReady = true                                  //true: preparado para tiro, false: tempo inatividade, 'timeSetup': tempo apos a explosao
-        this.timeShot = 0                                      //tempo do disparo até o momento atual
+        this.timeShot = 0                                      //tempo do disparo atï¿½ o momento atual
         this.maxTimeShot = 140                                 //tempo max ate o proximo disparo
         this.lifeBarr = 100                                    //barra de vida
         this.shotNumber = 1                                    //numero da cor do tiro 1:amarelo, 2:vermelho, 3:verde, 4:roxo
@@ -441,7 +441,7 @@ class shot extends character {
     constructor({x,y,number}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
         this.nameSprite = null                              //nome do sprite a ser executado
-        this.timeShot = 0;                                  //tempo do disparo até o momento atual
+        this.timeShot = 0;                                  //tempo do disparo atï¿½ o momento atual
         this.shotNumber = number
         this.shotReady = true                               //true: preparado para tiro, false: tempo inatividade
         this.sprites = {
@@ -800,7 +800,7 @@ class shot_enemy extends character {
     constructor({x,y,number}){
         super({x: x,y: y, colx:15, coly:15, colw:5, colh:5})
         this.nameSprite = null                              //nome do sprite a ser executado
-        this.timeShot = 0;                                  //tempo do disparo até o momento atual
+        this.timeShot = 0;                                  //tempo do disparo atï¿½ o momento atual
         this.shotNumber = number                            //
         this.shotReady = true                               //true: preparado para tiro, false: tempo inatividade
         this.sprites = {
@@ -1140,7 +1140,7 @@ class teleguide extends character {
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
         this.nameSprite = null                              //nome do sprite a ser executado
         this.timeToSearch = 0                               //tempo para comecar a busca
-        this.timeShot = 0;                                  //tempo do disparo até o momento atual
+        this.timeShot = 0;                                  //tempo do disparo atï¿½ o momento atual
         this.launchReady = true                             //true: preparado para lancamento, false: tempo inatividade
         this.sprites = {
             up: new sprite({
@@ -1606,6 +1606,9 @@ class drop extends character {
         }
         this.sounds = {}
     }
+    reset(){
+      this.position.y=this.initialPosition.y; this.nameSprite = 'set';
+    }
     update(){
         if(this.nameSprite !== null){
             this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
@@ -1616,7 +1619,7 @@ class drop extends character {
                 if(this.position.y<canvas.height){
                     this.position.y+=5;
                 } else {
-                    this.position.y=this.initialPosition.y; this.nameSprite = 'set';
+                  this.reset();
                 }
             }
         }
@@ -3081,7 +3084,7 @@ class boss3 extends enemy {
         this.shotPosAdjust.right.y = 145
         this.shotPosAdjust.left.x =  225
         this.shotPosAdjust.left.y = 213
-        
+
         this.launchPosAdjust.up.x = 175
         this.launchPosAdjust.up.y = 12
 
