@@ -7,8 +7,6 @@ c.fillStyle = "white";
 c.textAlign = "center";
 c.fillText("Loading...", canvas.width/2, canvas.height/2);
 
-alert('test');
-
 img = new imageCanvas();
 img.preloadImage(img.resources);
 
