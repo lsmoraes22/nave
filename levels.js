@@ -32,7 +32,7 @@ function init(level){
             paralaxes = [
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
-            
+
             //drops = [ new drop({x:6*gridSize, y:2*gridSize}) ]
 
             //lavas = [ new lava({x:8*gridSize, y:3*gridSize, type:'surface'}), new lava({x:8*gridSize, y:4*gridSize, type:'deep'}),]
@@ -212,7 +212,7 @@ function init(level){
                 //new boss3({x:10*gridSize, y:3*gridSize, moveSize: 130}),
                 //new antiaerea({x:10*gridSize, y:3*gridSize, moveSize: 0}),
             ]
-            
+
             drops = [
                 new drop({x:10*gridSize, y:2*gridSize, speedAnimation: 0.1}),
                 new drop({x:13*gridSize, y:2*gridSize, speedAnimation: 0.2}),
@@ -237,15 +237,18 @@ function init(level){
                 new drop({x:28*gridSize, y:-29*gridSize, speedAnimation: 0.2}),
                 new drop({x:33*gridSize, y:-29*gridSize, speedAnimation: 0.4}),
                 new drop({x:35*gridSize, y:-29*gridSize, speedAnimation: 0.1}),
+                new drop({x:37*gridSize, y:-29*gridSize, speedAnimation: 0.2}),
+                new drop({x:41*gridSize, y:-29*gridSize, speedAnimation: 0.15}),
+                new drop({x:35*gridSize, y:-29*gridSize, speedAnimation: 0.3}),
             ]
-            
+
             lavas = lava1_create(0,9, 19)
             lavas = lavas.concat(lava2_create(0,10, 19))
             lavas = lavas.concat(lava2_create(0,11, 19))
             lavas = lavas.concat(lava1_create(31,9, 21))
             lavas = lavas.concat(lava2_create(31,10, 21))
             lavas = lavas.concat(lava2_create(31,11, 21))
-            
+
             bubbles = [
                 new bubble({x:3*gridSize, y:8*gridSize, speedAnimation: 0.6 }),
                 new bubble({x:5*gridSize, y:8*gridSize, speedAnimation: 0.4}),
@@ -256,9 +259,9 @@ function init(level){
             tiles = create_brownMountain(-1,-11,10,14);
             tiles = tiles.concat(create_brownMountain(8,-12,10,14))
             tiles = tiles.concat(create_brownMountain(32,-11,4,3))
-            
+
             tiles = tiles.concat(create_brownMountain(40,-11,25,3))
-            
+
             tiles = tiles.concat(create_brownMountain(17,-14,10,7))
 
             tiles = tiles.concat(create_brownMountain(21,7,5,7))
@@ -266,19 +269,19 @@ function init(level){
             tiles = tiles.concat(create_brownMountain(26,0,5,13))
             tiles = tiles.concat(create_brownMountain(52,8,11,5))
             tiles = tiles.concat(create_brownMountain(37,0,11,3))
-            
+
             tiles = tiles.concat(create_brownMountain(21,7,5,7))
             tiles = tiles.concat(create_brownMountain(32,-18,3,7))
             tiles = tiles.concat(create_brownMountain(7,-21,44,3))
             tiles = tiles.concat(create_brownMountain(-1,-32,64,3))
-            
+
             tiles = tiles.concat(create_brownHill1(33,-8,8))
-            
+
             tiles = tiles.concat(create_brownHill1(19,8,4))
             tiles = tiles.concat(create_brownHill1(20,7,5))
             tiles = tiles.concat(create_brownHill1(21,6,6))
-            
-            
+
+
             btns = create_joystick();
             lifes = [ new Life({x:38, y:8}) ]
             painels = [ new painel({x:0, y:0}), ]
@@ -569,4 +572,3 @@ function create_brownMountain(x,y,numberX,numberY){
     }
     return arr;
 }
-
