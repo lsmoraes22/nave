@@ -339,15 +339,15 @@ function animate(){
              obj.colision(p8.x,p8.y)
          ){
              if( Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' && obj.nameSprite !==null ) {
-                 Nave[0].lifeBarr -=20; obj.nameSprite = 'set'; obj.position.y=obj.initialPosition.y;
+                 Nave[0].lifeBarr -=20;
+                 obj.reset();
              } else if(Nave[0].nameSprite==null){die();}
          }
          tiles.forEach(tl =>{
-             var p1 = tl.points(1);
-             if(
-                 obj.colision(p1.x,p1.y)
-             ){
-                 obj.reset();
+             var cX = obj.positionAbsolute.x+obj.bodyColision.x;
+             var cY = obj.positionAbsolute.y+obj.bodyColision.y;
+             if(tl.colision(cX,cY)){
+               obj.reset();
              }
          })
     })

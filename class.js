@@ -164,12 +164,13 @@ class character {                                              //personagem
             this.currentSprite.position.x>-50 &&
             this.currentSprite.position.y<canvas.height+50 &&
             this.currentSprite.position.y>-50
-        ){ */
+        ){ /**/
             return this.currentSprite.animation();
         //}
     }
     colision(x,y){
-        var colision = {position:{x: this.position.x-scenario.x, y:this.position.y-scenario.y}}
+        //var colision = {position:{x: this.position.x-scenario.x, y:this.position.y-scenario.y}}
+        var colision = {position:{x: this.positionAbsolute.x, y:this.positionAbsolute.y}}
         if(x>=colision.position.x+this.bodyColision.x &&
            x<=colision.position.x+this.bodyColision.x+this.bodyColision.w &&
            y>=colision.position.y+this.bodyColision.y &&
@@ -1607,7 +1608,8 @@ class drop extends character {
         this.sounds = {}
     }
     reset(){
-      this.position.y=this.initialPosition.y; this.nameSprite = 'set';
+      this.position.y=this.initialPosition.y;
+      this.nameSprite = 'set';
     }
     update(){
         if(this.nameSprite !== null){
