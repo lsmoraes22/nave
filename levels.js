@@ -213,7 +213,6 @@ function init(level){
             ]
 
             drops = [
-              /*
                 new drop({x:10*gridSize, y:2*gridSize, speedAnimation: 0.1}),
                 new drop({x:13*gridSize, y:2*gridSize, speedAnimation: 0.2}),
                 new drop({x:16*gridSize, y:2*gridSize, speedAnimation: 0.15}),
