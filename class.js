@@ -159,14 +159,14 @@ class character {                                              //personagem
         }
         this.currentSprite.position.x = this.positionAbsolute.x;
         this.currentSprite.position.y = this.positionAbsolute.y;
-        if(
+        /*if(
             this.currentSprite.position.x<canvas.width+50 &&
             this.currentSprite.position.x>-50 &&
             this.currentSprite.position.y<canvas.height+50 &&
             this.currentSprite.position.y>-50
-        ){
+        ){ */
             return this.currentSprite.animation();
-        }
+        //}
     }
     colision(x,y){
         var colision = {position:{x: this.position.x-scenario.x, y:this.position.y-scenario.y}}
