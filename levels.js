@@ -180,7 +180,6 @@ function init(level){
                 new drone({x:1310,y:-420,moveDirection:'left', moveSize:100}),
 
             ];
-
             Nave = [ new nave({x:200,y:150}) ]
             btns = create_joystick();
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
@@ -220,7 +219,7 @@ function init(level){
                 new drop({x:20*gridSize, y:-7*gridSize, speedAnimation: 0.15}),
                 new drop({x:22*gridSize, y:-7*gridSize, speedAnimation: 0.2}),
                 new drop({x:25*gridSize, y:-7*gridSize, speedAnimation: 0.08}),
-                new drop({x:29*gridSize, y:-18*gridSize, speedAnimation: 0.2}),
+                new drop({x:29*gridSize, y:-18*gridSize, speedAnimation: 0.25}),
                 new drop({x:25*gridSize, y:-18*gridSize, speedAnimation: 0.15}),
                 new drop({x:20*gridSize, y:-18*gridSize, speedAnimation: 0.1}),
                 new drop({x:19*gridSize, y:-18*gridSize, speedAnimation: 0.05}),
@@ -235,13 +234,41 @@ function init(level){
                 new drop({x:22*gridSize, y:-29*gridSize, speedAnimation: 0.1}),
                 new drop({x:25*gridSize, y:-29*gridSize, speedAnimation: 0.15}),
                 new drop({x:28*gridSize, y:-29*gridSize, speedAnimation: 0.2}),
-                new drop({x:33*gridSize, y:-29*gridSize, speedAnimation: 0.4}),
                 new drop({x:35*gridSize, y:-29*gridSize, speedAnimation: 0.1}),
+                new drop({x:33*gridSize, y:-29*gridSize, speedAnimation: 0.4}),
                 new drop({x:37*gridSize, y:-29*gridSize, speedAnimation: 0.2}),
                 new drop({x:41*gridSize, y:-29*gridSize, speedAnimation: 0.15}),
-                new drop({x:35*gridSize, y:-29*gridSize, speedAnimation: 0.3}),
+                new drop({x:45*gridSize, y:-29*gridSize, speedAnimation: 0.3}),
+                new drop({x:48*gridSize, y:-29*gridSize, speedAnimation: 0.2}),
+                new drop({x:53*gridSize, y:-29*gridSize, speedAnimation: 0.4}),
+                new drop({x:55*gridSize, y:-29*gridSize, speedAnimation: 0.1}),
+                new drop({x:57*gridSize, y:-29*gridSize, speedAnimation: 0.2}),
+                new drop({x:61*gridSize, y:-29*gridSize, speedAnimation: 0.15}),
+                new drop({x:65*gridSize, y:-29*gridSize, speedAnimation: 0.3}),
+                new drop({x:35*gridSize, y:-18*gridSize, speedAnimation: 0.1}),
+                new drop({x:33*gridSize, y:-18*gridSize, speedAnimation: 0.4}),
+                new drop({x:37*gridSize, y:-18*gridSize, speedAnimation: 0.2}),
+                new drop({x:41*gridSize, y:-18*gridSize, speedAnimation: 0.15}),
+                new drop({x:45*gridSize, y:-18*gridSize, speedAnimation: 0.3}),
+                new drop({x:48*gridSize, y:-18*gridSize, speedAnimation: 0.2}),
+                new drop({x:40*gridSize, y:-8*gridSize, speedAnimation: 0.15}),
+                new drop({x:43*gridSize, y:-8*gridSize, speedAnimation: 0.2}),
+                new drop({x:45*gridSize, y:-8*gridSize, speedAnimation: 0.08}),
+                new drop({x:40*gridSize, y:-8*gridSize, speedAnimation: 0.1}),
+                new drop({x:43*gridSize, y:-8*gridSize, speedAnimation: 0.25}),
+                new drop({x:45*gridSize, y:-8*gridSize, speedAnimation: 0.09}),
+                new drop({x:50*gridSize, y:-8*gridSize, speedAnimation: 0.15}),
+                new drop({x:48*gridSize, y:-8*gridSize, speedAnimation: 0.2}),
+                new drop({x:52*gridSize, y:-8*gridSize, speedAnimation: 0.2}),
+                new drop({x:55*gridSize, y:-8*gridSize, speedAnimation: 0.08}),
+                new drop({x:60*gridSize, y:-8*gridSize, speedAnimation: 0.1}),
+                new drop({x:63*gridSize, y:-8*gridSize, speedAnimation: 0.25}),
+                new drop({x:65*gridSize, y:-8*gridSize, speedAnimation: 0.09}),
+                new drop({x:40*gridSize, y:3*gridSize, speedAnimation: 0.15}),
+                new drop({x:43*gridSize, y:3*gridSize, speedAnimation: 0.2}),
+                new drop({x:45*gridSize, y:3*gridSize, speedAnimation: 0.08}),
             ]
-
+            gates = [ new gate({x:32*gridSize,y:6*gridSize}) ]
             lavas = lava1_create(0,9, 19)
             lavas = lavas.concat(lava2_create(0,10, 19))
             lavas = lavas.concat(lava2_create(0,11, 19))

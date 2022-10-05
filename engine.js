@@ -1,5 +1,11 @@
 function animate(){
-  requestAnimationFrame(animate);
+
+  setTimeout(() => {
+    requestAnimationFrame(animate);
+  }, 1000 / 60);
+
+  //requestAnimationFrame(animate);
+
   if(pause==false){
   if(screen.width>screen.height){
     document.getElementById('turn_device').style.display = 'none';
