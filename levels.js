@@ -213,6 +213,7 @@ function init(level){
             ]
 
             drops = [
+              /*
                 new drop({x:10*gridSize, y:2*gridSize, speedAnimation: 0.1}),
                 new drop({x:13*gridSize, y:2*gridSize, speedAnimation: 0.2}),
                 new drop({x:16*gridSize, y:2*gridSize, speedAnimation: 0.15}),
@@ -267,6 +268,7 @@ function init(level){
                 new drop({x:40*gridSize, y:3*gridSize, speedAnimation: 0.15}),
                 new drop({x:43*gridSize, y:3*gridSize, speedAnimation: 0.2}),
                 new drop({x:45*gridSize, y:3*gridSize, speedAnimation: 0.08}),
+                /**/
             ]
             gates = [ new gate({x:32*gridSize,y:6*gridSize}) ]
             lavas = lava1_create(0,9, 19)

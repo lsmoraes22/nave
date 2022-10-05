@@ -222,7 +222,7 @@ class character {                                              //personagem
 
 class nave extends character {
     constructor({x,y}){
-        super({x: x,y: y, colx:8, coly:12, colw:27, colh:12})
+        super({x: x,y: y, colx:4, coly:4, colw:26, colh:31})
         this.nameSprite = 'right'                              //nome do sprite a ser executado
         this.shotReady = true                                  //true: preparado para tiro, false: tempo inatividade, 'timeSetup': tempo apos a explosao
         this.timeShot = 0                                      //tempo do disparo at� o momento atual
