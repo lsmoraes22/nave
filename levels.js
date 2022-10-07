@@ -212,7 +212,20 @@ function init(level){
                 //new antiaerea({x:10*gridSize, y:3*gridSize, moveSize: 0}),
             ]
 
+            enemys = [
+                new robot({x:23*gridSize, y:6*gridSize, moveSize:50}),
+                new robot({x:29*gridSize, y:-1*gridSize, moveSize:70}),
+                new robot({x:23*gridSize, y:-15*gridSize, moveSize:85}),
+                new robot({x:21*gridSize, y:-15*gridSize, moveSize:120}),
+                new robot({x:11*gridSize, y:-22*gridSize, moveSize:120}),
+                new robot({x:21*gridSize, y:-23*gridSize, moveSize:100}),
+                new robot({x:28*gridSize, y:-24*gridSize, moveSize:80}),
+                new robot({x:35*gridSize, y:-25*gridSize, moveSize:90}),
+                new robot({x:45*gridSize, y:-22*gridSize, moveSize:90}),
+            ]
+
             drops = [
+              /*
                 new drop({x:10*gridSize, y:2*gridSize, speedAnimation: 0.1}),
                 new drop({x:13*gridSize, y:2*gridSize, speedAnimation: 0.2}),
                 new drop({x:16*gridSize, y:2*gridSize, speedAnimation: 0.15}),
@@ -281,7 +294,11 @@ function init(level){
                 new bubble({x:3*gridSize, y:8*gridSize, speedAnimation: 0.6 }),
                 new bubble({x:5*gridSize, y:8*gridSize, speedAnimation: 0.4}),
                 new bubble({x:8*gridSize, y:8*gridSize, speedAnimation: 0.5}),
-                new bubble({x:13*gridSize, y:8*gridSize, speedAnimation: 0.7})
+                new bubble({x:13*gridSize, y:8*gridSize, speedAnimation: 0.7}),
+                new bubble({x:33*gridSize, y:8*gridSize, speedAnimation: 0.6 }),
+                new bubble({x:35*gridSize, y:8*gridSize, speedAnimation: 0.4}),
+                new bubble({x:38*gridSize, y:8*gridSize, speedAnimation: 0.5}),
+                new bubble({x:43*gridSize, y:8*gridSize, speedAnimation: 0.7})
             ]
 
             tiles = create_brownMountain(-1,-11,10,14);
@@ -300,9 +317,11 @@ function init(level){
 
             tiles = tiles.concat(create_brownMountain(21,7,5,7))
             tiles = tiles.concat(create_brownMountain(32,-18,3,7))
+            tiles = tiles.concat(create_brownMountain(18,-22,7,3))
+            tiles = tiles.concat(create_brownMountain(25,-23,7,3))
+            tiles = tiles.concat(create_brownMountain(32,-24,7,4))
             tiles = tiles.concat(create_brownMountain(7,-21,44,3))
             tiles = tiles.concat(create_brownMountain(-1,-32,64,3))
-
             tiles = tiles.concat(create_brownHill1(33,-8,8))
 
             tiles = tiles.concat(create_brownHill1(19,8,4))

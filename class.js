@@ -77,10 +77,15 @@ class images{
         this.draw();
     }
     colision(x,y){
-        if(x>=this.position.x &&
-           x<=this.position.x+this.width &&
-           y>=this.position.y &&
-           y<=this.position.y+this.height){
+        var colision = {position:{
+          x: this.position.x,
+          y:this.position.y
+        }
+    }
+        if(x>=colision.position.x &&
+           x<=colision.position.x+this.width &&
+           y>=colision.position.y &&
+           y<=colision.position.y+this.height){
                return true;
            }else{
                return false;
