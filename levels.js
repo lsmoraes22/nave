@@ -222,10 +222,11 @@ function init(level){
                 new robot({x:28*gridSize, y:-24*gridSize, moveSize:80}),
                 new robot({x:35*gridSize, y:-25*gridSize, moveSize:90}),
                 new robot({x:45*gridSize, y:-22*gridSize, moveSize:90}),
+                new robot({x:45*gridSize, y:-12*gridSize, moveSize:110}),
+                new robot({x:40*gridSize, y:-1*gridSize, moveSize:150}),
             ]
 
             drops = [
-              /*
                 new drop({x:10*gridSize, y:2*gridSize, speedAnimation: 0.1}),
                 new drop({x:13*gridSize, y:2*gridSize, speedAnimation: 0.2}),
                 new drop({x:16*gridSize, y:2*gridSize, speedAnimation: 0.15}),
@@ -304,17 +305,13 @@ function init(level){
             tiles = create_brownMountain(-1,-11,10,14);
             tiles = tiles.concat(create_brownMountain(8,-12,10,14))
             tiles = tiles.concat(create_brownMountain(32,-11,4,3))
-
             tiles = tiles.concat(create_brownMountain(40,-11,25,3))
-
             tiles = tiles.concat(create_brownMountain(17,-14,10,7))
-
             tiles = tiles.concat(create_brownMountain(21,7,5,7))
             tiles = tiles.concat(create_brownMountain(30,0,8,5))
             tiles = tiles.concat(create_brownMountain(26,0,5,13))
             tiles = tiles.concat(create_brownMountain(52,8,11,5))
             tiles = tiles.concat(create_brownMountain(37,0,11,3))
-
             tiles = tiles.concat(create_brownMountain(21,7,5,7))
             tiles = tiles.concat(create_brownMountain(32,-18,3,7))
             tiles = tiles.concat(create_brownMountain(18,-22,7,3))
@@ -323,7 +320,6 @@ function init(level){
             tiles = tiles.concat(create_brownMountain(7,-21,44,3))
             tiles = tiles.concat(create_brownMountain(-1,-32,64,3))
             tiles = tiles.concat(create_brownHill1(33,-8,8))
-
             tiles = tiles.concat(create_brownHill1(19,8,4))
             tiles = tiles.concat(create_brownHill1(20,7,5))
             tiles = tiles.concat(create_brownHill1(21,6,6))
