@@ -17,7 +17,7 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 20:
+        case 3:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -187,7 +187,7 @@ function init(level){
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
-        case 3:
+        case 4:
             resetObjects();
             backgrounds = [
                 new background({x:0, y:0, imgName: 'background5'}),
@@ -196,7 +196,7 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 2:
+        case 3:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -332,6 +332,22 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
+        case 2:
+            resetObjects();
+            scenario.cMin=0;
+            scenario.cMax=3;
+            scenario.rMin=-3;
+            scenario.rMax=0;
+            backgrounds = [
+              new background({x:0, y:0, imgName: 'background10'}),
+              //    new background({x:0, y:0, imgName: 'atmosphere'}),
+            ]
+            Nave = [ new nave({x:200,y:150}) ]
+            asteroides = [
+              new asteroide1({x:12*gridSize,y:-5*gridSize,direction:"v"}),
+              new asteroide2({x:13*gridSize,y:-5*gridSize,direction:"v"}),
+            ]
+        break;
     }
 }
 
@@ -351,13 +367,6 @@ function create_joystick(x,y){
     ];
     return btns;
 }
-
-/*
-        asteroides = [
-                new asteroide1({x:12*gridSize,y:-16*gridSize}),
-                new asteroide2({x:13*gridSize,y:-17*gridSize}),
-            ]
-*/
 
 function lava1_create(x,y,number){
     var arr = []

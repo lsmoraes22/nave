@@ -2485,11 +2485,13 @@ class tile extends character {
 }
 
 class asteroide1 extends character {
-    constructor({x,y}){
+    constructor({x,y,direction}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
         this.nameSprite = 'alive'                              //nome do sprite a ser executado
+        this.direction = direction                             //v: vertical d:diagonal s:static
+        this.initialPosition = {x:x,y:y}
         this.sprites = {
-            explosion: new sprite({
+          explosion: new sprite({
                 x:this.position.x,
                 y:this.position.y,
                 imgName:"assets",
@@ -2522,14 +2524,22 @@ class asteroide1 extends character {
             if(this.sprites[this.nameSprite].sprite.end){
                this.nameSprite = this.sprites[this.nameSprite].sprite.next;
             }
+            if(this.direction=="v"){this.position.y+=2;} else
+            if(this.direction=="d"){this.position.x+=2;this.position.y+=2;}
+            if(this.position.y>canvas.height+50){
+              this.position = this.initialPosition;
+            }
+            console.log(this.position.y, canvas.height);
         }
     }
 }
 
 class asteroide2 extends character {
-    constructor({x,y}){
+    constructor({x,y,direction}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
         this.nameSprite = 'alive'                              //nome do sprite a ser executado
+        this.direction = direction                             //v: vertical d:diagonal s:static
+        this.initialPosition = {x:x,y:y}
         this.sprites = {
             explosion: new sprite({
                 x:this.position.x,
@@ -2564,6 +2574,11 @@ class asteroide2 extends character {
             if(this.sprites[this.nameSprite].sprite.end){
                this.nameSprite = this.sprites[this.nameSprite].sprite.next;
             }
+        }
+        if(this.direction=="v"){this.position.y+=2;} else
+        if(this.direction=="d"){this.position.x+=2;this.position.y+=2;}
+        if(this.position.y>canvas.height+50){
+          this.position = this.initialPosition;
         }
     }
 }

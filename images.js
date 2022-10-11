@@ -60,8 +60,9 @@ class imageCanvas {
         {name: "background7",             src: this.img_src+"background7.png",	        sx:0,	sy:0,	width:900,	height:506	},
         {name: "background8",             src: this.img_src+"background8.png",	        sx:0,	sy:0,	width:900,	height:506   },
         {name: "background9",             src: this.img_src+"background9.png",	        sx:0,	sy:0,	width:900,	height:506	},
+        {name: "background10",             src: this.img_src+"background10.png",	        sx:0,	sy:0,	width:900,	height:506	},
         {name: "paralaxe1",               src: this.img_src+"paralaxe1.png",	        sx:0,	sy:0,	width:1280,	height:720	},
-        
+
         {name: "planet1",                 src: this.img_src+"planet1.png",  	        sx:0,	sy:0,	width:256,	height:256	},
         {name: "planet2",                 src: this.img_src+"planet2.png",  	        sx:0,	sy:0,	width:256,	height:256	},
         {name: "planet3",                 src: this.img_src+"planet3.png",  	        sx:0,	sy:0,	width:256,	height:256	},
