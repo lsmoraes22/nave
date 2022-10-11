@@ -2518,18 +2518,26 @@ class asteroide1 extends character {
         }
         this.sounds = {    explosion: snd.audList['explosion1'], }
     }
+    reset(){
+      this.position.x=this.initialPosition.x;
+      this.position.y=this.initialPosition.y;
+      this.nameSprite="alive";
+    }
     update(){
         if(this.nameSprite !== null){
             this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
             if(this.sprites[this.nameSprite].sprite.end){
                this.nameSprite = this.sprites[this.nameSprite].sprite.next;
             }
-            if(this.direction=="v"){this.position.y+=2;} else
-            if(this.direction=="d"){this.position.x+=2;this.position.y+=2;}
-            if(this.position.y>canvas.height+50){
-              this.position = this.initialPosition;
+            if(this.direction=="v"){
+              this.position.y+=2;
+            } else
+            if(this.direction=="d"){
+              this.position.x-=2;this.position.y+=2;
             }
-            console.log(this.position.y, canvas.height);
+            if(this.position.y>canvas.height+50 || this.position.x<-50 || this.nameSprite==null){
+              this.reset();
+            }
         }
     }
 }
@@ -2568,6 +2576,11 @@ class asteroide2 extends character {
         }
         this.sounds = {    explosion: snd.audList['explosion1'], }
     }
+    reset(){
+      this.position.x=this.initialPosition.x;
+      this.position.y=this.initialPosition.y;
+      this.nameSprite="alive";
+    }
     update(){
         if(this.nameSprite !== null){
             this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
@@ -2575,10 +2588,12 @@ class asteroide2 extends character {
                this.nameSprite = this.sprites[this.nameSprite].sprite.next;
             }
         }
-        if(this.direction=="v"){this.position.y+=2;} else
-        if(this.direction=="d"){this.position.x+=2;this.position.y+=2;}
-        if(this.position.y>canvas.height+50){
-          this.position = this.initialPosition;
+        if(this.direction=="v"){
+          this.position.y+=2;} else
+        if(this.direction=="d"){
+          this.position.x-=2;this.position.y+=2;}
+        if(this.position.y>canvas.height+50 || this.position.x<-50 || this.nameSprite==null){
+          this.reset();
         }
     }
 }
