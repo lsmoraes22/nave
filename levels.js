@@ -190,7 +190,7 @@ function init(level){
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         /**/
-        case 2:
+        case 3:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
