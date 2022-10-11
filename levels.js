@@ -17,7 +17,7 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 3:
+        case 2:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -32,14 +32,6 @@ function init(level){
             paralaxes = [
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
-
-            //drops = [ new drop({x:6*gridSize, y:2*gridSize}) ]
-
-            //lavas = [ new lava({x:8*gridSize, y:3*gridSize, type:'surface'}), new lava({x:8*gridSize, y:4*gridSize, type:'deep'}),]
-            //bubbles = [ new bubble({x:8*gridSize, y:2*gridSize}) ]
-            //arrows = [ new arrow({x:200,y:100,direction:"up"})]
-            // trees = [ new tree({x: 16*gridSize, y:5*gridSize}), ]
-            // satelites = [ new satelite({x:9*gridSize, y:-17*gridSize}), ]
 
             lifes = [ new Life({x:38, y:8}) ]
             gates = [ new gate({x:52*gridSize,y:5*gridSize}) ]
@@ -81,7 +73,7 @@ function init(level){
                 new robot({x:29*gridSize, y:-1*gridSize, moveSize: 80}),
                 new robot({x:48*gridSize, y:-6*gridSize, moveSize: 200}),
                 new robot({x:46*gridSize, y:-6*gridSize, moveSize: 150}),
-                new boss3({x:15*gridSize, y:1*gridSize, moveSize: 130}),
+                //new boss3({x:15*gridSize, y:1*gridSize, moveSize: 130}),
                 new robot({x:42*gridSize, y:7*gridSize, moveSize: 130}),
 //                new nave_enemy1({x:12*gridSize,y:-12*gridSize, moveSize: 200}),
 //                new nave_enemy2({x:300,y:150, moveSize: 200}),
@@ -187,7 +179,8 @@ function init(level){
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
-        case 4:
+        /*
+        case 3:
             resetObjects();
             backgrounds = [
                 new background({x:0, y:0, imgName: 'background5'}),
@@ -196,7 +189,8 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 3:
+        /**/
+        case 2:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -331,7 +325,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 2:
+        case 4:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=6;
@@ -476,6 +470,14 @@ function lava2_create(x,y,number){
     var arr = []
     for (let i = 0; i < number; i++) {
         arr.push(new lava({x: (x+i)*gridSize, y:y*gridSize, type: 'deep'}));
+    }
+    return arr;
+}
+
+function water1_create(x,y,number){
+    var arr = []
+    for (let i = 0; i < number; i++) {
+        arr.push(new water1({x: (x+i)*gridSize, y:y*gridSize}));
     }
     return arr;
 }
