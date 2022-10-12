@@ -17,6 +17,7 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
+        /*
         case 2:
             resetObjects();
             scenario.cMin=0;
@@ -32,10 +33,7 @@ function init(level){
             paralaxes = [
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
-
-            lifes = [ new Life({x:38, y:8}) ]
             gates = [ new gate({x:52*gridSize,y:5*gridSize}) ]
-
             waters = water1_create(0,9,19);
             waters = waters.concat(water2_create(0,10,19));
             waters = waters.concat(water2_create(0,11,19));
@@ -67,21 +65,17 @@ function init(level){
             buildings = buildings.concat(create_building(25,2,6))
 
             enemys = [
-
                 new tank({x:21*gridSize, y:-6*gridSize, moveSize: 70}),
                 new robot({x:21*gridSize, y:7*gridSize, moveSize: 80}),
                 new robot({x:29*gridSize, y:-1*gridSize, moveSize: 80}),
                 new robot({x:48*gridSize, y:-6*gridSize, moveSize: 200}),
                 new robot({x:46*gridSize, y:-6*gridSize, moveSize: 150}),
-                //new boss3({x:15*gridSize, y:1*gridSize, moveSize: 130}),
+//                new boss3({x:15*gridSize, y:1*gridSize, moveSize: 130}),
                 new robot({x:42*gridSize, y:7*gridSize, moveSize: 130}),
 //                new nave_enemy1({x:12*gridSize,y:-12*gridSize, moveSize: 200}),
 //                new nave_enemy2({x:300,y:150, moveSize: 200}),
             ]
-
             // energy_houses = [ new energy_house1({x:7*gridSize,y:5*gridSize}), new energy_house2({x:7*gridSize,y:6*gridSize}), ]
-
-/**/
             drones = [
                 new drone({x:150,y:-600,moveDirection:'left', moveSize:100}),
                 new drone({x:150,y:-550,moveDirection:'right', moveSize:100}),
@@ -174,22 +168,39 @@ function init(level){
             ];
             Nave = [ new nave({x:200,y:150}) ]
             btns = create_joystick();
+            lifes = [ new Life({x:38, y:8}) ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
             painels = [ new painel({x:0, y:0}), ]
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
-        /*
-        case 3:
-            resetObjects();
-            backgrounds = [
-                new background({x:0, y:0, imgName: 'background5'}),
-                new background({x:0, y:0, imgName: 'atmosphere'}),
-            ]
-            nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
-            fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
-        break;
         /**/
+        case 2:
+          resetObjects();
+          scenario.cMin=0;
+          scenario.cMax=6;
+          scenario.rMin=0;
+          scenario.rMax=0;
+          backgrounds = [
+            new background({ imgName: 'background3'}),
+            new static_obj({ x:150, y:50, imgName: 'planet4'}),
+            new background({ imgName: 'atmosphere'}),
+          ]
+          tiles = create_greenMountain(-1,9,27,4);
+          tiles = tiles.concat(create_greenMountain(45,9,23,4));
+          tiles = tiles.concat(create_greenMountain(67,7,12,6));
+          tiles = tiles.concat(create_brownMountain(75,-1,12,6));
+
+          waters = water1_create(26,10,19);
+          waters = waters.concat(water2_create(26,11,19));
+          Nave = [ new nave({x:200,y:150}) ]
+          btns = create_joystick();
+          lifes = [ new Life({x:38, y:8}) ]
+          fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+          painels = [ new painel({x:0, y:0}), ]
+          barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+          barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+        break;
         case 3:
             resetObjects();
             scenario.cMin=0;
@@ -275,7 +286,6 @@ function init(level){
                 new drop({x:40*gridSize, y:3*gridSize, speedAnimation: 0.15}),
                 new drop({x:43*gridSize, y:3*gridSize, speedAnimation: 0.2}),
                 new drop({x:45*gridSize, y:3*gridSize, speedAnimation: 0.08}),
-                /**/
             ]
             gates = [ new gate({x:32*gridSize,y:6*gridSize}) ]
             lavas = lava1_create(0,9, 19)
@@ -428,7 +438,6 @@ function init(level){
               new asteroide2({x:136*gridSize,y:-9*gridSize,direction:"d"}),
               new asteroide1({x:138*gridSize,y:-7*gridSize,direction:"d"}),
               new asteroide2({x:139*gridSize,y:-9*gridSize,direction:"d"}),
-              /**/
             ]
             gates = [ new gate({x:105*gridSize,y:6*gridSize}) ]
             btns = create_joystick();
@@ -438,6 +447,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
+        /**/
     }
 }
 

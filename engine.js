@@ -99,7 +99,7 @@ function animate(){
              var p7 = Nave[0].points(7);
              var p8 = Nave[0].points(8);
              var scn = {
-                 obj: {
+                 obj: {  //scenario
                      c: Math.floor((!isFinite(obj.position.x/canvas.width)) ? 0 : obj.position.x/canvas.width ),
                      r: Math.floor((!isFinite(obj.position.y/canvas.height)) ? 0 : obj.position.y/canvas.height ),
                  }
@@ -115,9 +115,8 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if( obj.nameSprite != 'explosion' && obj.nameSprite != null && Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
-                     Nave[0].nameSprite = 'explosion'; Nave[0].sounds['explosion'].play();
-                     //obj.nameSprite = 'explosion';
-                     obj.lifeBossCurrent--;
+                     Nave[0].explode();
+                     if(obj.type=='enemy'){obj.nameSprite = 'explosion';}else {obj.lifeBossCurrent--;}
                  }
              }
              if(obj.haveTeleguide){
@@ -385,7 +384,7 @@ function animate(){
              ){
                  if( Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' ) {
                      Nave[0].explode();
-                 } else if(Nave[0].nameSprite==null){die();}
+                 } 
              }
         })
 
@@ -410,7 +409,7 @@ function animate(){
              ){
                  if( Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' ) {
                      Nave[0].explode();
-                 } else if(Nave[0].nameSprite==null){die();}
+                 }
              }
         })
 
@@ -435,7 +434,7 @@ function animate(){
              ){
                  if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
                      Nave[0].explode();
-                 } else if(Nave[0].nameSprite==null){die();}
+                 }
              }
              Nave[0].shot.forEach(sht =>{
                  var p9  = sht.points(1);
