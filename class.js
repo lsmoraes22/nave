@@ -1688,7 +1688,7 @@ class gate extends character {
 
 class shock_v extends character {
     constructor({x,y,shockNumber,continuous}){
-        super({x: x,y: y, colx:12, coly:0, colw:10, colh:35})
+        super({x: x,y: y, colx:12, coly:12, colw:10, colh:10})
         this.shockNumber = shockNumber //shockNumber 1:topo 2:centro 3:baixo
         this.nameSprite = (shockNumber==1 ? 'on_v_1' : (shockNumber==2 ? 'on_v_2' : (shockNumber==3 ? 'on_v_3' : '' )))  //nome do sprite a ser executado
         this.continuous = continuous                             //continuo ou intermitente
@@ -1802,7 +1802,7 @@ class shock_v extends character {
 
 class shock_h extends character {
     constructor({x,y,shockNumber,continuous}){
-        super({x: x,y: y, colx:0, coly:12, colw:35, colh:10})
+        super({x: x,y: y, colx:12, coly:12, colw:10, colh:10})
         this.shockNumber = shockNumber //1:esquerda 2:centro 3:direita
         this.nameSprite = ''; //(shockNumber==1 ? 'on_h_1' : (shockNumber==2 ? 'on_h_2' : (shockNumber==3 ? 'on_h_3' : '' )))  //nome do sprite a ser executado
         this.continuous = continuous                             //continuo ou intermitente
