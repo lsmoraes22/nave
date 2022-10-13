@@ -384,7 +384,7 @@ function animate(){
              ){
                  if( Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' ) {
                      Nave[0].explode();
-                 } 
+                 }
              }
         })
 
@@ -518,7 +518,7 @@ function animate(){
                  if(Nave[0].nameSprite != 'explosion' && Nave[0].nameSprite!=null) {
                      Nave[0].explode();
                      obj.nameSprite='destroyed';
-                 } else if(Nave[0].nameSprite==null){die();}
+                 }
              }
              Nave[0].shot.forEach(sht =>{
                  var p9  = sht.points(1);
@@ -595,9 +595,7 @@ function animate(){
              ){
                  if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' && obj.nameSprite == 'alive' ) {
                      Nave[0].explode();
-                     obj.nameSprite = 'explosion';
-                 } else if(Nave[0].nameSprite==null){die();}
-
+                 } 
              }
              Nave[0].shot.forEach(sht =>{
                  var p9  = sht.points(1);

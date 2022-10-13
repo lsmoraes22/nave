@@ -178,7 +178,7 @@ function init(level){
         case 2:
           resetObjects();
           scenario.cMin=0;
-          scenario.cMax=6;
+          scenario.cMax=8;
           scenario.rMin=0;
           scenario.rMax=0;
           backgrounds = [
@@ -189,11 +189,60 @@ function init(level){
           tiles = create_greenMountain(-1,9,27,4);
           tiles = tiles.concat(create_greenMountain(45,9,23,4));
           tiles = tiles.concat(create_greenMountain(67,7,12,6));
+          tiles = tiles.concat(create_greenMountain(77,9,11,3));
           tiles = tiles.concat(create_brownMountain(75,-1,12,6));
-
+          tiles = tiles.concat(create_greenMountain(87,7,12,6));
+          tiles = tiles.concat(create_greenMountain(140,9,15,3));
+          tiles = tiles.concat(create_brownMountain(118,9,12,4));
           waters = water1_create(26,10,19);
           waters = waters.concat(water2_create(26,11,19));
+          waters = waters.concat(water1_create(99,10,19));
+          waters = waters.concat(water2_create(99,11,19));
+          waters = waters.concat(water1_create(130,10,10));
+          waters = waters.concat(water2_create(130,11,10));
+          buildings = create_building(9,4,5);
+          buildings = buildings.concat(create_building(49,4,5));
+          buildings = buildings.concat(create_building(69,4,3));
+          buildings = buildings.concat(create_building(92,4,3));
+          buildings = buildings.concat(create_building(92,4,3));
+          buildings = buildings.concat(create_building(122,6,3));
+          shocks = create_shock_v(82,5,4);
+          enemys = [
+//              new tank       ({x:15*gridSize, y:8*gridSize,  moveSize: 170}),
+//              new tank       ({x:17*gridSize, y:8*gridSize,  moveSize: 200}),
+//              new tank       ({x:47*gridSize, y:8*gridSize,  moveSize: 40}),
+//              new tank       ({x:57*gridSize, y:8*gridSize,  moveSize: 250}),
+//              new tank       ({x:60*gridSize, y:8*gridSize,  moveSize: 220}),
+//              new tank       ({x:74*gridSize, y:6*gridSize,  moveSize: 135}),
+//              new tank       ({x:96*gridSize, y:6*gridSize,  moveSize: 70}),
+//              new robot      ({x:21*gridSize, y:7*gridSize,  moveSize: 80}),
+//              new robot      ({x:29*gridSize, y:-1*gridSize, moveSize: 80}),
+//              new robot      ({x:48*gridSize, y:-6*gridSize, moveSize: 200}),
+//              new robot      ({x:46*gridSize, y:-6*gridSize, moveSize: 150}),
+//              new robot      ({x:42*gridSize, y:7*gridSize,  moveSize: 130}),
+//              new nave_enemy1({x:18*gridSize, y:-12*gridSize, moveSize: 200}),
+/*
+              new nave_enemy2({x:18*gridSize, y:5*gridSize,   moveSize: 230}),
+              new nave_enemy2({x:18*gridSize, y:2*gridSize,   moveSize: 100}),
+              new nave_enemy2({x:28*gridSize, y:3*gridSize,   moveSize: 100}),
+              new nave_enemy2({x:32*gridSize, y:4*gridSize,   moveSize: 300}),
+              new nave_enemy2({x:34*gridSize, y:5*gridSize,   moveSize: 200}),
+              new nave_enemy2({x:30*gridSize, y:6*gridSize,   moveSize: 250}),
+              new nave_enemy2({x:96*gridSize,  y:2*gridSize,   moveSize: 250}),
+              new nave_enemy2({x:106*gridSize, y:2*gridSize,   moveSize: 250}),
+              new nave_enemy2({x:106*gridSize, y:3*gridSize,   moveSize: 300}),
+              new nave_enemy2({x:106*gridSize, y:4*gridSize,   moveSize: 200}),
+              new nave_enemy2({x:126*gridSize, y:2*gridSize,   moveSize: 250}),
+              new nave_enemy2({x:126*gridSize, y:3*gridSize,   moveSize: 300}),
+              new nave_enemy2({x:126*gridSize, y:4*gridSize,   moveSize: 200}),
+              /**/
+          ]
+          drones = [
+              new drone({x:134*gridSize,y:8*gridSize,moveDirection:'left', moveSize:140}),
+              new drone({x:134*gridSize,y:9*gridSize,moveDirection:'right', moveSize:140}),
+          ]
           Nave = [ new nave({x:200,y:150}) ]
+          gates = [ new gate({x:148*gridSize,y:6*gridSize}) ]
           btns = create_joystick();
           lifes = [ new Life({x:38, y:8}) ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
