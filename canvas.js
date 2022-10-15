@@ -32,10 +32,10 @@ let action = false;   //carrega o jogador
 let pause = false;    /*  */
 let gridSize = 35;
 let scenario = {
-    c:0, r:0, x:0 , y:0, cMin:0, cMax:3, rMin:-3, rMax:0,
+    c:0, r:0, x:0 , y:0, cMin:0, cMax:0, rMin:0, rMax:0, cWidth: 900, rHeight: 400,
     update: function(){
-        this.c = Math.ceil(this.x/canvas.width);     //640
-        this.r = Math.ceil(this.y/canvas.height);    //360
+        this.c = Math.ceil(this.x/this.cWidth);     //canvas.width 640
+        this.r = Math.ceil(this.y/this.rHeight);    // canvas.height 360
     },
     reset: function(){
         this.x = 0;

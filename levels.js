@@ -178,8 +178,8 @@ function init(level){
         case 2:
           resetObjects();
           scenario.cMin=0;
-          scenario.cMax=8;
-          scenario.rMin=0;
+          scenario.cMax=2;
+          scenario.rMin=-1;
           scenario.rMax=0;
           backgrounds = [
             new background({ imgName: 'background3'}),

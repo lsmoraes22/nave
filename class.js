@@ -143,7 +143,8 @@ class character {                                              //personagem
             } else {
                 if(this.position.x<=0){this.position.x+=2;}
             }
-            if(scenario.r>scenario.rMin){
+            //if(scenario.r>scenario.rMin){
+            if(scenario.y>(scenario.rMin*scenario.rHeight)){
                 if(this.position.y<=400*0.3){scenario.y-=2;this.position.y+=2;}
             } else {
                 if(this.position.y<=400*0.15){this.position.y+=2;}
@@ -153,7 +154,11 @@ class character {                                              //personagem
             } else {
                  if(this.position.x>=canvas.width-this.bodyColision.w-20){this.position.x-=2;}
             }
-            if(scenario.r<=scenario.rMax){
+            //if(scenario.r<=scenario.rMax){
+            //
+            //if(scenario.y+(scenario.rHeight-canvas.height)<=(scenario.rMax*scenario.rHeight)){
+            if(scenario.rHeight+scenario.y<=canvas.height){
+              console.log(scenario.rHeight+scenario.y, canvas.height );
                 if(this.position.y+this.bodyColision.h>=400*0.55){scenario.y+=2;this.position.y-=2;}
             } else {
                 if(this.position.y>=400-this.bodyColision.h){this.position.y-=2;}
