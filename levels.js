@@ -215,6 +215,8 @@ function init(level){
 //              new tank       ({x:60*gridSize, y:8*gridSize,  moveSize: 220}),
 //              new tank       ({x:74*gridSize, y:6*gridSize,  moveSize: 135}),
 //              new tank       ({x:96*gridSize, y:6*gridSize,  moveSize: 70}),
+              new tank       ({x:120*gridSize, y:8*gridSize,  moveSize: 40}),
+              new tank       ({x:126*gridSize, y:8*gridSize,  moveSize: 80}),
 //              new robot      ({x:21*gridSize, y:7*gridSize,  moveSize: 80}),
 //              new robot      ({x:29*gridSize, y:-1*gridSize, moveSize: 80}),
 //              new robot      ({x:48*gridSize, y:-6*gridSize, moveSize: 200}),
@@ -232,6 +234,7 @@ function init(level){
               new nave_enemy2({x:106*gridSize, y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:106*gridSize, y:3*gridSize,   moveSize: 300}),
               new nave_enemy2({x:106*gridSize, y:4*gridSize,   moveSize: 200}),
+
               new nave_enemy2({x:126*gridSize, y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:126*gridSize, y:3*gridSize,   moveSize: 300}),
               new nave_enemy2({x:126*gridSize, y:4*gridSize,   moveSize: 200}),
