@@ -34,8 +34,8 @@ let gridSize = 35;
 let scenario = {
     c:0, r:0, x:0 , y:0, cMin:0, cMax:3, rMin:-3, rMax:0,
     update: function(){
-        this.c = Math.ceil(this.x/640);  //canvas.width  640
-        this.r = Math.ceil(this.y/360);    //canvas.height 360
+        this.c = Math.ceil(this.x/canvas.width);     //640
+        this.r = Math.ceil(this.y/canvas.height);    //360
     },
     reset: function(){
         this.x = 0;

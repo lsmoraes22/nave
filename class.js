@@ -144,9 +144,9 @@ class character {                                              //personagem
                 if(this.position.x<=0){this.position.x+=2;}
             }
             if(scenario.r>scenario.rMin){
-                if(this.position.y<=360*0.3){scenario.y-=2;this.position.y+=2;}
+                if(this.position.y<=400*0.3){scenario.y-=2;this.position.y+=2;}
             } else {
-                if(this.position.y<=360*0.15){this.position.y+=2;}
+                if(this.position.y<=400*0.15){this.position.y+=2;}
             }
             if(scenario.c<scenario.cMax){
                  if(this.position.x+this.bodyColision.w>=canvas.width*0.66){scenario.x+=2;this.position.x-=2;}
@@ -154,9 +154,9 @@ class character {                                              //personagem
                  if(this.position.x>=canvas.width-this.bodyColision.w-20){this.position.x-=2;}
             }
             if(scenario.r<=scenario.rMax){
-                if(this.position.y+this.bodyColision.h>=360*0.55){scenario.y+=2;this.position.y-=2;}
+                if(this.position.y+this.bodyColision.h>=400*0.55){scenario.y+=2;this.position.y-=2;}
             } else {
-                if(this.position.y>=360-this.bodyColision.h){this.position.y-=2;}
+                if(this.position.y>=400-this.bodyColision.h){this.position.y-=2;}
             }
         }else{
             this.positionAbsolute.x = this.position.x-scenario.x;
