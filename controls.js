@@ -59,7 +59,7 @@ function getCursorPosition(canvas, event) {
 
 function getTouchPosition(canvas, touch) {
     const rect = canvas.getBoundingClientRect()
-    const x = touch.pageX; - rect.left;
+    const x = touch.pageX - rect.left;
     const y = touch.pageY - rect.top;
     return {x:x ,y:y}
 }
@@ -98,7 +98,7 @@ canvas.addEventListener("touchmove", function(evt) {
         touchPosition2 = getTouchPosition(canvas, touch2);
         if(touchPosition2.x<canvas.width/2){touchLeft=touchPosition2;}else{touchRight=touchPosition2;}
     }
-    
+
 }, false);
 
 canvas.addEventListener("touchend", function(evt){
@@ -115,4 +115,3 @@ canvas.addEventListener("touchend", function(evt){
     }
 
 }, false);
-

@@ -164,14 +164,14 @@ class character {                                              //personagem
         }
         this.currentSprite.position.x = this.positionAbsolute.x;
         this.currentSprite.position.y = this.positionAbsolute.y;
-        /*if(
-            this.currentSprite.position.x<canvas.width+50 &&
-            this.currentSprite.position.x>-50 &&
-            this.currentSprite.position.y<canvas.height+50 &&
-            this.currentSprite.position.y>-50
-        ){ /**/
+        if(
+            this.currentSprite.position.x<canvas.width*2 &&
+            this.currentSprite.position.x>-canvas.width &&
+            this.currentSprite.position.y<canvas.height*2 &&
+            this.currentSprite.position.y>-canvas.height
+        ){
             return this.currentSprite.animation();
-        //}
+        }
     }
     colision(x,y){
         //var colision = {position:{x: this.position.x-scenario.x, y:this.position.y-scenario.y}}
@@ -247,7 +247,7 @@ class nave extends character {
                 loop: false,
                 next: null,                                    //informa a proxima animacao apos o fim da atual
                 end:  false,
-                speedAnimation: 0.5
+                speedAnimation: 1
             }),
             invisible: new sprite({
                 x:this.position.x,
@@ -1352,7 +1352,7 @@ class teleguide extends character {
                 loop: false,
                 next: null,                                    //informa a proxima animacao apos o fim da atual
                 end:  false,
-                speedAnimation: 0.5
+                speedAnimation: 1
             }),
         }
         this.sounds = { explosion: snd.audList['explosion1'], }
@@ -2501,7 +2501,7 @@ class asteroide1 extends character {
                 loop: false,
                 next: null,                                    //informa a proxima animacao apos o fim da atual
                 end:  false,
-                speedAnimation: 0.5
+                speedAnimation: 1
             }),
             alive: new sprite({
                 x:this.position.x,
@@ -2559,7 +2559,7 @@ class asteroide2 extends character {
                 loop: false,
                 next: null,                                    //informa a proxima animacao apos o fim da atual
                 end:  false,
-                speedAnimation: 0.5
+                speedAnimation: 1
             }),
             alive: new sprite({
                 x:this.position.x,
@@ -2613,7 +2613,7 @@ class satelite extends character {
                 loop: false,
                 next: null,                                    //informa a proxima animacao apos o fim da atual
                 end:  false,
-                speedAnimation: 0.5
+                speedAnimation: 1
             }),
             alive: new sprite({
                 x:this.position.x,
@@ -2791,7 +2791,7 @@ class enemy extends character {
                 loop: false,
                 next: null,                                    //informa a proxima animacao apos o fim da atual
                 end:  false,
-                speedAnimation: 0.5
+                speedAnimation: 1
             }),
         }
         this.sounds = { explosion: snd.audList['explosion1'], }
@@ -2896,7 +2896,7 @@ class enemy extends character {
                 }
             }
             if(this.nameSprite=='left' || this.nameSprite=='right'){
-                if (this.move=='left'){ this.position.x--; } else if (this.move=='right'){ this.position.x++; }
+                if (this.move=='left'){ this.position.x-=2; } else if (this.move=='right'){ this.position.x+=2; }
             }
             if(this.type == 'enemy'){
                 if(this.posXIni>=this.position.x+this.moveSize ){
@@ -2916,11 +2916,11 @@ class enemy extends character {
                     if(this.posXIni>=this.position.x+this.moveSize ){
                         this.nameSprite = 'stopedRight';
                         this.move='right';
-                        this.position.x += 1;
+                        this.position.x += 2;
                     } else if(this.posXIni<=this.position.x-this.moveSize){
                         this.nameSprite = 'stopedLeft';
                         this.move='left';
-                        this.position.x -= 1;
+                        this.position.x -= 2;
                     }
                 }
             }
@@ -2928,7 +2928,6 @@ class enemy extends character {
         if(!this.shotReady){ this.timeShot++; }
         if(this.timeShot>=(this.maxTimeShot/this.shotCount)){ this.timeShot=0; }
         if(this.timeShot==0){ this.shotReady=true; }
-
         if(!this.launchReady){ this.timeLaunch++; }
         if(this.timeLaunch>=(this.maxTimeLaunch/this.launchCount)){ this.timeLaunch=0; }
         if(this.timeLaunch==0){ this.launchReady=true; }
@@ -3501,7 +3500,7 @@ class drone extends character {
                 loop: false,
                 next: null,                                    //informa a proxima animacao apos o fim da atual
                 end:  false,
-                speedAnimation: 0.5
+                speedAnimation: 1
             }),
         }
         this.sounds = {    explosion: snd.audList['explosion1'], }
