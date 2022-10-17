@@ -1,7 +1,7 @@
 class sprite{
     constructor({x, y, imgName, assX, assY, imgFrm, loop, next, end, speedAnimation}){
         this.frames = 0                                //
-        this.speedAnimation = speedAnimation           //velocidade da anima��o 1=100%=60fps; 0.5=50%=30fps
+        this.speedAnimation = speedAnimation           //velocidade da animacao 1=100%=60fps; 0.5=50%=30fps
         this.imgName = imgName                         //
         this.position ={x:x, y:y}                      //-scenario.y
         this.sprite = {                                //
@@ -12,7 +12,7 @@ class sprite{
             width: gridSize,                           //largura da colagem da imagem
             height: gridSize,                          //altura da colagem da imagem
             imgFrm: imgFrm,                            //quantidade de imagens da animacao
-            loop: loop,                                //true repeti��o infinita da animacao false: animacao apresenta uma vez
+            loop: loop,                                //true repeticao infinita da animacao false: animacao apresenta uma vez
             next: next,                                //proxima animacao caso loop = false
             end: end                                   //fim da animacao true / false
         }
@@ -143,22 +143,17 @@ class character {                                              //personagem
             } else {
                 if(this.position.x<=0){this.position.x+=2;}
             }
-            //if(scenario.r>scenario.rMin){
             if(scenario.y>(scenario.rMin*scenario.rHeight)){
                 if(this.position.y<=400*0.3){scenario.y-=2;this.position.y+=2;}
             } else {
                 if(this.position.y<=400*0.15){this.position.y+=2;}
             }
-            if(scenario.c<scenario.cMax){
+            if(scenario.x+canvas.width<=scenario.cWidth*scenario.cMax){
                  if(this.position.x+this.bodyColision.w>=canvas.width*0.66){scenario.x+=2;this.position.x-=2;}
             } else {
                  if(this.position.x>=canvas.width-this.bodyColision.w-20){this.position.x-=2;}
             }
-            //if(scenario.r<=scenario.rMax){
-            //
-            //if(scenario.y+(scenario.rHeight-canvas.height)<=(scenario.rMax*scenario.rHeight)){
-            if(scenario.rHeight+scenario.y<=canvas.height){
-              console.log(scenario.rHeight+scenario.y, canvas.height );
+            if(scenario.y+canvas.height<=scenario.rHeight){
                 if(this.position.y+this.bodyColision.h>=400*0.55){scenario.y+=2;this.position.y-=2;}
             } else {
                 if(this.position.y>=400-this.bodyColision.h){this.position.y-=2;}

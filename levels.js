@@ -178,8 +178,8 @@ function init(level){
         case 2:
           resetObjects();
           scenario.cMin=0;
-          scenario.cMax=2;
-          scenario.rMin=-1;
+          scenario.cMax=6;
+          scenario.rMin=0;
           scenario.rMax=0;
           backgrounds = [
             new background({ imgName: 'background3'}),
@@ -208,28 +208,25 @@ function init(level){
           buildings = buildings.concat(create_building(122,6,3));
           shocks = create_shock_v(82,5,4);
           enemys = [
-//              new tank       ({x:15*gridSize, y:8*gridSize,  moveSize: 170}),
-//              new tank       ({x:17*gridSize, y:8*gridSize,  moveSize: 200}),
-//              new tank       ({x:47*gridSize, y:8*gridSize,  moveSize: 40}),
-//              new tank       ({x:57*gridSize, y:8*gridSize,  moveSize: 250}),
-//              new tank       ({x:60*gridSize, y:8*gridSize,  moveSize: 220}),
-//              new tank       ({x:74*gridSize, y:6*gridSize,  moveSize: 135}),
-//              new tank       ({x:96*gridSize, y:6*gridSize,  moveSize: 70}),
+              new tank       ({x:15*gridSize, y:8*gridSize,  moveSize: 170}),
+              new tank       ({x:17*gridSize, y:8*gridSize,  moveSize: 200}),
+              new tank       ({x:47*gridSize, y:8*gridSize,  moveSize: 40}),
+              new tank       ({x:57*gridSize, y:8*gridSize,  moveSize: 250}),
+              new tank       ({x:60*gridSize, y:8*gridSize,  moveSize: 220}),
+              new tank       ({x:74*gridSize, y:6*gridSize,  moveSize: 135}),
+              new tank       ({x:96*gridSize, y:6*gridSize,  moveSize: 70}),
               new tank       ({x:120*gridSize, y:8*gridSize,  moveSize: 40}),
               new tank       ({x:126*gridSize, y:8*gridSize,  moveSize: 80}),
-//              new robot      ({x:21*gridSize, y:7*gridSize,  moveSize: 80}),
-//              new robot      ({x:29*gridSize, y:-1*gridSize, moveSize: 80}),
-//              new robot      ({x:48*gridSize, y:-6*gridSize, moveSize: 200}),
-//              new robot      ({x:46*gridSize, y:-6*gridSize, moveSize: 150}),
-//              new robot      ({x:42*gridSize, y:7*gridSize,  moveSize: 130}),
-//              new nave_enemy1({x:18*gridSize, y:-12*gridSize, moveSize: 200}),
-/*
+
+              new nave_enemy1({x:18*gridSize, y:-12*gridSize, moveSize: 200}),
               new nave_enemy2({x:18*gridSize, y:5*gridSize,   moveSize: 230}),
               new nave_enemy2({x:18*gridSize, y:2*gridSize,   moveSize: 100}),
               new nave_enemy2({x:28*gridSize, y:3*gridSize,   moveSize: 100}),
               new nave_enemy2({x:32*gridSize, y:4*gridSize,   moveSize: 300}),
               new nave_enemy2({x:34*gridSize, y:5*gridSize,   moveSize: 200}),
               new nave_enemy2({x:30*gridSize, y:6*gridSize,   moveSize: 250}),
+
+              
               new nave_enemy2({x:96*gridSize,  y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:106*gridSize, y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:106*gridSize, y:3*gridSize,   moveSize: 300}),
