@@ -271,7 +271,7 @@ class nave extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
             left: new sprite({
                 x:this.position.x,
@@ -283,7 +283,7 @@ class nave extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
             up: new sprite({
                 x:this.position.x,
@@ -295,7 +295,7 @@ class nave extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
             down: new sprite({
                 x:this.position.x,
@@ -307,7 +307,7 @@ class nave extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
             upleft: new sprite({
                 x:this.position.x,
@@ -319,7 +319,7 @@ class nave extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
             downleft: new sprite({
                 x:this.position.x,
@@ -331,7 +331,7 @@ class nave extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
             upright: new sprite({
                 x:this.position.x,
@@ -343,7 +343,7 @@ class nave extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
             downright: new sprite({
                 x:this.position.x,
@@ -355,7 +355,7 @@ class nave extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
         }
         this.sounds = { explosion: snd.audList['explosion4'], laserShoot: snd.audList['laserShoot'],}
@@ -435,6 +435,23 @@ class nave extends character {
             if(this.lifeBarr<=0 && this.nameSprite !== 'explosion' ){this.explode(); this.lifeBarr=100;}
         } else {
             die();
+        }
+        if(this.nameSprite == 'right'){
+          this.bodyColision = {x:6, y:17, w: 29, h: 13};
+        } else if(this.nameSprite == 'left'){
+          this.bodyColision = {x:0, y:17, w: 29, h: 13};
+        } else if(this.nameSprite == 'upright'){
+          this.bodyColision = {x:9, y:5, w: 21, h: 21};
+        } else if(this.nameSprite == 'upleft'){
+          this.bodyColision = {x:5, y:5, w: 21, h: 21};
+        } else if(this.nameSprite == 'downright'){
+          this.bodyColision = {x:5, y:9, w: 21, h: 21};
+        } else if(this.nameSprite == 'upleft'){
+          this.bodyColision = {x:9, y:9, w: 21, h: 21};
+        } else if(this.nameSprite == 'up'){
+          this.bodyColision = {x:3, y:0, w: 31, h: 28};
+        } else if(this.nameSprite == 'down'){
+          this.bodyColision = {x:3, y:7, w: 31, h: 28};
         }
         if(!this.shotReady){ this.timeShot++; }
         if(this.timeShot>=(this.maxTimeShot/this.shotCount)){ this.timeShot=0; }
@@ -2743,7 +2760,7 @@ class enemy extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
             left: new sprite({
                 x:this.position.x,
@@ -2755,7 +2772,7 @@ class enemy extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.7
+                speedAnimation: 1
             }),
             shot_r: new sprite({
                 x:this.position.x,
@@ -3351,6 +3368,7 @@ class tank extends enemy {
             shotDirection: 'd',
             moveSize: moveSize
         })
+        this.bodyColision = {x:0, y:17, w: 35, h: 18};
         this.sprites.right.sprite.assetPos.x = 1
         this.sprites.right.sprite.assetPos.y = 2
         this.sprites.right.sprite.imgFrm = 1
