@@ -19,6 +19,7 @@ function preload() {
 
 const gravity = 0;
 let varScore = 0;
+let game_lives_initial = 3;
 let game_lives = 3;
 let level = 0;
 let mousePosition = {};

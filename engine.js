@@ -37,14 +37,14 @@ function animate(){
         Nave.forEach(obj =>{
             obj.update();
             if(obj.nameSprite != 'explosion' && obj.nameSprite!=null && obj.nameSprite != 'invisible'){
-                if(keys.left.pressed && keys.up.pressed ){obj.position.x-=2; obj.position.y-=2; obj.nameSprite = 'upleft';} else
-                if(keys.left.pressed && keys.down.pressed ){obj.position.x-=2; obj.position.y+=2;obj.nameSprite = 'downleft';} else
-                if(keys.right.pressed && keys.up.pressed ){obj.position.x+=2; obj.position.y-=2; obj.nameSprite = 'upright';} else
-                if(keys.right.pressed && keys.down.pressed ){obj.position.x+=2; obj.position.y+=2; obj.nameSprite = 'downright';} else
-                if(keys.left.pressed){obj.position.x-=2; obj.nameSprite = 'left'} else
-                if(keys.right.pressed){obj.position.x+=2; obj.nameSprite = 'right'} else
-                if(keys.up.pressed){obj.position.y-=2; obj.nameSprite = 'up'} else
-                if(keys.down.pressed){obj.position.y+=2; obj.nameSprite = 'down'}
+                if(keys.left.pressed && keys.up.pressed ){obj.position.x-=3; obj.position.y-=3; obj.nameSprite = 'upleft';} else
+                if(keys.left.pressed && keys.down.pressed ){obj.position.x-=3; obj.position.y+=3;obj.nameSprite = 'downleft';} else
+                if(keys.right.pressed && keys.up.pressed ){obj.position.x+=3; obj.position.y-=3; obj.nameSprite = 'upright';} else
+                if(keys.right.pressed && keys.down.pressed ){obj.position.x+=3; obj.position.y+=3; obj.nameSprite = 'downright';} else
+                if(keys.left.pressed){obj.position.x-=3; obj.nameSprite = 'left'} else
+                if(keys.right.pressed){obj.position.x+=3; obj.nameSprite = 'right'} else
+                if(keys.up.pressed){obj.position.y-=3; obj.nameSprite = 'up'} else
+                if(keys.down.pressed){obj.position.y+=3; obj.nameSprite = 'down'}
                 if(keys.a.pressed){obj.fire();}
             }
         })
@@ -85,7 +85,16 @@ function animate(){
                  obj.colision(p7.x,p7.y) ||
                  obj.colision(p8.x,p8.y)
              ){
-                 if(obj.nameSprite == 'default') {obj.nameSprite = null; obj.sounds['colectable'].play();}
+                 if(obj.nameSprite == 'default') {
+                   obj.nameSprite = null;
+                   obj.sounds['colectable'].play();
+                   if(obj.number==0){
+                     game_lives++;
+                   } else
+                   if(obj.number==3){
+                     Nave[0].lifeBarr += (Nave[0].lifeBarr+50>100 ? 100-Nave[0].lifeBarr : 50);
+                   }
+                 }
              }
         })
 
@@ -828,19 +837,23 @@ function animate(){
                     if(obj.colision(touchRight.x,touchRight.y)){Nave[0].fire();}
                 break;
                 case "btn_upleft":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){ Nave[0].position.x-=3; Nave[0].position.y-=3; Nave[0].nameSprite = 'upleft';}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){
+                      //keys.left.pressed = true;
+                      //keys.up.pressed = true;
+                      Nave[0].position.x-=3; Nave[0].position.y-=3;
+                      Nave[0].nameSprite = 'upleft';}
                 break;
                 case "btn_up":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y-=6; Nave[0].nameSprite = 'up'}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y-=3; Nave[0].nameSprite = 'up'}
                 break;
                 case "btn_upright":
                     if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y-=3; Nave[0].position.x+=3;Nave[0].nameSprite = 'upright';}
                 break;
                 case "btn_left":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.x-=6;Nave[0].nameSprite = 'left'}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.x-=3;Nave[0].nameSprite = 'left'}
                 break;
                 case "btn_right":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.x+=6;Nave[0].nameSprite = 'right'}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.x+=3;Nave[0].nameSprite = 'right'}
                 break;
                 case "btn_downleft":
                     if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y+=3; Nave[0].position.x-=3;Nave[0].nameSprite = 'downleft';}
@@ -855,7 +868,7 @@ function animate(){
           }
         })
         /* click mouse */
-        if(game_lives==0 && (level != "game_over" && level != 0  ) ){action= false; level = "game_over"; init(level); game_lives=10;}
+        if(game_lives==0 && (level != "game_over" && level != 0  ) ){action= false; level = "game_over"; init(level); game_lives=game_lives_initial;}
       } else {
       document.getElementById('turn_device').style.display = 'block';
   }

@@ -186,6 +186,7 @@ function init(level){
             new static_obj({ x:150, y:50, imgName: 'planet4'}),
             new background({ imgName: 'atmosphere'}),
           ]
+          jewels = [ new jewel({x:5*gridSize,y:4*gridSize,number:0})]
           tiles = create_greenMountain(-1,9,27,4);
           tiles = tiles.concat(create_greenMountain(45,9,23,4));
           tiles = tiles.concat(create_greenMountain(67,7,12,6));
@@ -226,7 +227,7 @@ function init(level){
               new nave_enemy2({x:34*gridSize, y:5*gridSize,   moveSize: 200}),
               new nave_enemy2({x:30*gridSize, y:6*gridSize,   moveSize: 250}),
 
-              
+
               new nave_enemy2({x:96*gridSize,  y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:106*gridSize, y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:106*gridSize, y:3*gridSize,   moveSize: 300}),
@@ -384,7 +385,8 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 4:
+        /**/
+        case 2:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=6;

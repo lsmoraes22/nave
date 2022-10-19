@@ -139,24 +139,24 @@ class character {                                              //personagem
             this.positionAbsolute.x = this.position.x;
             this.positionAbsolute.y = this.position.y;
             if(scenario.c>scenario.cMin){
-                if(this.position.x<=canvas.width*0.33){scenario.x-=2;this.position.x+=2;}
+                if(this.position.x<=canvas.width*0.33){scenario.x-=3;this.position.x+=3;}
             } else {
-                if(this.position.x<=0){this.position.x+=2;}
+                if(this.position.x<=0){this.position.x+=3;}
             }
             if(scenario.y>(scenario.rMin*scenario.rHeight)){
-                if(this.position.y<=400*0.3){scenario.y-=2;this.position.y+=2;}
+                if(this.position.y<=400*0.3){scenario.y-=3;this.position.y+=3;}
             } else {
-                if(this.position.y<=400*0.15){this.position.y+=2;}
+                if(this.position.y<=400*0.15){this.position.y+=3;}
             }
             if(scenario.x+canvas.width<=scenario.cWidth*scenario.cMax){
-                 if(this.position.x+this.bodyColision.w>=canvas.width*0.66){scenario.x+=2;this.position.x-=2;}
+                 if(this.position.x+this.bodyColision.w>=canvas.width*0.66){scenario.x+=3;this.position.x-=3;}
             } else {
-                 if(this.position.x>=canvas.width-this.bodyColision.w-20){this.position.x-=2;}
+                 if(this.position.x>=canvas.width-this.bodyColision.w-20){this.position.x-=3;}
             }
             if(scenario.y+canvas.height<=scenario.rHeight){
-                if(this.position.y+this.bodyColision.h>=400*0.55){scenario.y+=2;this.position.y-=2;}
+                if(this.position.y+this.bodyColision.h>=400*0.55){scenario.y+=2;this.position.y-=3;}
             } else {
-                if(this.position.y>=400-this.bodyColision.h){this.position.y-=2;}
+                if(this.position.y>=400-this.bodyColision.h){this.position.y-=3;}
             }
         }else{
             this.positionAbsolute.x = this.position.x-scenario.x;
@@ -387,13 +387,13 @@ class nave extends character {
                this.shot[this.shotCurrent].r_fire();
                this.shotReady = false;
            } else if(this.nameSprite == 'left'){
-               this.shot[this.shotCurrent].position.x = this.position.x-this.bodyColision.x-this.bodyColision.w+scenario.x;
+               this.shot[this.shotCurrent].position.x = this.position.x-this.bodyColision.x-this.bodyColision.w+scenario.x-10;
                this.shot[this.shotCurrent].position.y = this.position.y+scenario.y;
                this.shot[this.shotCurrent].l_fire();
                this.shotReady = false;
            } else if(this.nameSprite == 'up'){
                this.shot[this.shotCurrent].position.x = this.position.x+scenario.x;
-               this.shot[this.shotCurrent].position.y = this.position.y-this.bodyColision.y-this.bodyColision.h+scenario.y;
+               this.shot[this.shotCurrent].position.y = this.position.y-this.bodyColision.y-this.bodyColision.h+scenario.y-10 ;
                this.shot[this.shotCurrent].u_fire();
                this.shotReady = false;
            } else if(this.nameSprite == 'down'){
@@ -402,23 +402,23 @@ class nave extends character {
                this.shot[this.shotCurrent].d_fire();
                this.shotReady = false;
            } else if(this.nameSprite == 'upright'){
-               this.shot[this.shotCurrent].position.x = this.position.x+this.bodyColision.x+this.bodyColision.w+scenario.x;
-               this.shot[this.shotCurrent].position.y = this.position.y-this.bodyColision.y-10-this.bodyColision.h+scenario.y;
+               this.shot[this.shotCurrent].position.x = this.position.x+this.bodyColision.x+this.bodyColision.w+scenario.x+5;
+               this.shot[this.shotCurrent].position.y = this.position.y-this.bodyColision.y-10-this.bodyColision.h+scenario.y;//-this.shot[this.shotCurrent].bodyColision.h;
                this.shot[this.shotCurrent].ur_fire();
                this.shotReady = false;
            } else if(this.nameSprite == 'upleft'){
-               this.shot[this.shotCurrent].position.x = this.position.x-this.bodyColision.x+scenario.x;
-               this.shot[this.shotCurrent].position.y = this.position.y-this.bodyColision.y+3+scenario.y;
+               this.shot[this.shotCurrent].position.x = this.position.x-this.bodyColision.x-this.bodyColision.w+scenario.x-8;
+               this.shot[this.shotCurrent].position.y = this.position.y-this.bodyColision.y-this.bodyColision.h+scenario.y-8;
                this.shot[this.shotCurrent].ul_fire();
                this.shotReady = false;
            } else if(this.nameSprite == 'downright'){
-               this.shot[this.shotCurrent].position.x = this.position.x+this.bodyColision.x+scenario.x;
-               this.shot[this.shotCurrent].position.y = this.position.y+this.bodyColision.y+scenario.y;
+               this.shot[this.shotCurrent].position.x = this.position.x+this.bodyColision.x+this.bodyColision.w+scenario.x+3;
+               this.shot[this.shotCurrent].position.y = this.position.y+this.bodyColision.y+this.bodyColision.h+scenario.y+3;
                this.shot[this.shotCurrent].dr_fire();
                this.shotReady = false;
            } else if(this.nameSprite == 'downleft'){
-               this.shot[this.shotCurrent].position.x = this.position.x-this.bodyColision.x+scenario.x;
-               this.shot[this.shotCurrent].position.y = this.position.y+this.bodyColision.y-3+scenario.y;
+               this.shot[this.shotCurrent].position.x = this.position.x-this.bodyColision.x-this.bodyColision.w+scenario.x-4;//-this.shot[this.shotCurrent].bodyColision.w;
+               this.shot[this.shotCurrent].position.y = this.position.y+this.bodyColision.y+this.bodyColision.h+scenario.y+2;
                this.shot[this.shotCurrent].dl_fire();
                this.shotReady = false;
            }
@@ -441,13 +441,13 @@ class nave extends character {
         } else if(this.nameSprite == 'left'){
           this.bodyColision = {x:0, y:17, w: 29, h: 13};
         } else if(this.nameSprite == 'upright'){
-          this.bodyColision = {x:9, y:5, w: 21, h: 21};
+          this.bodyColision = {x:10, y:5, w: 21, h: 21};
         } else if(this.nameSprite == 'upleft'){
           this.bodyColision = {x:5, y:5, w: 21, h: 21};
         } else if(this.nameSprite == 'downright'){
-          this.bodyColision = {x:5, y:9, w: 21, h: 21};
-        } else if(this.nameSprite == 'upleft'){
           this.bodyColision = {x:9, y:9, w: 21, h: 21};
+        } else if(this.nameSprite == 'downleft'){
+          this.bodyColision = {x:5, y:9, w: 21, h: 21};
         } else if(this.nameSprite == 'up'){
           this.bodyColision = {x:3, y:0, w: 31, h: 28};
         } else if(this.nameSprite == 'down'){
@@ -1538,7 +1538,7 @@ class water1 extends character {
                 loop: true,
                 next: null,
                 end: false,
-                speedAnimation: 0.1
+                speedAnimation: 0.2
             }),
         }
         this.sounds = {}
@@ -3349,6 +3349,7 @@ class nave_enemy2 extends enemy {
             moveSize: moveSize
         })
         this.lifeBossMax = 1
+        this.bodyColision = {x:5, y:10, w:25, h:15}
         this.sprites.right.sprite.assetPos.x = 0
         this.sprites.right.speedAnimation = 0.7
         this.sprites.left.sprite.assetPos.x = 2
