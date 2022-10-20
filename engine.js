@@ -838,8 +838,6 @@ function animate(){
                 break;
                 case "btn_upleft":
                     if(obj.colision(touchLeft.x,touchLeft.y)){
-                      //keys.left.pressed = true;
-                      //keys.up.pressed = true;
                       Nave[0].position.x-=3; Nave[0].position.y-=3;
                       Nave[0].nameSprite = 'upleft';}
                 break;

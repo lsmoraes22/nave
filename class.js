@@ -759,6 +759,7 @@ class shot extends character {
             }),
         }
         this.sounds = {}
+        this.speedShot = 10
     }
     r_fire() {this.nameSprite = "r_initial";this.shotReady=false;this.bodyColision.x=0;this.bodyColision.y=15;this.bodyColision.w=35;this.bodyColision.h=3;}
     l_fire() {this.nameSprite = "l_initial";this.shotReady=false;this.bodyColision.x=0;this.bodyColision.y=15;this.bodyColision.w=35;this.bodyColision.h=3;}
@@ -800,14 +801,14 @@ class shot extends character {
                 if(this.sprites[this.nameSprite].sprite.end){
                     this.nameSprite = this.sprites[this.nameSprite].sprite.next;
                 }
-                if(this.nameSprite == 'r_default'){ this.position.x+=5;}
-                if(this.nameSprite == 'l_default'){ this.position.x-=5;}
-                if(this.nameSprite == 'u_default'){ this.position.y-=5;}
-                if(this.nameSprite == 'd_default'){ this.position.y+=5;}
-                if(this.nameSprite == 'ul_default'){ this.position.y-=5; this.position.x-=5;}
-                if(this.nameSprite == 'dl_default'){ this.position.y+=5; this.position.x-=5;}
-                if(this.nameSprite == 'ur_default'){ this.position.y-=5; this.position.x+=5;}
-                if(this.nameSprite == 'dr_default'){ this.position.y+=5; this.position.x+=5;}
+                if(this.nameSprite == 'r_default'){ this.position.x+=this.speedShot;}
+                if(this.nameSprite == 'l_default'){ this.position.x-=this.speedShot;}
+                if(this.nameSprite == 'u_default'){ this.position.y-=this.speedShot;}
+                if(this.nameSprite == 'd_default'){ this.position.y+=this.speedShot;}
+                if(this.nameSprite == 'ul_default'){ this.position.y-=this.speedShot; this.position.x-=this.speedShot;}
+                if(this.nameSprite == 'dl_default'){ this.position.y+=this.speedShot; this.position.x-=this.speedShot;}
+                if(this.nameSprite == 'ur_default'){ this.position.y-=this.speedShot; this.position.x+=this.speedShot;}
+                if(this.nameSprite == 'dr_default'){ this.position.y+=this.speedShot; this.position.x+=this.speedShot;}
             }
             if(this.positionAbsolute.x >canvas.width ||
                this.positionAbsolute.y >canvas.height ||
@@ -1117,6 +1118,7 @@ class shot_enemy extends character {
             }),
         }
         this.sounds = {}
+        this.speedShot = 10
     }
     r_fire() {this.nameSprite = "r_initial"; this.shotReady=false;}
     l_fire() {this.nameSprite = "l_initial"; this.shotReady=false;}
@@ -1143,14 +1145,14 @@ class shot_enemy extends character {
                 if(this.sprites[this.nameSprite].sprite.end){
                     this.nameSprite = this.sprites[this.nameSprite].sprite.next;
                 }
-                if(this.nameSprite == 'r_default'){ this.position.x-=5;}
-                if(this.nameSprite == 'l_default'){ this.position.x+=5;}
-                if(this.nameSprite == 'u_default'){ this.position.y-=5;}
-                if(this.nameSprite == 'd_default'){ this.position.y+=5;}
-                if(this.nameSprite == 'ul_default'){ this.position.y-=5; this.position.x-=5;}
-                if(this.nameSprite == 'dl_default'){ this.position.y+=5; this.position.x-=5;}
-                if(this.nameSprite == 'ur_default'){ this.position.y-=5; this.position.x+=5;}
-                if(this.nameSprite == 'dr_default'){ this.position.y+=5; this.position.x+=5;}
+                if(this.nameSprite == 'r_default'){ this.position.x-=this.speedShot;}
+                if(this.nameSprite == 'l_default'){ this.position.x+=this.speedShot;}
+                if(this.nameSprite == 'u_default'){ this.position.y-=this.speedShot;}
+                if(this.nameSprite == 'd_default'){ this.position.y+=this.speedShot;}
+                if(this.nameSprite == 'ul_default'){ this.position.y-=this.speedShot; this.position.x-=this.speedShot;}
+                if(this.nameSprite == 'dl_default'){ this.position.y+=this.speedShot; this.position.x-=this.speedShot;}
+                if(this.nameSprite == 'ur_default'){ this.position.y-=this.speedShot; this.position.x+=this.speedShot;}
+                if(this.nameSprite == 'dr_default'){ this.position.y+=this.speedShot; this.position.x+=this.speedShot;}
             }
             if(this.position.x >canvas.width+scenario.x+50 || this.position.y >canvas.height+scenario.y+50 )
             {this.shotReady = true;}
@@ -2502,10 +2504,11 @@ class tile extends character {
 }
 
 class asteroide1 extends character {
-    constructor({x,y,direction}){
+    constructor({x,y,direction,speed}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
         this.nameSprite = 'alive'                              //nome do sprite a ser executado
         this.direction = direction                             //v: vertical d:diagonal s:static
+        this.speed = speed                                     //velocidade
         this.initialPosition = {x:x,y:y}
         this.sprites = {
           explosion: new sprite({
@@ -2547,10 +2550,10 @@ class asteroide1 extends character {
                this.nameSprite = this.sprites[this.nameSprite].sprite.next;
             }
             if(this.direction=="v"){
-              this.position.y+=2;
+              this.position.y+=this.speed;
             } else
             if(this.direction=="d"){
-              this.position.x-=2;this.position.y+=2;
+              this.position.x-=this.speed;this.position.y+=this.speed;
             }
             if(this.position.y>canvas.height+50 || this.position.x<-50 || this.nameSprite==null){
               this.reset();
@@ -2560,10 +2563,11 @@ class asteroide1 extends character {
 }
 
 class asteroide2 extends character {
-    constructor({x,y,direction}){
+    constructor({x,y,direction,speed}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
         this.nameSprite = 'alive'                              //nome do sprite a ser executado
         this.direction = direction                             //v: vertical d:diagonal s:static
+        this.speed = speed                                     //velocidade
         this.initialPosition = {x:x,y:y}
         this.sprites = {
             explosion: new sprite({
@@ -2606,9 +2610,9 @@ class asteroide2 extends character {
             }
         }
         if(this.direction=="v"){
-          this.position.y+=2;} else
+          this.position.y+=this.speed;} else
         if(this.direction=="d"){
-          this.position.x-=2;this.position.y+=2;}
+          this.position.x-=this.speed;this.position.y+=this.speed;}
         if(this.position.y>canvas.height+50 || this.position.x<-50 || this.nameSprite==null){
           this.reset();
         }
@@ -3933,6 +3937,17 @@ class lifeBoss2 extends images {
     update(){ this.animation(); }
 }
 
+class barraSuperTiro1 extends images {
+    constructor({x,y}){ super({x: x,y: y, imgName: "barraSuperTiro1"}) }
+    update(){ this.animation(); }
+}
+
+class barraSuperTiro2 extends images {
+    constructor({x,y}){ super({x: x,y: y, imgName: "barraSuperTiro2"}) }
+    update(){ this.animation(); }
+}
+
+
 class Life {
     constructor({x,y}){
         this.position = {
@@ -3966,52 +3981,52 @@ class Life {
 }
 
 class btn_a extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"button_a"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "button_a" : "button_a_2") }) }
     update(){ this.animation(); }
 }
 
 class btn_upleft extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"btn_upleft"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_upleft" : "btn_upleft_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_up extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"btn_up"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_up" : "btn_up_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_upright extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"btn_upright"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_upright" : "btn_upright_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_left extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"btn_left"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_left" : "btn_left_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_center extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"btn_center"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_center" : "btn_center_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_right extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"btn_right"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_right" : "btn_right_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_downleft extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"btn_downleft"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_downleft" : "btn_downleft_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_down extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"btn_down"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_down" : "btn_down_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_downright extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"btn_downright"}) }
+    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_downright" : "btn_downright_2")}) }
     update(){ this.animation(); }
 }
 

@@ -17,9 +17,9 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        /*
+      /*
         case 2:
-            resetObjects();
+        resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
             scenario.rMin=-2;
@@ -167,14 +167,14 @@ function init(level){
 
             ];
             Nave = [ new nave({x:200,y:150}) ]
-            btns = create_joystick();
+            btns = create_joystick("b");
             lifes = [ new Life({x:38, y:8}) ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
             painels = [ new painel({x:0, y:0}), ]
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
-        /**/
+        /*
         case 2:
           resetObjects();
           scenario.cMin=0;
@@ -186,7 +186,7 @@ function init(level){
             new static_obj({ x:150, y:50, imgName: 'planet4'}),
             new background({ imgName: 'atmosphere'}),
           ]
-          jewels = [ new jewel({x:5*gridSize,y:4*gridSize,number:0})]
+          jewels = [ new jewel({x:51*gridSize,y:4*gridSize,number:3})]
           tiles = create_greenMountain(-1,9,27,4);
           tiles = tiles.concat(create_greenMountain(45,9,23,4));
           tiles = tiles.concat(create_greenMountain(67,7,12,6));
@@ -236,7 +236,6 @@ function init(level){
               new nave_enemy2({x:126*gridSize, y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:126*gridSize, y:3*gridSize,   moveSize: 300}),
               new nave_enemy2({x:126*gridSize, y:4*gridSize,   moveSize: 200}),
-              /**/
           ]
           drones = [
               new drone({x:134*gridSize,y:8*gridSize,moveDirection:'left', moveSize:140}),
@@ -244,7 +243,7 @@ function init(level){
           ]
           Nave = [ new nave({x:200,y:150}) ]
           gates = [ new gate({x:148*gridSize,y:6*gridSize}) ]
-          btns = create_joystick();
+          btns = create_joystick("b");
           lifes = [ new Life({x:38, y:8}) ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
           painels = [ new painel({x:0, y:0}), ]
@@ -378,7 +377,7 @@ function init(level){
             tiles = tiles.concat(create_brownHill1(20,7,5))
             tiles = tiles.concat(create_brownHill1(21,6,6))
 
-            btns = create_joystick();
+            btns = create_joystick("b");
             lifes = [ new Life({x:38, y:8}) ]
             painels = [ new painel({x:0, y:0}), ]
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
@@ -397,101 +396,91 @@ function init(level){
             ]
             Nave = [ new nave({x:200,y:150}) ]
             asteroides = [
-              new asteroide1({x:12*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide1({x:13*gridSize,y:-5*gridSize,direction:"d"}),
-              new asteroide1({x:15*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:16*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide2({x:18*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:19*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide2({x:21*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:22*gridSize,y:-4*gridSize,direction:"d"}),
 
-              new asteroide1({x:24*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide1({x:25*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:26*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:28*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide1({x:29*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:31*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:32*gridSize,y:-4*gridSize,direction:"d"}),
+//              new asteroide2({x:20*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+//              new asteroide2({x:20*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:21*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
 
-              new asteroide2({x:33*gridSize,y:-5*gridSize,direction:"d"}),
-              new asteroide2({x:35*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:36*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:38*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:39*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:41*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:42*gridSize,y:-4*gridSize,direction:"d"}),
-
-              new asteroide1({x:44*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide1({x:45*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:46*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide2({x:48*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:49*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:51*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:52*gridSize,y:-4*gridSize,direction:"d"}),
-
-              new asteroide1({x:54*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide1({x:55*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:56*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:58*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide1({x:59*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:61*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:62*gridSize,y:-4*gridSize,direction:"d"}),
-              new asteroide1({x:64*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:65*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:66*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:68*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:69*gridSize,y:-9*gridSize,direction:"d"}),
-
-              new asteroide1({x:72*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:73*gridSize,y:-5*gridSize,direction:"d"}),
-              new asteroide2({x:75*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:76*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:78*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:79*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:81*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:82*gridSize,y:-4*gridSize,direction:"d"}),
-
-              new asteroide2({x:94*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide1({x:95*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:96*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:98*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:99*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:101*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:102*gridSize,y:-4*gridSize,direction:"d"}),
-
-              new asteroide2({x:103*gridSize,y:-5*gridSize,direction:"d"}),
-              new asteroide1({x:105*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:106*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:108*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:109*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:111*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:112*gridSize,y:-4*gridSize,direction:"d"}),
-
-              new asteroide1({x:114*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide1({x:115*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:116*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:118*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:119*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide2({x:121*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:122*gridSize,y:-4*gridSize,direction:"d"}),
-
-              new asteroide1({x:124*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide1({x:125*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:126*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:128*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:129*gridSize,y:-9*gridSize,direction:"d"}),
-
-              new asteroide2({x:131*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide2({x:132*gridSize,y:-4*gridSize,direction:"d"}),
-              new asteroide1({x:134*gridSize,y:-2*gridSize,direction:"d"}),
-              new asteroide1({x:135*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:136*gridSize,y:-9*gridSize,direction:"d"}),
-              new asteroide1({x:138*gridSize,y:-7*gridSize,direction:"d"}),
-              new asteroide2({x:139*gridSize,y:-9*gridSize,direction:"d"}),
+              new asteroide1({x:21*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6) }),
+              new asteroide2({x:22*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:22*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:24*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:25*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:26*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:28*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:29*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:31*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:32*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:33*gridSize,y:-5*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:35*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:36*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:38*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:39*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:41*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:42*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:44*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:45*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:46*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:48*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:49*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:51*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:52*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:54*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:55*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:56*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:58*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:59*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:61*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:62*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:64*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:65*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:66*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:68*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:69*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:72*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:73*gridSize,y:-5*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:75*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:76*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:78*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:79*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:81*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:82*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:94*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:95*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:96*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:98*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:99*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:101*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:102*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:103*gridSize,y:-5*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:105*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:106*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:108*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:109*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:111*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:112*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:114*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:115*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:116*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:118*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:119*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:121*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:122*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:124*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:125*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:126*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:128*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:129*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:131*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:132*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:134*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:135*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:136*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide1({x:138*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+              new asteroide2({x:139*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
             ]
-            gates = [ new gate({x:105*gridSize,y:6*gridSize}) ]
-            btns = create_joystick();
+            gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
+            btns = create_joystick("w");
             lifes = [ new Life({x:38, y:8}) ]
             painels = [ new painel({x:0, y:0}), ]
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
@@ -502,19 +491,19 @@ function init(level){
     }
 }
 
-function create_joystick(x,y){
+function create_joystick(color){
     var refjst = {x:30,y:200}
     btns = [
-        new btn_a({x:refjst.x+canvas.width-170,y:refjst.y+30}),
-        new btn_upleft({x:refjst.x,y:refjst.y}),
-        new btn_up({x:refjst.x+65,y:refjst.y}),
-        new btn_upright({x:refjst.x+95,y:refjst.y}),
-        new btn_left({x:refjst.x,y:refjst.y+65}),
-        new btn_center({x:refjst.x+65,y:refjst.y+65}),
-        new btn_right({x:refjst.x+95,y:refjst.y+65}),
-        new btn_downleft({x:refjst.x,y:refjst.y+95}),
-        new btn_down({x:refjst.x+65,y:refjst.y+95}),
-        new btn_downright({x:refjst.x+95,y:refjst.y+95}),
+        new btn_a({x:refjst.x+canvas.width-170,y:refjst.y+30, color:color}),
+        new btn_upleft({x:refjst.x,y:refjst.y, color:color}),
+        new btn_up({x:refjst.x+65,y:refjst.y, color:color}),
+        new btn_upright({x:refjst.x+95,y:refjst.y, color:color}),
+        new btn_left({x:refjst.x,y:refjst.y+65, color:color}),
+        new btn_center({x:refjst.x+65,y:refjst.y+65, color:color}),
+        new btn_right({x:refjst.x+95,y:refjst.y+65, color:color}),
+        new btn_downleft({x:refjst.x,y:refjst.y+95, color:color}),
+        new btn_down({x:refjst.x+65,y:refjst.y+95, color:color}),
+        new btn_downright({x:refjst.x+95,y:refjst.y+95, color:color}),
     ];
     return btns;
 }

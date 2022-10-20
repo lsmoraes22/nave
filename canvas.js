@@ -22,8 +22,8 @@ let varScore = 0;
 let game_lives_initial = 3;
 let game_lives = 3;
 let level = 0;
-let mousePosition = {};
 let touchPosition1 = {};
+let mousePosition = {};
 let touchPosition2 = {};
 let touchLeft = {};
 let touchRight = {};
@@ -76,5 +76,11 @@ function fullScreen(){
         }
     }
 }
+
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+
 function pausar(){pause=true;}
 function startar(){pause=false;}
