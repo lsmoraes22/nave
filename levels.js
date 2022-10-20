@@ -17,7 +17,6 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-      /*
         case 2:
         resetObjects();
             scenario.cMin=0;
@@ -45,7 +44,7 @@ function init(level){
             tiles = tiles.concat(create_greenMountain(16,2,4,2));
             tiles = tiles.concat(create_greenHill(17,-4,6));
             tiles = tiles.concat(create_greenMountain(19,8,16,4));
-            tiles = tiles.concat(create_greenMountain(38,8,25,4));
+            tiles = tiles.concat(create_greenMountain(38,8,40,4));
             tiles = tiles.concat(create_greenMountain(27,0,8,2));
             tiles = tiles.concat(create_greenHill(33,-6,6));
             tiles = tiles.concat(create_greenMountain(41,-5,14,2));
@@ -59,6 +58,9 @@ function init(level){
             shocks = shocks.concat(create_shock_v(41,-3,7,true))
             shocks = shocks.concat(create_shock_v(47,2,6,true))
             shocks = shocks.concat(create_shock_v(54,-19,14,true))
+            shocks = shocks.concat(create_shock_h(0,-19,25,true))
+            shocks = shocks.concat(create_shock_h(26,-19,28,true))
+            shocks = []
 
             //tiles = tiles.concat(create_brownHill1(1,6,4));
             buildings = create_building(9,2,5)
@@ -76,6 +78,7 @@ function init(level){
 //                new nave_enemy2({x:300,y:150, moveSize: 200}),
             ]
             // energy_houses = [ new energy_house1({x:7*gridSize,y:5*gridSize}), new energy_house2({x:7*gridSize,y:6*gridSize}), ]
+/*
             drones = [
                 new drone({x:150,y:-600,moveDirection:'left', moveSize:100}),
                 new drone({x:150,y:-550,moveDirection:'right', moveSize:100}),
@@ -166,6 +169,7 @@ function init(level){
                 new drone({x:1310,y:-420,moveDirection:'left', moveSize:100}),
 
             ];
+            /**/
             Nave = [ new nave({x:200,y:150}) ]
             btns = create_joystick("b");
             lifes = [ new Life({x:38, y:8}) ]
@@ -397,10 +401,7 @@ function init(level){
             Nave = [ new nave({x:200,y:150}) ]
             asteroides = [
 
-//              new asteroide2({x:20*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
-//              new asteroide2({x:20*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
               new asteroide2({x:21*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
-
               new asteroide1({x:21*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6) }),
               new asteroide2({x:22*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
               new asteroide2({x:22*gridSize,y:-4*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),

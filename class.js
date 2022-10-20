@@ -3500,6 +3500,7 @@ class drone extends character {
         this.posXIni = this.position.x;                        //posicao do y inicial
         this.moveDirection = moveDirection;                    //up right down left
         this.moveSize = moveSize;
+        this.speedMove = 2
         this.sprites = {
             alive: new sprite({
                 x:this.position.x,
@@ -3534,10 +3535,10 @@ class drone extends character {
             if(this.sprites[this.nameSprite].sprite.end){
                 this.nameSprite = this.sprites[this.nameSprite].sprite.next;
             }
-            if(this.moveDirection=='down'){this.position.y++;} else
-            if(this.moveDirection=='up'){this.position.y--;} else
-            if(this.moveDirection=='left'){this.position.x--;} else
-            if(this.moveDirection=='right'){this.position.x++;}
+            if(this.moveDirection=='down'){this.position.y+=this.speedMove;} else
+            if(this.moveDirection=='up'){this.position.y-=this.speedMove;} else
+            if(this.moveDirection=='left'){this.position.x-=this.speedMove;} else
+            if(this.moveDirection=='right'){this.position.x+=this.speedMove;}
 
             if(this.posYIni>=this.position.y+this.moveSize ){this.moveDirection='down';} else
             if(this.posYIni<=this.position.y-this.moveSize){this.moveDirection='up';}  else
@@ -3955,9 +3956,9 @@ class Life {
             y
         }
         this.number = game_lives
-        this.currentCropWidth = 18
+        this.currentCropWidth = 15
         this.currentCropHeight = 23
-        this.width = 18
+        this.width = 15
         this.height = 23
     }
     update(){this.number=game_lives;this.draw();}
