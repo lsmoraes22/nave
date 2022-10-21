@@ -32,6 +32,8 @@ function init(level){
             paralaxes = [
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
+            jewels = [ new jewel({x:2*gridSize, y:5*gridSize, number:2})]
+            life_ups = [ new life_up({x:3*gridSize, y:5*gridSize})]
             gates = [ new gate({x:52*gridSize,y:5*gridSize}) ]
             waters = water1_create(0,9,19);
             waters = waters.concat(water2_create(0,10,19));

@@ -231,6 +231,9 @@ class nave extends character {
         this.nameSprite = 'right'                              //nome do sprite a ser executado
         this.shotReady = true                                  //true: preparado para tiro, false: tempo inatividade, 'timeSetup': tempo apos a explosao
         this.timeShot = 0                                      //tempo do disparo at� o momento atual
+        this.furyTime = 500                                    //Tempo de duracao do supertiro
+        this.furyTimeClock = 0                                 //clock do supertiro
+        this.furyTimeOnOff = 'off'                             //supertiro liga desliga
         this.maxTimeShot = 140                                 //tempo max ate o proximo disparo
         this.lifeBarr = 100                                    //barra de vida
         this.shotNumber = 1                                    //numero da cor do tiro 1:amarelo, 2:vermelho, 3:verde, 4:roxo
@@ -360,22 +363,29 @@ class nave extends character {
         }
         this.sounds = { explosion: snd.audList['explosion4'], laserShoot: snd.audList['laserShoot'],}
         this.shot = [
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber}),
-            new shot({x: null, y:null, number: this.shotNumber})
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null}),
+            new shot({x: null, y:null})
         ]
+        this.protection = new protection({x:this.position.x, y:this.position.y})
+        this.furied = new fury({x:this.position.x, y:this.position.y})
     }
     fire(){
         if(this.shotReady){
@@ -424,7 +434,17 @@ class nave extends character {
            }
         }
     }
-    explode(){this.nameSprite = 'explosion';this.sounds['explosion'].play();}
+    shot_upgrade(){
+      this.shotNumber = (this.shotNumber<3 ? this.shotNumber+1 : 3);
+      this.shot.forEach((item, i) => {
+          this.shot[i].shotNumber = this.shotNumber;
+      });
+      console.log(this.shot);
+    }
+    fury(){this.shotCount=20;this.furyTimeOnOff='on';}
+    damage(damage){ if(this.protection.onOff=='off'){this.lifeBarr -=damage; }}
+    explode(){if(this.protection.onOff=='off'){this.nameSprite = 'explosion'; this.sounds['explosion'].play();}}
+    crash(){this.nameSprite = 'explosion'; this.sounds['explosion'].play();}
     update(){
         this.principal = true;
         if(this.nameSprite !== null){
@@ -457,15 +477,123 @@ class nave extends character {
         if(this.timeShot>=(this.maxTimeShot/this.shotCount)){ this.timeShot=0; }
         if(this.timeShot==0){ this.shotReady=true; }
         this.shot.forEach(sht =>{sht.update();})
+        this.protection.position.x = this.position.x+scenario.x;
+        this.protection.position.y = this.position.y+scenario.y;
+        this.protection.update();
+        if(this.furyTimeOnOff=='on'){
+          if(this.furyTimeClock<=this.furyTime){
+            this.furyTimeClock++;
+            this.furied.nameSprite = 'fury';
+            this.furied.position.y = this.position.y+scenario.y;
+            this.furied.position.x = this.position.x+scenario.x;
+            this.furied.update();
+            console.log();
+          }else{
+            this.shotCount = 7;
+            this.furyTimeClock=0;
+            this.furied.nameSprite = null;
+            this.furyTimeOnOff = 'off';
+          }
+        }
+    }
+}
+
+
+class fury extends character {
+    constructor({x,y}){
+      super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
+      this.nameSprite = null                              //nome do sprite a ser executado
+      this.sprites = {
+        fury: new sprite({
+            x:this.position.x,
+            y:this.position.y,
+            imgName:"fury",
+            assX:0,
+            assY: 0,
+            imgFrm:6,
+            loop: true,
+            next: null,
+            end: false,
+            speedAnimation: 0.9
+        })
+      }
+    }
+    update(){
+      if(this.nameSprite !== null){
+        if(!this.launchReady){
+          this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
+          if(this.sprites[this.nameSprite].sprite.end){
+              this.nameSprite = this.sprites[this.nameSprite].sprite.next;
+          }
+        }
+      }
+    }
+}
+
+class protection extends character {
+    constructor({x,y}){
+      super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
+      this.nameSprite = null                              //nome do sprite a ser executado
+      this.onOff = 'off'
+      this.timeFlickering = 930                            //tempo piscando
+      this.timeout = 1000                                   //tempo do fim
+      this.timeClock = 0
+      this.sprites = {
+        on: new sprite({
+            x:this.position.x,
+            y:this.position.y,
+            imgName:"protection",
+            assX:0,
+            assY: 0,
+            imgFrm:2,
+            loop: true,
+            next: null,
+            end: false,
+            speedAnimation: 0.2
+        }),
+        flickering: new sprite({
+            x:this.position.x,
+            y:this.position.y,
+            imgName:"protection",
+            assX:0,
+            assY: 0,
+            imgFrm:4,
+            loop: true,
+            next: null,
+            end: false,
+            speedAnimation: 0.4
+        })
+      }
+    }
+    turnOn(){ this.onOff = 'on'; this.nameSprite = "on"; }
+    turnFlickering(){this.nameSprite='flickering';}
+    turnOff(){ this.onOff = 'off'; this.nameSprite = null; }
+    update(){
+      if(this.nameSprite !== null){
+        if(!this.launchReady){
+          this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
+          if(this.sprites[this.nameSprite].sprite.end){
+              this.nameSprite = this.sprites[this.nameSprite].sprite.next;
+          }
+        }
+      }
+      if(this.onOff!='off'){
+        console.log(this.nameSprite);
+        if(this.timeClock>=this.timeFlickering){if(this.nameSprite!='flickering'){this.turnFlickering();}}
+        if(this.timeClock>=this.timeout){
+          this.turnOff();
+          this.timeClock=0;
+        }else{this.timeClock++;}
+      }
     }
 }
 
 class shot extends character {
-    constructor({x,y,number}){
+    constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
         this.nameSprite = null                              //nome do sprite a ser executado
-        this.timeShot = 0;                                  //tempo do disparo at� o momento atual
-        this.shotNumber = number
+        this.timeShot = 0;                                  //tempo do disparo ate o momento atual
+        this.shotNumber = 1
         this.shotReady = true                               //true: preparado para tiro, false: tempo inatividade
         this.sprites = {
             r_initial: new sprite({
@@ -3490,9 +3618,39 @@ class paralaxe{
         var trilhaScenY = scenario.y/((scenario.rMax-scenario.rMin-1)*360)
         this.position.x = -trilhaX*trilhaScenX;
         this.position.y = -(trilhaY*trilhaScenY)-360;
-
         this.draw();
         this.frames++;
+    }
+}
+
+class life_up extends character {
+    constructor({x,y}){
+        super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
+        this.nameSprite = 'default'                              //nome do sprite a ser executado
+        this.sprites = {
+            default: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName:"assets",
+                assX:3,
+                assY:4,
+                imgFrm:1,
+                loop: true,
+                next: null,
+                end: false,
+                speedAnimation: 0.7
+            }),
+
+        }
+        this.sounds = { colectable: new sound({audioName:'colectable'}), }
+    }
+    update(){
+        if(this.nameSprite !== null){
+            this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
+            if(this.sprites[this.nameSprite].sprite.end){
+                this.nameSprite = this.sprites[this.nameSprite].sprite.next;
+            }
+        }
     }
 }
 
@@ -4079,6 +4237,7 @@ let satelites = [];
 let tanks = [];
 let enemys = [];
 let jewels = [];
+let life_ups = [];
 let plays = [];
 let btns = [];
 let lifes = [];
@@ -4113,6 +4272,7 @@ function resetObjects(){
     tanks = [];
     enemys = [];
     jewels = [];
+    life_ups = [];
     plays = [];
     btns = [];
     lifes = [];

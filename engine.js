@@ -25,6 +25,7 @@ function animate(){
         asteroides.forEach(obj =>{obj.update();})
         drones.forEach(obj =>{obj.update();})
         jewels.forEach(obj =>{obj.update();})
+        life_ups.forEach(obj =>{obj.update();})
         plays.forEach(obj =>{obj.update();});
         nexts.forEach(obj =>{obj.update();})
         play_agains.forEach(obj =>{obj.update();});
@@ -65,6 +66,32 @@ function animate(){
             }
         });
         /* colision */
+        life_ups.forEach(obj =>{
+             var p1 = Nave[0].points(1);
+             var p2 = Nave[0].points(2);
+             var p3 = Nave[0].points(3);
+             var p4 = Nave[0].points(4);
+             var p5 = Nave[0].points(5);
+             var p6 = Nave[0].points(6);
+             var p7 = Nave[0].points(7);
+             var p8 = Nave[0].points(8);
+             if(
+                 obj.colision(p1.x,p1.y) ||
+                 obj.colision(p2.x,p2.y) ||
+                 obj.colision(p3.x,p3.y) ||
+                 obj.colision(p4.x,p4.y) ||
+                 obj.colision(p5.x,p5.y) ||
+                 obj.colision(p6.x,p6.y) ||
+                 obj.colision(p7.x,p7.y) ||
+                 obj.colision(p8.x,p8.y)
+             ){
+                 if(obj.nameSprite == 'default') {
+                  obj.nameSprite = null;
+                  obj.sounds['colectable'].play();
+                  game_lives++;
+                }
+             }
+        })
 
         jewels.forEach(obj =>{
              var p1 = Nave[0].points(1);
@@ -89,7 +116,13 @@ function animate(){
                    obj.nameSprite = null;
                    obj.sounds['colectable'].play();
                    if(obj.number==0){
-                     game_lives++;
+                     Nave[0].protection.turnOn();
+                   } else
+                   if(obj.number==1){
+                    Nave[0].shot_upgrade();
+                   } else
+                   if(obj.number==2){
+                     Nave[0].fury();
                    } else
                    if(obj.number==3){
                      Nave[0].lifeBarr += (Nave[0].lifeBarr+50>100 ? 100-Nave[0].lifeBarr : 50);
@@ -195,7 +228,7 @@ function animate(){
                  ){
                      if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
                          if(obj.nameSprite != 'explosion' && obj.nameSprite !== null && sht.nameSprite !== null && !sht.shotReady ){
-                             Nave[0].lifeBarr -= 5*obj.shotNumber;
+                            Nave[0].damage(5*obj.shotNumber);
                              sht.impact();
                          }
                      }
@@ -214,7 +247,7 @@ function animate(){
                  ){
                      if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
                          if(tlg.nameSprite != 'explosion' && tlg.nameSprite !== null && tlg.nameSprite !== null && !tlg.shotReady ){
-                             Nave[0].lifeBarr -= 5*obj.shotNumber;
+                              Nave[0].damage(5*obj.shotNumber);
                              tlg.impact();
                          }
                      }
@@ -334,7 +367,7 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if( Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' ) {
-                     Nave[0].explode();
+                     Nave[0].crash();
                  } else if(Nave[0].nameSprite==null){die();}
              }
         })
@@ -359,7 +392,7 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if( Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' && obj.nameSprite !==null ) {
-                     Nave[0].lifeBarr -=20;
+                   Nave[0].damage(20);
                      obj.reset();
                  } else if(Nave[0].nameSprite==null){die();}
              }
@@ -392,7 +425,7 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if( Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' ) {
-                     Nave[0].explode();
+                     Nave[0].crash();
                  }
              }
         })
@@ -417,7 +450,7 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if( Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' ) {
-                     Nave[0].explode();
+                     Nave[0].damage();
                  }
              }
         })
@@ -442,7 +475,7 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
-                     Nave[0].explode();
+                     Nave[0].crash();
                  }
              }
              Nave[0].shot.forEach(sht =>{
@@ -485,7 +518,7 @@ function animate(){
                  obj.onOff=='on'
              ){
                  if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
-                     Nave[0].explode();
+                     Nave[0].crash();
                  } else if(Nave[0].nameSprite==null){die();}
              }
              Nave[0].shot.forEach(sht =>{
@@ -525,7 +558,7 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if(Nave[0].nameSprite != 'explosion' && Nave[0].nameSprite!=null) {
-                     Nave[0].explode();
+                     Nave[0].crash();
                      obj.nameSprite='destroyed';
                  }
              }
