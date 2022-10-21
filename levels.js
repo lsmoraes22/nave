@@ -60,9 +60,7 @@ function init(level){
             shocks = shocks.concat(create_shock_v(54,-19,14,true))
             shocks = shocks.concat(create_shock_h(0,-19,25,true))
             shocks = shocks.concat(create_shock_h(26,-19,28,true))
-            shocks = []
 
-            //tiles = tiles.concat(create_brownHill1(1,6,4));
             buildings = create_building(9,2,5)
             buildings = buildings.concat(create_building(25,2,6))
 
@@ -78,7 +76,7 @@ function init(level){
 //                new nave_enemy2({x:300,y:150, moveSize: 200}),
             ]
             // energy_houses = [ new energy_house1({x:7*gridSize,y:5*gridSize}), new energy_house2({x:7*gridSize,y:6*gridSize}), ]
-/*
+
             drones = [
                 new drone({x:150,y:-600,moveDirection:'left', moveSize:100}),
                 new drone({x:150,y:-550,moveDirection:'right', moveSize:100}),
@@ -167,16 +165,14 @@ function init(level){
                 new drone({x:1310,y:-320,moveDirection:'left', moveSize:100}),
                 new drone({x:1310,y:-370,moveDirection:'right', moveSize:100}),
                 new drone({x:1310,y:-420,moveDirection:'left', moveSize:100}),
-
             ];
-            /**/
             Nave = [ new nave({x:200,y:150}) ]
             btns = create_joystick("b");
-            lifes = [ new Life({x:38, y:8}) ]
+            lifes = [ new Life({x:42, y:8}) ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
             painels = [ new painel({x:0, y:0}), ]
-            barraVidas1  = [ new barraVida1({x:70, y:2}), ]
-            barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+            barraVidas1  = [ new barraVida1({x:90, y:1}), ]
+            barraVidas2  = [ new barraVida2({x:100, y:10}), ]
         break;
         /*
         case 2:
@@ -254,6 +250,7 @@ function init(level){
           barraVidas1  = [ new barraVida1({x:70, y:2}), ]
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
+        /**/
         case 3:
             resetObjects();
             scenario.cMin=0;

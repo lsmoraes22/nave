@@ -37,14 +37,14 @@ function animate(){
         Nave.forEach(obj =>{
             obj.update();
             if(obj.nameSprite != 'explosion' && obj.nameSprite!=null && obj.nameSprite != 'invisible'){
-                if(keys.left.pressed && keys.up.pressed ){obj.position.x-=3; obj.position.y-=3; obj.nameSprite = 'upleft';} else
-                if(keys.left.pressed && keys.down.pressed ){obj.position.x-=3; obj.position.y+=3;obj.nameSprite = 'downleft';} else
-                if(keys.right.pressed && keys.up.pressed ){obj.position.x+=3; obj.position.y-=3; obj.nameSprite = 'upright';} else
-                if(keys.right.pressed && keys.down.pressed ){obj.position.x+=3; obj.position.y+=3; obj.nameSprite = 'downright';} else
-                if(keys.left.pressed){obj.position.x-=3; obj.nameSprite = 'left'} else
-                if(keys.right.pressed){obj.position.x+=3; obj.nameSprite = 'right'} else
-                if(keys.up.pressed){obj.position.y-=3; obj.nameSprite = 'up'} else
-                if(keys.down.pressed){obj.position.y+=3; obj.nameSprite = 'down'}
+                if(keys.left.pressed && keys.up.pressed ){obj.position.x-=naveSpeedMove; obj.position.y-=naveSpeedMove; obj.nameSprite = 'upleft';} else
+                if(keys.left.pressed && keys.down.pressed ){obj.position.x-=naveSpeedMove; obj.position.y+=naveSpeedMove;obj.nameSprite = 'downleft';} else
+                if(keys.right.pressed && keys.up.pressed ){obj.position.x+=naveSpeedMove; obj.position.y-=naveSpeedMove; obj.nameSprite = 'upright';} else
+                if(keys.right.pressed && keys.down.pressed ){obj.position.x+=naveSpeedMove; obj.position.y+=naveSpeedMove; obj.nameSprite = 'downright';} else
+                if(keys.left.pressed){obj.position.x-=naveSpeedMove; obj.nameSprite = 'left'} else
+                if(keys.right.pressed){obj.position.x+=naveSpeedMove; obj.nameSprite = 'right'} else
+                if(keys.up.pressed){obj.position.y-=naveSpeedMove; obj.nameSprite = 'up'} else
+                if(keys.down.pressed){obj.position.y+=naveSpeedMove; obj.nameSprite = 'down'}
                 if(keys.a.pressed){obj.fire();}
             }
         })
@@ -842,25 +842,25 @@ function animate(){
                       Nave[0].nameSprite = 'upleft';}
                 break;
                 case "btn_up":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y-=5; Nave[0].nameSprite = 'up'}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y-=naveSpeedMove; Nave[0].nameSprite = 'up'}
                 break;
                 case "btn_upright":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y-=5; Nave[0].position.x+=5;Nave[0].nameSprite = 'upright';}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y-=naveSpeedMove; Nave[0].position.x+=naveSpeedMove;Nave[0].nameSprite = 'upright';}
                 break;
                 case "btn_left":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.x-=5;Nave[0].nameSprite = 'left'}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.x-=naveSpeedMove;Nave[0].nameSprite = 'left'}
                 break;
                 case "btn_right":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.x+=5;Nave[0].nameSprite = 'right'}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.x+=naveSpeedMove;Nave[0].nameSprite = 'right'}
                 break;
                 case "btn_downleft":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y+=5; Nave[0].position.x-=4;Nave[0].nameSprite = 'downleft';}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y+=naveSpeedMove; Nave[0].position.x-=naveSpeedMove;Nave[0].nameSprite = 'downleft';}
                 break;
                 case "btn_down":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y+=7;Nave[0].nameSprite = 'down';}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y+=naveSpeedMove;Nave[0].nameSprite = 'down';}
                 break;
                 case "btn_downright":
-                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y+=5; Nave[0].position.x+=5;Nave[0].nameSprite = 'downright';}
+                    if(obj.colision(touchLeft.x,touchLeft.y)){Nave[0].position.y+=naveSpeedMove; Nave[0].position.x+=naveSpeedMove;Nave[0].nameSprite = 'downright';}
                 break;
             }
           }

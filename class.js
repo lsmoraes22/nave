@@ -139,24 +139,24 @@ class character {                                              //personagem
             this.positionAbsolute.x = this.position.x;
             this.positionAbsolute.y = this.position.y;
             if(scenario.c>scenario.cMin){
-                if(this.position.x<=canvas.width*0.33){scenario.x-=3;this.position.x+=3;}
+                if(this.position.x<=canvas.width*0.33){scenario.x-=naveSpeedMove;this.position.x+=naveSpeedMove;}
             } else {
-                if(this.position.x<=0){this.position.x+=3;}
+                if(this.position.x<=0){this.position.x+=naveSpeedMove;}
             }
             if(scenario.y>(scenario.rMin*scenario.rHeight)){
-                if(this.position.y<=400*0.3){scenario.y-=3;this.position.y+=3;}
+                if(this.position.y<=400*0.3){scenario.y-=naveSpeedMove;this.position.y+=naveSpeedMove;}
             } else {
-                if(this.position.y<=400*0.15){this.position.y+=3;}
+                if(this.position.y<=400*0.15){this.position.y+=naveSpeedMove;}
             }
             if(scenario.x+canvas.width<=scenario.cWidth*scenario.cMax){
-                 if(this.position.x+this.bodyColision.w>=canvas.width*0.66){scenario.x+=3;this.position.x-=3;}
+                 if(this.position.x+this.bodyColision.w>=canvas.width*0.66){scenario.x+=naveSpeedMove;this.position.x-=naveSpeedMove;}
             } else {
-                 if(this.position.x>=canvas.width-this.bodyColision.w-20){this.position.x-=3;}
+                 if(this.position.x>=canvas.width-this.bodyColision.w-20){this.position.x-=naveSpeedMove;}
             }
             if(scenario.y+canvas.height<=scenario.rHeight){
-                if(this.position.y+this.bodyColision.h>=400*0.55){scenario.y+=2;this.position.y-=3;}
+                if(this.position.y+this.bodyColision.h>=400*0.55){scenario.y+=naveSpeedMove;this.position.y-=naveSpeedMove;}
             } else {
-                if(this.position.y>=400-this.bodyColision.h){this.position.y-=3;}
+                if(this.position.y>=400-this.bodyColision.h){this.position.y-=naveSpeedMove;}
             }
         }else{
             this.positionAbsolute.x = this.position.x-scenario.x;
@@ -1630,6 +1630,7 @@ class drop extends character {
             }),
         }
         this.sounds = {}
+        this.speedMove = 8;
     }
     reset(){
       this.position.y=this.initialPosition.y;
@@ -1643,7 +1644,7 @@ class drop extends character {
             }
             if(this.nameSprite=='fall'){
                 if(this.position.y<canvas.height){
-                    this.position.y+=5;
+                    this.position.y+=this.speedMove;
                 } else {
                   this.reset();
                 }
@@ -1800,16 +1801,34 @@ class shock_v extends character {
                 }
             }
             if(this.shockNumber==1){
-                if(this.onOff=='on' ){ this.nameSprite = 'on_v_1'; } else
-                if(this.onOff=='off'){ this.nameSprite = 'off_v_1'; }
+                if(this.onOff=='on' ){
+                  this.nameSprite = 'on_v_1';
+                  this.bodyColision = {x:12, y:12, w:10, h:23}
+                } else
+                if(this.onOff=='off'){
+                  this.nameSprite = 'off_v_1';
+                  this.bodyColision = {x:0, y:0, w:0, h:0}
+                }
             } else
             if(this.shockNumber==2){
-                if(this.onOff=='on' ){ this.nameSprite = 'on_v_2'; } else
-                if(this.onOff=='off'){ this.nameSprite = 'off_v_2'; }
+                if(this.onOff=='on' ){
+                  this.nameSprite = 'on_v_2';
+                  this.bodyColision = {x:12, y:0, w:10, h:35}
+                } else
+                if(this.onOff=='off'){
+                  this.nameSprite = 'off_v_2';
+                  this.bodyColision = {x:0, y:0, w:0, h:0}
+                }
             } else
             if(this.shockNumber==3){
-                if(this.onOff=='on' ){ this.nameSprite = 'on_v_3'; } else
-                if(this.onOff=='off'){ this.nameSprite = 'off_v_3'; }
+                if(this.onOff=='on' ){
+                   this.nameSprite = 'on_v_3';
+                   this.bodyColision = {x:0, y:0, w:10, h:23}
+                 } else
+                if(this.onOff=='off'){
+                  this.nameSprite = 'off_v_3';
+                  this.bodyColision = {x:0, y:0, w:0, h:0}
+                }
             }
             this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
             if(this.sprites[this.nameSprite].sprite.end){
@@ -1914,16 +1933,34 @@ class shock_h extends character {
                 }
             }
             if(this.shockNumber==1){
-                if(this.onOff=='on' ){ this.nameSprite = 'on_h_1'; } else
-                if(this.onOff=='off'){ this.nameSprite = 'off_h_1'; }
+                if(this.onOff=='on' ){
+                  this.nameSprite = 'on_h_1';
+                  this.bodyColision = {x:12, y:12, w:23, h:10}
+                } else
+                if(this.onOff=='off'){
+                  this.nameSprite = 'off_h_1';
+                  this.bodyColision = {x:0, y:0, w:0, h:0}
+                }
             } else
             if(this.shockNumber==2){
-                if(this.onOff=='on' ){ this.nameSprite = 'on_h_2'; } else
-                if(this.onOff=='off'){ this.nameSprite = 'off_h_2'; }
+                if(this.onOff=='on' ){
+                  this.nameSprite = 'on_h_2';
+                  this.bodyColision = {x:0, y:12, w:35, h:10}
+                } else
+                if(this.onOff=='off'){
+                  this.nameSprite = 'off_h_2';
+                  this.bodyColision = {x:0, y:0, w:0, h:0}
+                }
             } else
             if(this.shockNumber==3){
-                if(this.onOff=='on' ){ this.nameSprite = 'on_h_3'; } else
-                if(this.onOff=='off'){ this.nameSprite = 'off_h_3'; }
+                if(this.onOff=='on' ){
+                  this.nameSprite = 'on_h_3';
+                  this.bodyColision = {x:0, y:12, w:23, h:10}
+                } else
+                if(this.onOff=='off'){
+                  this.nameSprite = 'off_h_3';
+                  this.bodyColision = {x:0, y:0, w:0, h:0}
+                }
             }
             this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
             if(this.sprites[this.nameSprite].sprite.end){
@@ -3500,7 +3537,7 @@ class drone extends character {
         this.posXIni = this.position.x;                        //posicao do y inicial
         this.moveDirection = moveDirection;                    //up right down left
         this.moveSize = moveSize;
-        this.speedMove = 2
+        this.speedMove = 5
         this.sprites = {
             alive: new sprite({
                 x:this.position.x,

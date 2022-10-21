@@ -18,9 +18,10 @@ function preload() {
 }
 
 const gravity = 0;
+let naveSpeedMove = 5;                             //velocida de movimento da nave
 let varScore = 0;
-let game_lives_initial = 3;
-let game_lives = 3;
+let game_lives_initial = 99;
+let game_lives = game_lives_initial;
 let level = 0;
 let touchPosition1 = {};
 let mousePosition = {};
