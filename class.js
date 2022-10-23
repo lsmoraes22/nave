@@ -484,8 +484,8 @@ class nave extends character {
           if(this.furyTimeClock<=this.furyTime){
             this.furyTimeClock++;
             this.furied.nameSprite = 'fury';
-            this.furied.position.y = this.position.y+scenario.y;
-            this.furied.position.x = this.position.x+scenario.x;
+            this.furied.position.x = this.position.x+scenario.x-17;
+            this.furied.position.y = this.position.y+scenario.y-17;
             this.furied.update();
             console.log();
           }else{
@@ -510,7 +510,7 @@ class fury extends character {
             imgName:"fury",
             assX:0,
             assY: 0,
-            imgFrm:6,
+            imgFrm:4,
             loop: true,
             next: null,
             end: false,
@@ -519,6 +519,10 @@ class fury extends character {
       }
     }
     update(){
+      this.sprites.fury.sprite.cropWidth = gridSize*2;
+      this.sprites.fury.sprite.cropHeight = gridSize*2;
+      this.sprites.fury.sprite.width = gridSize*2;
+      this.sprites.fury.sprite.height = gridSize*2;
       if(this.nameSprite !== null){
         if(!this.launchReady){
           this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
