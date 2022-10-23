@@ -231,7 +231,7 @@ class nave extends character {
         this.nameSprite = 'right'                              //nome do sprite a ser executado
         this.shotReady = true                                  //true: preparado para tiro, false: tempo inatividade, 'timeSetup': tempo apos a explosao
         this.timeShot = 0                                      //tempo do disparo at� o momento atual
-        this.furyTime = 500                                    //Tempo de duracao do supertiro
+        this.furyTime = 750                                    //Tempo de duracao do supertiro
         this.furyTimeClock = 0                                 //clock do supertiro
         this.furyTimeOnOff = 'off'                             //supertiro liga desliga
         this.maxTimeShot = 140                                 //tempo max ate o proximo disparo
@@ -439,7 +439,6 @@ class nave extends character {
       this.shot.forEach((item, i) => {
           this.shot[i].shotNumber = this.shotNumber;
       });
-      console.log(this.shot);
     }
     fury(){this.shotCount=20;this.furyTimeOnOff='on';}
     damage(damage){ if(this.protection.onOff=='off'){this.lifeBarr -=damage; }}
@@ -514,7 +513,7 @@ class fury extends character {
             loop: true,
             next: null,
             end: false,
-            speedAnimation: 0.9
+            speedAnimation: 1.5
         })
       }
     }
@@ -3097,8 +3096,8 @@ class enemy extends character {
                     this.nameSprite = 'right';
                 }
             } else if(this.type == 'boss'){
-                this.lifeBossBarr.background.position = {x:this.positionAbsolute.x+50, y:this.positionAbsolute.y};
-                this.lifeBossBarr.life.position = {x:this.positionAbsolute.x+50, y:this.positionAbsolute.y};
+                this.lifeBossBarr.background.position = {x:this.positionAbsolute.x+(this.bodyColision.w/2), y:this.positionAbsolute.y};
+                this.lifeBossBarr.life.position = {x:this.positionAbsolute.x+(this.bodyColision.w/2), y:this.positionAbsolute.y};
                 this.lifeBossBarr.background.update();
                 this.lifeBossBarr.life.width = 37*(this.lifeBossCurrent/this.lifeBossMax);
                 this.lifeBossBarr.life.update();

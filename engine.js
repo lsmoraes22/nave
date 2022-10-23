@@ -35,6 +35,10 @@ function animate(){
         shocks.forEach(obj =>{obj.update();})
         static_objs.forEach(obj =>{obj.update();})
         enemys.forEach(obj =>{obj.update();})
+        buildings.forEach(obj =>{ obj.update(); })
+        waters.forEach(obj =>{obj.update();})
+        lavas.forEach(obj =>{obj.update();})
+        bubbles.forEach(obj =>{obj.update();})
         Nave.forEach(obj =>{
             obj.update();
             if(obj.nameSprite != 'explosion' && obj.nameSprite!=null && obj.nameSprite != 'invisible'){
@@ -50,10 +54,6 @@ function animate(){
             }
         })
         gates.forEach(obj =>{obj.update();})
-        buildings.forEach(obj =>{ obj.update(); })
-        waters.forEach(obj =>{obj.update();})
-        lavas.forEach(obj =>{obj.update();})
-        bubbles.forEach(obj =>{obj.update();})
         btns.forEach(obj =>{obj.update();});
         fulls.forEach(obj =>{obj.update();});
         painels.forEach(obj =>{obj.update();});

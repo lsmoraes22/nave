@@ -17,8 +17,8 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 2:
-        resetObjects();
+        case 20:
+            resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
             scenario.rMin=-2;
@@ -32,8 +32,10 @@ function init(level){
             paralaxes = [
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
-            jewels = [ new jewel({x:2*gridSize, y:5*gridSize, number:2})]
-            life_ups = [ new life_up({x:3*gridSize, y:5*gridSize})]
+            jewels = [
+              new jewel({x:24*gridSize, y:-6*gridSize, number:0})
+            ]
+            life_ups = [ new life_up({x:27*gridSize, y:6*gridSize})]
             gates = [ new gate({x:52*gridSize,y:5*gridSize}) ]
             waters = water1_create(0,9,19);
             waters = waters.concat(water2_create(0,10,19));
@@ -72,13 +74,10 @@ function init(level){
                 new robot({x:29*gridSize, y:-1*gridSize, moveSize: 80}),
                 new robot({x:48*gridSize, y:-6*gridSize, moveSize: 200}),
                 new robot({x:46*gridSize, y:-6*gridSize, moveSize: 150}),
-//                new boss3({x:15*gridSize, y:1*gridSize, moveSize: 130}),
+                new boss1({x:30*gridSize, y:6*gridSize, moveSize: 130}),
                 new robot({x:42*gridSize, y:7*gridSize, moveSize: 130}),
-//                new nave_enemy1({x:12*gridSize,y:-12*gridSize, moveSize: 200}),
-//                new nave_enemy2({x:300,y:150, moveSize: 200}),
             ]
             // energy_houses = [ new energy_house1({x:7*gridSize,y:5*gridSize}), new energy_house2({x:7*gridSize,y:6*gridSize}), ]
-
             drones = [
                 new drone({x:150,y:-600,moveDirection:'left', moveSize:100}),
                 new drone({x:150,y:-550,moveDirection:'right', moveSize:100}),
@@ -168,6 +167,7 @@ function init(level){
                 new drone({x:1310,y:-370,moveDirection:'right', moveSize:100}),
                 new drone({x:1310,y:-420,moveDirection:'left', moveSize:100}),
             ];
+
             Nave = [ new nave({x:200,y:150}) ]
             btns = create_joystick("b");
             lifes = [ new Life({x:42, y:8}) ]
@@ -176,7 +176,6 @@ function init(level){
             barraVidas1  = [ new barraVida1({x:90, y:1}), ]
             barraVidas2  = [ new barraVida2({x:100, y:10}), ]
         break;
-        /*
         case 2:
           resetObjects();
           scenario.cMin=0;
@@ -189,6 +188,7 @@ function init(level){
             new background({ imgName: 'atmosphere'}),
           ]
           jewels = [ new jewel({x:51*gridSize,y:4*gridSize,number:3})]
+          life_ups = [ new life_up({x:100*gridSize, y:8*gridSize})]
           tiles = create_greenMountain(-1,9,27,4);
           tiles = tiles.concat(create_greenMountain(45,9,23,4));
           tiles = tiles.concat(create_greenMountain(67,7,12,6));
@@ -242,6 +242,8 @@ function init(level){
           drones = [
               new drone({x:134*gridSize,y:8*gridSize,moveDirection:'left', moveSize:140}),
               new drone({x:134*gridSize,y:9*gridSize,moveDirection:'right', moveSize:140}),
+              new drone({x:108*gridSize,y:8*gridSize,moveDirection:'left', moveSize:280}),
+              new drone({x:108*gridSize,y:9*gridSize,moveDirection:'right', moveSize:280}),
           ]
           Nave = [ new nave({x:200,y:150}) ]
           gates = [ new gate({x:148*gridSize,y:6*gridSize}) ]
