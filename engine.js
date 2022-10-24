@@ -450,7 +450,7 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if( Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' ) {
-                     Nave[0].damage();
+                     Nave[0].explode();
                  }
              }
         })

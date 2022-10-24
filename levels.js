@@ -176,7 +176,7 @@ function init(level){
             barraVidas1  = [ new barraVida1({x:90, y:1}), ]
             barraVidas2  = [ new barraVida2({x:100, y:10}), ]
         break;
-        case 2:
+        case 20:
           resetObjects();
           scenario.cMin=0;
           scenario.cMax=6;
@@ -220,7 +220,6 @@ function init(level){
               new tank       ({x:96*gridSize, y:6*gridSize,  moveSize: 70}),
               new tank       ({x:120*gridSize, y:8*gridSize,  moveSize: 40}),
               new tank       ({x:126*gridSize, y:8*gridSize,  moveSize: 80}),
-
               new nave_enemy1({x:18*gridSize, y:-12*gridSize, moveSize: 200}),
               new nave_enemy2({x:18*gridSize, y:5*gridSize,   moveSize: 230}),
               new nave_enemy2({x:18*gridSize, y:2*gridSize,   moveSize: 100}),
@@ -228,13 +227,10 @@ function init(level){
               new nave_enemy2({x:32*gridSize, y:4*gridSize,   moveSize: 300}),
               new nave_enemy2({x:34*gridSize, y:5*gridSize,   moveSize: 200}),
               new nave_enemy2({x:30*gridSize, y:6*gridSize,   moveSize: 250}),
-
-
               new nave_enemy2({x:96*gridSize,  y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:106*gridSize, y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:106*gridSize, y:3*gridSize,   moveSize: 300}),
               new nave_enemy2({x:106*gridSize, y:4*gridSize,   moveSize: 200}),
-
               new nave_enemy2({x:126*gridSize, y:2*gridSize,   moveSize: 250}),
               new nave_enemy2({x:126*gridSize, y:3*gridSize,   moveSize: 300}),
               new nave_enemy2({x:126*gridSize, y:4*gridSize,   moveSize: 200}),
@@ -255,7 +251,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         /**/
-        case 3:
+        case 2:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
