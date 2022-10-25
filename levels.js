@@ -17,7 +17,7 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 20:
+        case 2:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -33,6 +33,7 @@ function init(level){
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
             jewels = [
+              new jewel({x:5*gridSize, y:3*gridSize, number:1}),
               new jewel({x:24*gridSize, y:-6*gridSize, number:0})
             ]
             life_ups = [ new life_up({x:27*gridSize, y:6*gridSize})]
@@ -251,7 +252,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         /**/
-        case 2:
+        case 3:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;

@@ -174,7 +174,6 @@ class character {                                              //personagem
         }
     }
     colision(x,y){
-        //var colision = {position:{x: this.position.x-scenario.x, y:this.position.y-scenario.y}}
         var colision = {position:{x: this.positionAbsolute.x, y:this.positionAbsolute.y}}
         if(x>=colision.position.x+this.bodyColision.x &&
            x<=colision.position.x+this.bodyColision.x+this.bodyColision.w &&
