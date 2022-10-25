@@ -388,6 +388,7 @@ class nave extends character {
     }
     fire(){
         if(this.shotReady){
+           this.shot[this.shotCurrent].shotNumber = this.shotNumber;
            this.sounds.laserShoot.play();
            if(this.shotCurrent==this.shot.length-1){this.shotCurrent=0;}else{this.shotCurrent++;}
            if(this.nameSprite == 'right'){
@@ -436,7 +437,7 @@ class nave extends character {
     shot_upgrade(){
       this.shotNumber = (this.shotNumber<3 ? this.shotNumber+1 : 3);
       this.shot.forEach((item, i) => {
-          this.shot[i].shotNumber = this.shotNumber;
+        this.shot[i].upgrade();
       });
     }
     fury(){this.shotCount=20;this.furyTimeOnOff='on';}
@@ -485,7 +486,6 @@ class nave extends character {
             this.furied.position.x = this.position.x+scenario.x-17;
             this.furied.position.y = this.position.y+scenario.y-17;
             this.furied.update();
-            console.log();
           }else{
             this.shotCount = 7;
             this.furyTimeClock=0;
@@ -580,7 +580,6 @@ class protection extends character {
         }
       }
       if(this.onOff!='off'){
-        console.log(this.nameSprite);
         if(this.timeClock>=this.timeFlickering){if(this.nameSprite!='flickering'){this.turnFlickering();}}
         if(this.timeClock>=this.timeout){
           this.turnOff();
@@ -778,7 +777,6 @@ class shot extends character {
                 end: false,
                 speedAnimation: 0.4
             }),
-
             ur_initial: new sprite({
                 x:this.position.x,
                 y:this.position.y,
@@ -923,6 +921,33 @@ class shot extends character {
             default:
                 return false;
         }
+    }
+    upgrade(){
+      this.shotNumber = (this.shotNumber<3 ? this.shotNumber+1 : 3);
+      this.sprites.r_initial.sprite.assY= this.shotNumber-1;
+      this.sprites.r_default.sprite.assY= this.shotNumber-1;
+      this.sprites.r_impact.sprite.assY= this.shotNumber-1;
+      this.sprites.l_initial.sprite.assY= this.shotNumber-1;
+      this.sprites.l_default.sprite.assY= this.shotNumber-1;
+      this.sprites.l_impact.sprite.assY= this.shotNumber-1;
+      this.sprites.u_initial.sprite.assY= this.shotNumber-1;
+      this.sprites.u_default.sprite.assY= this.shotNumber-1;
+      this.sprites.u_impact.sprite.assY= this.shotNumber-1;
+      this.sprites.d_initial.sprite.assY= this.shotNumber-1;
+      this.sprites.d_default.sprite.assY= this.shotNumber-1;
+      this.sprites.d_impact.sprite.assY= this.shotNumber-1;
+      this.sprites.ul_initial.sprite.assY= this.shotNumber-1;
+      this.sprites.ul_default.sprite.assY= this.shotNumber-1;
+      this.sprites.ul_impact.sprite.assY= this.shotNumber-1;
+      this.sprites.ur_initial.sprite.assY= this.shotNumber-1;
+      this.sprites.ur_default.sprite.assY= this.shotNumber-1;
+      this.sprites.ur_impact.sprite.assY= this.shotNumber-1;
+      this.sprites.dl_initial.sprite.assY= this.shotNumber-1;
+      this.sprites.dl_default.sprite.assY= this.shotNumber-1;
+      this.sprites.dl_impact.sprite.assY= this.shotNumber-1;
+      this.sprites.dr_initial.sprite.assY= this.shotNumber-1;
+      this.sprites.dr_default.sprite.assY= this.shotNumber-1;
+      this.sprites.dr_impact.sprite.assY= this.shotNumber-1;
     }
     update(){
         if(this.nameSprite !== null){

@@ -33,6 +33,7 @@ function init(level){
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
             jewels = [
+              new jewel({x:4*gridSize, y:3*gridSize, number:1}),
               new jewel({x:5*gridSize, y:3*gridSize, number:1}),
               new jewel({x:24*gridSize, y:-6*gridSize, number:0})
             ]
