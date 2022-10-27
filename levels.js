@@ -17,7 +17,81 @@ function init(level){
             nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 2:
+        case 20:
+          resetObjects();
+          scenario.cMin=0;
+          scenario.cMax=6;
+          scenario.rMin=0;
+          scenario.rMax=0;
+          backgrounds = [
+            new background({ imgName: 'background3'}),
+            new static_obj({ x:150, y:50, imgName: 'planet4'}),
+            new background({ imgName: 'atmosphere'}),
+          ]
+          jewels = [ new jewel({x:51*gridSize,y:4*gridSize,number:3})]
+          life_ups = [ new life_up({x:100*gridSize, y:8*gridSize})]
+          tiles = create_greenMountain(-1,9,27,4);
+          tiles = tiles.concat(create_greenMountain(45,9,23,4));
+          tiles = tiles.concat(create_greenMountain(67,7,12,6));
+          tiles = tiles.concat(create_greenMountain(77,9,11,3));
+          tiles = tiles.concat(create_brownMountain(75,-1,12,6));
+          tiles = tiles.concat(create_greenMountain(87,7,12,6));
+          tiles = tiles.concat(create_greenMountain(140,9,15,3));
+          tiles = tiles.concat(create_brownMountain(118,9,12,4));
+          waters = water1_create(26,10,19);
+          waters = waters.concat(water2_create(26,11,19));
+          waters = waters.concat(water1_create(99,10,19));
+          waters = waters.concat(water2_create(99,11,19));
+          waters = waters.concat(water1_create(130,10,10));
+          waters = waters.concat(water2_create(130,11,10));
+          buildings = create_building(9,4,5);
+          buildings = buildings.concat(create_building(49,4,5));
+          buildings = buildings.concat(create_building(69,4,3));
+          buildings = buildings.concat(create_building(92,4,3));
+          buildings = buildings.concat(create_building(92,4,3));
+          buildings = buildings.concat(create_building(122,6,3));
+          shocks = create_shock_v(82,5,4);
+          enemys = [
+              new tank       ({x:15*gridSize, y:8*gridSize,  moveSize: 170}),
+              new tank       ({x:17*gridSize, y:8*gridSize,  moveSize: 200}),
+              new tank       ({x:47*gridSize, y:8*gridSize,  moveSize: 40}),
+              new tank       ({x:57*gridSize, y:8*gridSize,  moveSize: 250}),
+              new tank       ({x:60*gridSize, y:8*gridSize,  moveSize: 220}),
+              new tank       ({x:74*gridSize, y:6*gridSize,  moveSize: 135}),
+              new tank       ({x:96*gridSize, y:6*gridSize,  moveSize: 70}),
+              new tank       ({x:120*gridSize, y:8*gridSize,  moveSize: 40}),
+              new tank       ({x:126*gridSize, y:8*gridSize,  moveSize: 80}),
+              new nave_enemy1({x:18*gridSize, y:-12*gridSize, moveSize: 200}),
+              new nave_enemy2({x:18*gridSize, y:5*gridSize,   moveSize: 230}),
+              new nave_enemy2({x:18*gridSize, y:2*gridSize,   moveSize: 100}),
+              new nave_enemy2({x:28*gridSize, y:3*gridSize,   moveSize: 100}),
+              new nave_enemy2({x:32*gridSize, y:4*gridSize,   moveSize: 300}),
+              new nave_enemy2({x:34*gridSize, y:5*gridSize,   moveSize: 200}),
+              new nave_enemy2({x:30*gridSize, y:6*gridSize,   moveSize: 250}),
+              new nave_enemy2({x:96*gridSize,  y:2*gridSize,   moveSize: 250}),
+              new nave_enemy2({x:106*gridSize, y:2*gridSize,   moveSize: 250}),
+              new nave_enemy2({x:106*gridSize, y:3*gridSize,   moveSize: 300}),
+              new nave_enemy2({x:106*gridSize, y:4*gridSize,   moveSize: 200}),
+              new nave_enemy2({x:126*gridSize, y:2*gridSize,   moveSize: 250}),
+              new nave_enemy2({x:126*gridSize, y:3*gridSize,   moveSize: 300}),
+              new nave_enemy2({x:126*gridSize, y:4*gridSize,   moveSize: 200}),
+          ]
+          drones = [
+              new drone({x:134*gridSize,y:8*gridSize,moveDirection:'left', moveSize:140}),
+              new drone({x:134*gridSize,y:9*gridSize,moveDirection:'right', moveSize:140}),
+              new drone({x:108*gridSize,y:8*gridSize,moveDirection:'left', moveSize:280}),
+              new drone({x:108*gridSize,y:9*gridSize,moveDirection:'right', moveSize:280}),
+          ]
+          Nave = [ new nave({x:200,y:150}) ]
+          gates = [ new gate({x:148*gridSize,y:6*gridSize}) ]
+          btns = create_joystick("b");
+          lifes = [ new Life({x:38, y:8}) ]
+          fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+          painels = [ new painel({x:0, y:0}), ]
+          barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+          barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+        break;
+        case 3:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -33,8 +107,6 @@ function init(level){
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
             jewels = [
-              new jewel({x:4*gridSize, y:3*gridSize, number:1}),
-              new jewel({x:5*gridSize, y:3*gridSize, number:1}),
               new jewel({x:24*gridSize, y:-6*gridSize, number:0})
             ]
             life_ups = [ new life_up({x:27*gridSize, y:6*gridSize})]
@@ -54,7 +126,6 @@ function init(level){
             tiles = tiles.concat(create_greenMountain(27,0,8,2));
             tiles = tiles.concat(create_greenHill(33,-6,6));
             tiles = tiles.concat(create_greenMountain(41,-5,14,2));
-
             shocks = create_shock_v(9,-12,14,true)
             shocks = shocks.concat(create_shock_h(10,-12,8,true))
             shocks = shocks.concat(create_shock_v(25,-19,14,true))
@@ -79,7 +150,6 @@ function init(level){
                 new boss1({x:30*gridSize, y:6*gridSize, moveSize: 130}),
                 new robot({x:42*gridSize, y:7*gridSize, moveSize: 130}),
             ]
-            // energy_houses = [ new energy_house1({x:7*gridSize,y:5*gridSize}), new energy_house2({x:7*gridSize,y:6*gridSize}), ]
             drones = [
                 new drone({x:150,y:-600,moveDirection:'left', moveSize:100}),
                 new drone({x:150,y:-550,moveDirection:'right', moveSize:100}),
@@ -169,7 +239,6 @@ function init(level){
                 new drone({x:1310,y:-370,moveDirection:'right', moveSize:100}),
                 new drone({x:1310,y:-420,moveDirection:'left', moveSize:100}),
             ];
-
             Nave = [ new nave({x:200,y:150}) ]
             btns = create_joystick("b");
             lifes = [ new Life({x:42, y:8}) ]
@@ -178,82 +247,148 @@ function init(level){
             barraVidas1  = [ new barraVida1({x:90, y:1}), ]
             barraVidas2  = [ new barraVida2({x:100, y:10}), ]
         break;
-        case 20:
-          resetObjects();
-          scenario.cMin=0;
-          scenario.cMax=6;
-          scenario.rMin=0;
-          scenario.rMax=0;
-          backgrounds = [
-            new background({ imgName: 'background3'}),
-            new static_obj({ x:150, y:50, imgName: 'planet4'}),
-            new background({ imgName: 'atmosphere'}),
-          ]
-          jewels = [ new jewel({x:51*gridSize,y:4*gridSize,number:3})]
-          life_ups = [ new life_up({x:100*gridSize, y:8*gridSize})]
-          tiles = create_greenMountain(-1,9,27,4);
-          tiles = tiles.concat(create_greenMountain(45,9,23,4));
-          tiles = tiles.concat(create_greenMountain(67,7,12,6));
-          tiles = tiles.concat(create_greenMountain(77,9,11,3));
-          tiles = tiles.concat(create_brownMountain(75,-1,12,6));
-          tiles = tiles.concat(create_greenMountain(87,7,12,6));
-          tiles = tiles.concat(create_greenMountain(140,9,15,3));
-          tiles = tiles.concat(create_brownMountain(118,9,12,4));
-          waters = water1_create(26,10,19);
-          waters = waters.concat(water2_create(26,11,19));
-          waters = waters.concat(water1_create(99,10,19));
-          waters = waters.concat(water2_create(99,11,19));
-          waters = waters.concat(water1_create(130,10,10));
-          waters = waters.concat(water2_create(130,11,10));
-          buildings = create_building(9,4,5);
-          buildings = buildings.concat(create_building(49,4,5));
-          buildings = buildings.concat(create_building(69,4,3));
-          buildings = buildings.concat(create_building(92,4,3));
-          buildings = buildings.concat(create_building(92,4,3));
-          buildings = buildings.concat(create_building(122,6,3));
-          shocks = create_shock_v(82,5,4);
-          enemys = [
-              new tank       ({x:15*gridSize, y:8*gridSize,  moveSize: 170}),
-              new tank       ({x:17*gridSize, y:8*gridSize,  moveSize: 200}),
-              new tank       ({x:47*gridSize, y:8*gridSize,  moveSize: 40}),
-              new tank       ({x:57*gridSize, y:8*gridSize,  moveSize: 250}),
-              new tank       ({x:60*gridSize, y:8*gridSize,  moveSize: 220}),
-              new tank       ({x:74*gridSize, y:6*gridSize,  moveSize: 135}),
-              new tank       ({x:96*gridSize, y:6*gridSize,  moveSize: 70}),
-              new tank       ({x:120*gridSize, y:8*gridSize,  moveSize: 40}),
-              new tank       ({x:126*gridSize, y:8*gridSize,  moveSize: 80}),
-              new nave_enemy1({x:18*gridSize, y:-12*gridSize, moveSize: 200}),
-              new nave_enemy2({x:18*gridSize, y:5*gridSize,   moveSize: 230}),
-              new nave_enemy2({x:18*gridSize, y:2*gridSize,   moveSize: 100}),
-              new nave_enemy2({x:28*gridSize, y:3*gridSize,   moveSize: 100}),
-              new nave_enemy2({x:32*gridSize, y:4*gridSize,   moveSize: 300}),
-              new nave_enemy2({x:34*gridSize, y:5*gridSize,   moveSize: 200}),
-              new nave_enemy2({x:30*gridSize, y:6*gridSize,   moveSize: 250}),
-              new nave_enemy2({x:96*gridSize,  y:2*gridSize,   moveSize: 250}),
-              new nave_enemy2({x:106*gridSize, y:2*gridSize,   moveSize: 250}),
-              new nave_enemy2({x:106*gridSize, y:3*gridSize,   moveSize: 300}),
-              new nave_enemy2({x:106*gridSize, y:4*gridSize,   moveSize: 200}),
-              new nave_enemy2({x:126*gridSize, y:2*gridSize,   moveSize: 250}),
-              new nave_enemy2({x:126*gridSize, y:3*gridSize,   moveSize: 300}),
-              new nave_enemy2({x:126*gridSize, y:4*gridSize,   moveSize: 200}),
-          ]
-          drones = [
-              new drone({x:134*gridSize,y:8*gridSize,moveDirection:'left', moveSize:140}),
-              new drone({x:134*gridSize,y:9*gridSize,moveDirection:'right', moveSize:140}),
-              new drone({x:108*gridSize,y:8*gridSize,moveDirection:'left', moveSize:280}),
-              new drone({x:108*gridSize,y:9*gridSize,moveDirection:'right', moveSize:280}),
-          ]
-          Nave = [ new nave({x:200,y:150}) ]
-          gates = [ new gate({x:148*gridSize,y:6*gridSize}) ]
-          btns = create_joystick("b");
-          lifes = [ new Life({x:38, y:8}) ]
-          fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
-          painels = [ new painel({x:0, y:0}), ]
-          barraVidas1  = [ new barraVida1({x:70, y:2}), ]
-          barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+        case 2:
+            resetObjects();
+            scenario.cMin=0;
+            scenario.cMax=3;
+            scenario.rMin=-2;
+            scenario.rMax=0;
+            scenario.reset();
+            backgrounds = [
+                new background({ imgName: 'background3'}),
+                new static_obj({ x:150, y:50, imgName: 'planet4'}),
+                new background({ imgName: 'atmosphere'}),
+            ]
+            paralaxes = [
+              new paralaxe({imgName: 'paralaxe1'}),
+            ]
+            jewels = [
+              new jewel({x:24*gridSize, y:-15*gridSize, number:0})
+            ]
+            life_ups = [ new life_up({x:29*gridSize, y:-6*gridSize})]
+            shocks = create_shock_v(9,5,3,true)
+            shocks = shocks.concat(create_shock_h(9,5,4,true))
+            shocks = shocks.concat(create_shock_v(12,5,3,true))
+            shocks = shocks.concat(create_shock_h(12,-14,19,true))
+            shocks = shocks.concat(create_shock_v(20,-5,5,true))
+            shocks = shocks.concat(create_shock_v(30,-14,9,true))
+            shocks = shocks.concat(create_shock_v(40,-23,25,true))
+            shocks = shocks.concat(create_shock_h(31,2,10,true))
+            shocks = shocks.concat(create_shock_v(50,-15,15,true))
+            shocks = shocks.concat(create_shock_v(67,-23,15,true))
+            shocks = shocks.concat(create_shock_v(58,-6,8,true))
+            shocks = []
+            tiles = create_greenMountain(-1,8,79,14)
+            tiles = tiles.concat(create_greenMountain(9,-14,3,16))
+            tiles = tiles.concat(create_greenHill(20,0,8))
+            tiles = tiles.concat(create_greenMountain(21,-5,10,2))
+            tiles = tiles.concat(create_greenMountain(51,-15,10,2))
+            tiles = tiles.concat(create_greenMountain(58,-8,10,2))
+            tiles = tiles.concat(create_greenMountain(73,-18,5,2))
+            energy_houses = [ new energy_house1({x:74*gridSize,y:-20*gridSize}), new energy_house2({x:74*gridSize,y:-19*gridSize}), ]
+            drones = [
+                new drone({x:20*gridSize, y:-11*gridSize, moveDirection:'left',  moveSize:100}),
+                new drone({x:20*gridSize, y:-12*gridSize, moveDirection:'right', moveSize:100}),
+                new drone({x:20*gridSize, y:-13*gridSize, moveDirection:'left',  moveSize:100}),
+                new drone({x:4*gridSize,  y:0*gridSize,   moveDirection:'left',  moveSize:140}),
+                new drone({x:4*gridSize,  y:-1*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:4*gridSize,  y:-2*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:4*gridSize,  y:-3*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:4*gridSize,  y:-4*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:4*gridSize,  y:-5*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:4*gridSize,  y:-6*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:4*gridSize,  y:-7*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:4*gridSize,  y:-8*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:4*gridSize,  y:-9*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:4*gridSize,  y:-10*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:4*gridSize,  y:-11*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:4*gridSize,  y:-12*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:4*gridSize,  y:-13*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:4*gridSize,  y:-14*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:4*gridSize,  y:-15*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:35*gridSize,  y:-14*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:35*gridSize,  y:-13*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:35*gridSize,  y:-12*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:35*gridSize,  y:-11*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:35*gridSize,  y:-10*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:35*gridSize,  y:-9*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:35*gridSize,  y:-8*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:35*gridSize,  y:-7*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:35*gridSize,  y:-6*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:35*gridSize,  y:-5*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:35*gridSize,  y:-4*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:35*gridSize,  y:-3*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-3*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-4*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:45*gridSize,  y:-5*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-6*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:45*gridSize,  y:-7*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-8*gridSize,  moveDirection:'left',  moveSize:140}),
+                new drone({x:45*gridSize,  y:-9*gridSize,  moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-10*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:45*gridSize,  y:-11*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-12*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:45*gridSize,  y:-13*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-14*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:45*gridSize,  y:-15*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-16*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:45*gridSize,  y:-17*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-18*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:45*gridSize,  y:-19*gridSize, moveDirection:'right', moveSize:140}),
+                new drone({x:45*gridSize,  y:-20*gridSize, moveDirection:'left',  moveSize:140}),
+                new drone({x:45*gridSize,  y:-21*gridSize, moveDirection:'right', moveSize:140}),
+            ]
+            drones = [
+
+
+            ]
+            enemys = [
+                new tank({x:15*gridSize, y:7*gridSize, moveSize: 80}),
+                new tank({x:25*gridSize, y:-6*gridSize, moveSize: 80}),
+                new nave_enemy1({x:25*gridSize, y: -8*gridSize, moveSize: 100}),
+                new nave_enemy1({x:20*gridSize, y: -9*gridSize, moveSize: 220}),
+                new nave_enemy1({x:21*gridSize, y:-10*gridSize, moveSize: 200}),
+                new nave_enemy2({x:10*gridSize, y:-16*gridSize, moveSize: 340}),
+                new nave_enemy2({x:20*gridSize, y:-16*gridSize, moveSize: 500}),
+                new nave_enemy2({x:19*gridSize, y:-17*gridSize, moveSize: 600}),
+                new nave_enemy2({x:21*gridSize, y:-18*gridSize, moveSize: 550}),
+                new nave_enemy2({x:22*gridSize, y:-19*gridSize, moveSize: 600}),
+                new nave_enemy2({x:23*gridSize, y:-20*gridSize, moveSize: 500}),
+                new nave_enemy2({x:23*gridSize, y:-21*gridSize, moveSize: 500}),
+                new nave_enemy2({x:35*gridSize, y:-2*gridSize,  moveSize:140}),
+                new nave_enemy2({x:35*gridSize, y:-1*gridSize,  moveSize:140}),
+                new nave_enemy2({x:35*gridSize, y: 0*gridSize,  moveSize:140}),
+                new nave_enemy2({x:35*gridSize, y: 1*gridSize,  moveSize:140}),
+                new nave_enemy2({x:35*gridSize,  y:-2*gridSize,  moveSize:140}),
+                new nave_enemy2({x:30*gridSize,  y:-1*gridSize,  moveSize:300}),
+                new nave_enemy2({x:30*gridSize,  y: 0*gridSize,  moveSize:240}),
+                new nave_enemy2({x:29*gridSize,  y: 1*gridSize,  moveSize:250}),
+                new tank({x:  35*gridSize, y:7*gridSize,  moveSize:280}),
+                new tank({x:  25*gridSize, y:7*gridSize,  moveSize: 80}),
+                new boss1({x: 55*gridSize, y:-17*gridSize,  moveSize: 130}),
+//                new robot({x:21*gridSize, y:-6*gridSize, moveSize: 70}),
+  //              new robot({x:29*gridSize, y:-1*gridSize, moveSize: 80}),
+    //            new robot({x:48*gridSize, y:-6*gridSize, moveSize: 200}),
+      //          new robot({x:46*gridSize, y:-6*gridSize, moveSize: 150}),
+          //      new robot({x:42*gridSize, y:7*gridSize, moveSize: 130}),
+            ]
+            enemys = [
+              new nave_enemy1({x:55*gridSize, y: -19*gridSize, moveSize: 130}),
+              new nave_enemy1({x:55*gridSize, y:-20*gridSize, moveSize: 130}),
+              new nave_enemy2({x:55*gridSize, y:-21*gridSize, moveSize: 130}),
+              new nave_enemy2({x:55*gridSize, y:-22*gridSize, moveSize: 130}),
+            ]
+            buildings = create_building(50,0,9);
+            Nave = [ new nave({x:200,y:150}) ]
+            gates = [ new gate({x:10*gridSize,y:6*gridSize}) ]
+            btns = create_joystick("b");
+            lifes = [ new Life({x:38, y:8}) ]
+            fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+            painels = [ new painel({x:0, y:0}), ]
+            barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+            barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
-        /**/
-        case 3:
+        case 5:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -264,11 +399,6 @@ function init(level){
             //    new background({x:0, y:0, imgName: 'atmosphere'}),
             ]
             Nave = [ new nave({x:200,y:150}) ]
-            enemys = [
-                //new boss3({x:10*gridSize, y:3*gridSize, moveSize: 130}),
-                //new antiaerea({x:10*gridSize, y:3*gridSize, moveSize: 0}),
-            ]
-
             enemys = [
                 new robot({x:23*gridSize, y:6*gridSize, moveSize:50}),
                 new robot({x:29*gridSize, y:-1*gridSize, moveSize:70}),
@@ -282,7 +412,6 @@ function init(level){
                 new robot({x:45*gridSize, y:-12*gridSize, moveSize:110}),
                 new robot({x:40*gridSize, y:-1*gridSize, moveSize:150}),
             ]
-
             drops = [
                 new drop({x:10*gridSize, y:2*gridSize, speedAnimation: 0.1}),
                 new drop({x:13*gridSize, y:2*gridSize, speedAnimation: 0.2}),
@@ -346,7 +475,6 @@ function init(level){
             lavas = lavas.concat(lava1_create(31,9, 21))
             lavas = lavas.concat(lava2_create(31,10, 21))
             lavas = lavas.concat(lava2_create(31,11, 21))
-
             bubbles = [
                 new bubble({x:3*gridSize, y:8*gridSize, speedAnimation: 0.6 }),
                 new bubble({x:5*gridSize, y:8*gridSize, speedAnimation: 0.4}),
@@ -357,7 +485,6 @@ function init(level){
                 new bubble({x:38*gridSize, y:8*gridSize, speedAnimation: 0.5}),
                 new bubble({x:43*gridSize, y:8*gridSize, speedAnimation: 0.7})
             ]
-
             tiles = create_brownMountain(-1,-11,10,14);
             tiles = tiles.concat(create_brownMountain(8,-12,10,14))
             tiles = tiles.concat(create_brownMountain(32,-11,4,3))
@@ -379,7 +506,6 @@ function init(level){
             tiles = tiles.concat(create_brownHill1(19,8,4))
             tiles = tiles.concat(create_brownHill1(20,7,5))
             tiles = tiles.concat(create_brownHill1(21,6,6))
-
             btns = create_joystick("b");
             lifes = [ new Life({x:38, y:8}) ]
             painels = [ new painel({x:0, y:0}), ]
@@ -387,8 +513,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        /**/
-        case 2:
+        case 6:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=6;
@@ -399,7 +524,6 @@ function init(level){
             ]
             Nave = [ new nave({x:200,y:150}) ]
             asteroides = [
-
               new asteroide2({x:21*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
               new asteroide1({x:21*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6) }),
               new asteroide2({x:22*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
@@ -487,7 +611,6 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        /**/
     }
 }
 

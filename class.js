@@ -456,9 +456,9 @@ class nave extends character {
             die();
         }
         if(this.nameSprite == 'right'){
-          this.bodyColision = {x:6, y:17, w: 29, h: 13};
+          this.bodyColision = {x:6, y:11, w: 28, h: 12};
         } else if(this.nameSprite == 'left'){
-          this.bodyColision = {x:0, y:17, w: 29, h: 13};
+          this.bodyColision = {x:0, y:11, w: 28, h: 12};
         } else if(this.nameSprite == 'upright'){
           this.bodyColision = {x:10, y:5, w: 21, h: 21};
         } else if(this.nameSprite == 'upleft'){
@@ -468,9 +468,9 @@ class nave extends character {
         } else if(this.nameSprite == 'downleft'){
           this.bodyColision = {x:5, y:9, w: 21, h: 21};
         } else if(this.nameSprite == 'up'){
-          this.bodyColision = {x:3, y:0, w: 31, h: 28};
+          this.bodyColision = {x:0, y:0, w: 35, h: 35};
         } else if(this.nameSprite == 'down'){
-          this.bodyColision = {x:3, y:7, w: 31, h: 28};
+          this.bodyColision = {x:0, y:0, w: 35, h: 35};
         }
         if(!this.shotReady){ this.timeShot++; }
         if(this.timeShot>=(this.maxTimeShot/this.shotCount)){ this.timeShot=0; }

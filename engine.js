@@ -30,7 +30,6 @@ function animate(){
         nexts.forEach(obj =>{obj.update();})
         play_agains.forEach(obj =>{obj.update();});
         drops.forEach(obj =>{obj.update();})
-        tiles.forEach(obj =>{obj.update();})
         energy_houses.forEach(obj =>{obj.update();})
         shocks.forEach(obj =>{obj.update();})
         static_objs.forEach(obj =>{obj.update();})
@@ -39,6 +38,7 @@ function animate(){
         waters.forEach(obj =>{obj.update();})
         lavas.forEach(obj =>{obj.update();})
         bubbles.forEach(obj =>{obj.update();})
+        tiles.forEach(obj =>{obj.update();})
         Nave.forEach(obj =>{
             obj.update();
             if(obj.nameSprite != 'explosion' && obj.nameSprite!=null && obj.nameSprite != 'invisible'){
@@ -216,15 +216,9 @@ function animate(){
                  }
              })
              obj.shot.forEach(sht =>{
+                 var s1=sht.points(1);
                  if(
-                     sht.colision(p1.x,p1.y) ||
-                     sht.colision(p2.x,p2.y) ||
-                     sht.colision(p3.x,p3.y) ||
-                     sht.colision(p4.x,p4.y) ||
-                     sht.colision(p5.x,p5.y) ||
-                     sht.colision(p6.x,p6.y) ||
-                     sht.colision(p7.x,p7.y) ||
-                     sht.colision(p8.x,p8.y)
+                     Nave[0].colision(s1.x,s1.y)
                  ){
                      if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
                          if(obj.nameSprite != 'explosion' && obj.nameSprite !== null && sht.nameSprite !== null && !sht.shotReady ){
@@ -703,7 +697,7 @@ function animate(){
                      obj.colision(p12.x,p12.y)) &&
                      sht.impact_validate()
                  ){
-                     if(obj.nameSprite == 'alive') {
+                     if(obj.nameSprite == 'alive' && obj.nameSprite !== null && !sht.shotReady ){
                          obj.nameSprite = 'explosion';
                          obj.sounds['explosion'].play();
                          sht.impact();
