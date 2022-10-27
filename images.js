@@ -100,11 +100,13 @@ class imageCanvas {
         {name: "planet16",                src: this.img_src+"planet16.png",  	        sx:0,	sy:0,	width:256,	height:256	},
         {name: "protection",               src: this.img_src+"protection.png",    	  sx:0,	sy:0,	width:35,	height:35	},
         {name: "shock_off",               src: this.img_src+"shock_off.png",    	    sx:0,	sy:0,	width:35,	height:35	},
-        {name: "shock_h_on",              src: this.img_src+"shock_h_on.png",  	        sx:0,	sy:0,	width:35,	height:35	},
-        {name: "shock_v_on",              src: this.img_src+"shock_v_on.png",  	        sx:0,	sy:0,	width:35,	height:35	},
+        {name: "shock_h_on",              src: this.img_src+"shock_h_on.png",  	      sx:0,	sy:0,	width:35,	height:35	},
+        {name: "shock_v_on",              src: this.img_src+"shock_v_on.png",  	      sx:0,	sy:0,	width:35,	height:35	},
         {name: "title",                   src: this.img_src+"title.png",	            sx:0,	sy:0,	width:900,	height:506	},
         {name: "teleguide",               src: this.img_src+"teleguide.png",	        sx:0,	sy:0,	width:900,	height:506	},
         {name: "scene1",                  src: this.img_src+"scene1.png",	            sx:0,	sy:0,	width:900,	height:506	},
+        {name: "scene2",                  src: this.img_src+"scene2.png",	            sx:0,	sy:0,	width:900,	height:506	},
+        {name: "scene3",                  src: this.img_src+"scene3.png",	            sx:0,	sy:0,	width:900,	height:506	},
         {name: "game-over",               src: this.img_src+"game-over.png",	        sx:0,	sy:0,	width:900,	height:506	},
     ];
 

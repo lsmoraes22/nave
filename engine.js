@@ -119,10 +119,10 @@ function animate(){
                      Nave[0].protection.turnOn();
                    } else
                    if(obj.number==1){
-                    Nave[0].shot_upgrade();
+                     Nave[0].fury();
                    } else
                    if(obj.number==2){
-                     Nave[0].fury();
+                     Nave[0].shot_upgrade();
                    } else
                    if(obj.number==3){
                      Nave[0].lifeBarr += (Nave[0].lifeBarr+50>100 ? 100-Nave[0].lifeBarr : 50);

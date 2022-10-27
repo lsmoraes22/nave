@@ -14,7 +14,7 @@ function init(level){
         case 1:
             resetObjects();
             backgrounds = [ new background({imgName: 'scene1'}),]
-            nexts = [ new btn_next({x:40, y:300, imgName:"next"}), ]
+            nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 20:
@@ -247,7 +247,7 @@ function init(level){
             barraVidas1  = [ new barraVida1({x:90, y:1}), ]
             barraVidas2  = [ new barraVida2({x:100, y:10}), ]
         break;
-        case 2:
+        case 4:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -356,10 +356,10 @@ function init(level){
                 new drone({x:55*gridSize,  y:-3*gridSize, moveDirection:'down', moveSize:315   }),
                 new drone({x:56*gridSize,  y:-3*gridSize, moveDirection:'up',   moveSize:315   }),
                 new drone({x:57*gridSize,  y:-3*gridSize, moveDirection:'down', moveSize:315   }),
-            ]
-            drones = [
-
-
+                new drone({x:69*gridSize,  y:-15*gridSize, moveDirection:'up',   moveSize:250   }),
+                new drone({x:70*gridSize,  y:-15*gridSize, moveDirection:'down', moveSize:250   }),
+                new drone({x:71*gridSize,  y:-15*gridSize, moveDirection:'up',   moveSize:250   }),
+                new drone({x:72*gridSize,  y:-15*gridSize, moveDirection:'down', moveSize:250   }),
             ]
             enemys = [
                 new tank({x:15*gridSize, y:7*gridSize, moveSize: 80}),
@@ -392,24 +392,21 @@ function init(level){
                 new nave_enemy1({x:55*gridSize, y:-12*gridSize, moveSize: 130}),
                 new nave_enemy1({x:54*gridSize, y:-11*gridSize, moveSize: 120}),
                 new nave_enemy2({x:56*gridSize, y:-10*gridSize, moveSize: 110}),
-//                new robot({x:21*gridSize, y:-6*gridSize, moveSize: 70}),
-  //              new robot({x:29*gridSize, y:-1*gridSize, moveSize: 80}),
-    //            new robot({x:48*gridSize, y:-6*gridSize, moveSize: 200}),
-      //          new robot({x:46*gridSize, y:-6*gridSize, moveSize: 150}),
-          //      new robot({x:42*gridSize, y:7*gridSize, moveSize: 130}),
-
-            ]
-            enemys = [
-              new nave_enemy2({x:70*gridSize, y:2*gridSize, moveSize: 110}),
-              new nave_enemy2({x:62*gridSize, y:2*gridSize, moveSize: 90}),
-              new nave_enemy2({x:68*gridSize, y:-1*gridSize, moveSize: 250}),
-              new nave_enemy2({x:65*gridSize, y:0*gridSize, moveSize: 210}),
-              new nave_enemy2({x:67*gridSize, y:1*gridSize, moveSize: 230}),
-              new nave_enemy2({x:70*gridSize, y:2*gridSize, moveSize: 110}),
-              new nave_enemy2({x:62*gridSize, y:2*gridSize, moveSize: 90}),
-              new nave_enemy1({x:60*gridSize, y:3*gridSize, moveSize: 70}),
-              new tank       ({x:65*gridSize, y:7*gridSize,  moveSize: 80}),
-              new tank       ({x:73*gridSize, y:7*gridSize,  moveSize:100}),
+                new nave_enemy2({x:68*gridSize, y:-1*gridSize, moveSize: 250}),
+                new nave_enemy2({x:65*gridSize, y:0*gridSize, moveSize: 210}),
+                new nave_enemy2({x:67*gridSize, y:1*gridSize, moveSize: 230}),
+                new nave_enemy2({x:70*gridSize, y:2*gridSize, moveSize: 110}),
+                new nave_enemy2({x:62*gridSize, y:2*gridSize, moveSize: 90}),
+                new nave_enemy1({x:60*gridSize, y:3*gridSize, moveSize: 70}),
+                new tank       ({x:65*gridSize, y:7*gridSize,  moveSize: 80}),
+                new tank       ({x:73*gridSize, y:7*gridSize,  moveSize:100}),
+                new nave_enemy2({x:72*gridSize, y:-2*gridSize, moveSize: 110}),
+                new nave_enemy2({x:73*gridSize, y:-3*gridSize, moveSize: 100}),
+                new nave_enemy1({x:74*gridSize, y:-4*gridSize, moveSize: 90}),
+                new nave_enemy2({x:75*gridSize, y:-5*gridSize, moveSize: 80}),
+                new nave_enemy1({x:72*gridSize, y:-6*gridSize, moveSize: 110}),
+                new nave_enemy2({x:73*gridSize, y:-7*gridSize, moveSize: 90}),
+                new nave_enemy1({x:74*gridSize, y:-8*gridSize, moveSize: 80}),
             ]
             buildings = create_building(50,0,9);
             Nave = [ new nave({x:200,y:150}) ]
@@ -546,7 +543,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 6:
+        case 2:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=6;
@@ -555,7 +552,6 @@ function init(level){
             backgrounds = [
               new background({x:0, y:0, imgName: 'background10'}),
             ]
-            Nave = [ new nave({x:200,y:150}) ]
             asteroides = [
               new asteroide2({x:21*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
               new asteroide1({x:21*gridSize,y:-2*gridSize,direction:"d",speed: getRandomArbitrary(2, 6) }),
@@ -635,6 +631,10 @@ function init(level){
               new asteroide2({x:136*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
               new asteroide1({x:138*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
               new asteroide2({x:139*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+            ]
+            Nave = [ new nave({x:200,y:150}) ]
+            jewels = [
+              new jewel({x:62*gridSize, y:4*gridSize, number:1})
             ]
             gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
             btns = create_joystick("w");
