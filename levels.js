@@ -418,7 +418,63 @@ function init(level){
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
-        case 5:
+        case 3:
+            resetObjects();
+            scenario.cMin=0;
+            scenario.cMax=2;
+            scenario.rMin=-1;
+            scenario.rMax=0;
+            scenario.reset();
+            backgrounds = [
+                new background({ imgName: 'background3'}),
+                new static_obj({ x:150, y:50, imgName: 'planet4'}),
+                new background({ imgName: 'atmosphere'}),
+            ]
+            enemys = [
+
+                new boss2({x:23*gridSize, y:3*gridSize, moveSize: 100}),
+                new tank       ({x:8*gridSize,  y:9*gridSize,  moveSize: 80}),
+                new tank       ({x:3*gridSize,  y:9*gridSize,  moveSize:100}),
+                new nave_enemy2({x:12*gridSize, y:-2*gridSize, moveSize: 110}),
+                new nave_enemy2({x:13*gridSize, y:-3*gridSize, moveSize: 100}),
+                new nave_enemy1({x:14*gridSize, y:-4*gridSize, moveSize: 90}),
+                new nave_enemy2({x:20*gridSize, y:-7*gridSize, moveSize: 110}),
+                new nave_enemy2({x:21*gridSize, y:-8*gridSize, moveSize: 100}),
+                new nave_enemy1({x:22*gridSize, y:-9*gridSize, moveSize: 90}),
+
+
+                new nave_enemy2({x:27*gridSize, y:-2*gridSize, moveSize: 200}),
+                new nave_enemy2({x:28*gridSize, y:-3*gridSize, moveSize: 150}),
+                new nave_enemy1({x:29*gridSize, y:-4*gridSize, moveSize: 190}),
+
+                new nave_enemy2({x:43*gridSize, y:-2*gridSize, moveSize: 110}),
+                new nave_enemy2({x:44*gridSize, y:-3*gridSize, moveSize: 100}),
+                new nave_enemy1({x:45*gridSize, y:-4*gridSize, moveSize: 90}),
+
+                new tank       ({x:38*gridSize,  y:9*gridSize,  moveSize: 90}),
+                new tank       ({x:43*gridSize,  y:9*gridSize,  moveSize:110}),
+
+            ]
+
+            shocks = create_shock_v(20,1,3,true)
+            shocks = shocks.concat(create_shock_v(33,1,3,true))
+            shocks = shocks.concat(create_shock_h(20,1,14,true))
+
+            tiles = create_greenMountain(-1,10,53,3)
+            tiles = tiles.concat(create_greenHill(20,4,4))
+            tiles = tiles.concat(create_greenHill(33,4,8))
+            tiles = tiles.concat(create_greenMountain(20,7,9,5))
+
+            Nave = [ new nave({x:200,y:150}) ]
+            gates = [ new gate({x:30*gridSize,y:8*gridSize}) ]
+            btns = create_joystick("b");
+            lifes = [ new Life({x:38, y:8}) ]
+            fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+            painels = [ new painel({x:0, y:0}), ]
+            barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+            barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+        break;
+        case 6:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -426,7 +482,6 @@ function init(level){
             scenario.rMax=0;
             backgrounds = [
                 new background({x:0, y:0, imgName: 'background8'}),
-            //    new background({x:0, y:0, imgName: 'atmosphere'}),
             ]
             Nave = [ new nave({x:200,y:150}) ]
             enemys = [
@@ -544,6 +599,58 @@ function init(level){
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 2:
+            resetObjects();
+            scenario.cMin=0;
+            scenario.cMax=2;
+            scenario.rMin=0;
+            scenario.rMax=0;
+            backgrounds = [
+                new background({x:0, y:0, imgName: 'background8'}),
+            ]
+            Nave = [ new nave({x:200,y:150}) ]
+            enemys = [
+              new boss4({x:35*gridSize,y:7*gridSize,moveSize:80})
+            ]
+            life_ups = [ new life_up({x:30*gridSize, y:8*gridSize})]
+            jewels = [
+              new jewel({x:30*gridSize, y:7*gridSize, number:1}),
+            ]
+            tiles = create_brownMountain(-1,-1,54,2);
+            tiles = tiles.concat(create_brownMountain(36,5,8,2));
+            tiles = tiles.concat(create_brownMountain(32,5,2,6));
+            tiles = tiles.concat(create_brownMountain(46,5,2,6));
+            tiles = tiles.concat(create_brownMountain(-1,10,54,2));
+            shocks = create_shock_h(48,7,4,true);
+            drops = [
+                new drop({x:9*gridSize,  y:1*gridSize, speedAnimation: 0.1}),
+                new drop({x:10*gridSize, y:1*gridSize, speedAnimation: 0.9}),
+                new drop({x:11*gridSize, y:1*gridSize, speedAnimation: 0.3}),
+                new drop({x:14*gridSize, y:1*gridSize, speedAnimation: 0.4}),
+                new drop({x:15*gridSize, y:1*gridSize, speedAnimation: 0.5}),
+                new drop({x:16*gridSize, y:1*gridSize, speedAnimation: 0.2}),
+                new drop({x:17*gridSize, y:1*gridSize, speedAnimation: 0.6}),
+                new drop({x:18*gridSize, y:1*gridSize, speedAnimation: 0.55}),
+                new drop({x:20*gridSize, y:1*gridSize, speedAnimation: 0.2}),
+                new drop({x:23*gridSize, y:1*gridSize, speedAnimation: 0.15}),
+                new drop({x:24*gridSize, y:1*gridSize, speedAnimation: 0.25}),
+                new drop({x:25*gridSize, y:1*gridSize, speedAnimation: 0.7}),
+                new drop({x:26*gridSize, y:1*gridSize, speedAnimation: 0.35}),
+                new drop({x:27*gridSize, y:1*gridSize, speedAnimation: 0.05}),
+                new drop({x:34*gridSize, y:1*gridSize, speedAnimation: 0.15}),
+                new drop({x:35*gridSize, y:1*gridSize, speedAnimation: 0.12}),
+                new drop({x:40*gridSize, y:1*gridSize, speedAnimation: 0.18}),
+                new drop({x:44*gridSize, y:1*gridSize, speedAnimation: 0.15}),
+                new drop({x:45*gridSize, y:1*gridSize, speedAnimation: 0.12}),
+            ]
+            gates = [ new gate({x:49*gridSize,y:8*gridSize}) ]
+            btns = create_joystick("b");
+            lifes = [ new Life({x:38, y:8}) ]
+            painels = [ new painel({x:0, y:0}), ]
+            barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+            barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+            fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+        break;
+        case 8:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=6;

@@ -192,6 +192,7 @@ function animate(){
                  }
              }
              Nave[0].shot.forEach(sht =>{
+
                  var p9  = sht.points(1);
                  var p10 = sht.points(2);
                  var p11 = sht.points(3);
@@ -207,7 +208,10 @@ function animate(){
                      obj.nameSprite != 'explosion' && obj.nameSprite !== null && !sht.shotReady ){
                          if(obj.type == 'boss' ){
                              obj.lifeBossCurrent--;
-                             if(obj.lifeBossCurrent==0){obj.explode();}
+                             if(obj.lifeBossCurrent==0){
+                               obj.explode();
+                               shocks.forEach(s =>{s.continuous = true; s.onOff = 'off';})
+                             }
                           } else if(obj.type == 'enemy' ){
                              obj.explode();
                          }

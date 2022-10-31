@@ -29,7 +29,6 @@ class imageCanvas {
         {name: "btn_up",                  src: this.img_src+"btn_up.png",	            sx:0,	sy:0,	width:30,	height:65	},
         {name: "btn_upleft",              src: this.img_src+"btn_upleft.png",	        sx:0,	sy:0,	width:65,	height:65	},
         {name: "btn_upright",             src: this.img_src+"btn_upright.png",	      sx:0,	sy:0,	width:65,	height:65	},
-
         {name: "button_a_2",              src: this.img_src+"button_a_2.png",	        sx:0,	sy:0,	width:100,	height:100	},
         {name: "btn_center_2",            src: this.img_src+"btn_center_2.png",	      sx:0,	sy:0,	width:30,	height:30	},
         {name: "btn_down_2",              src: this.img_src+"btn_down_2.png",	        sx:0,	sy:0,	width:30,	height:65	},
@@ -40,17 +39,14 @@ class imageCanvas {
         {name: "btn_up_2",                src: this.img_src+"btn_up_2.png",	          sx:0,	sy:0,	width:30,	height:65	},
         {name: "btn_upleft_2",            src: this.img_src+"btn_upleft_2.png",	      sx:0,	sy:0,	width:65,	height:65	},
         {name: "btn_upright_2",           src: this.img_src+"btn_upright_2.png",	    sx:0,	sy:0,	width:65,	height:65	},
-
         {name: "boss1",                   src: this.img_src+"boss1.png",	            sx:0,	sy:0,	width:35,	height:35	},
         {name: "boss2",                   src: this.img_src+"boss2.png",	            sx:0,	sy:0,	width:35,	height:35	},
         {name: "boss3",                   src: this.img_src+"boss3.png",	            sx:0,	sy:0,	width:35,	height:35	},
         {name: "boss4",                   src: this.img_src+"boss4.png",	            sx:0,	sy:0,	width:35,	height:35	},
         {name: "full_screen",             src: this.img_src+"full_screen.png",	      sx:0,	sy:0,	width:35,	height:35	},
         {name: "fury",                    src: this.img_src+"fury.png",	              sx:0,	sy:0,	width:35,	height:35	},
-
         {name: "energy_house",            src: this.img_src+"energy_house.png",	      sx:0,	sy:0,	width:35,	height:35	},
         {name: "painel",                  src: this.img_src+"painel.png",	            sx:0,	sy:0,	width:410,	height:35	},
-
         {name: "barraProtecao1",          src: this.img_src+"barraProtecao1.png",	    sx:0,	sy:0,	width:550,	height:35	},
         {name: "barraProtecao2",          src: this.img_src+"barraProtecao2.png",	    sx:0,	sy:0,	width:285,	height:15	},
         {name: "barraSuperTiro1",         src: this.img_src+"barraSuperTiro1.png",	  sx:0,	sy:0,	width:550,	height:35	},
@@ -81,7 +77,6 @@ class imageCanvas {
         {name: "background9",             src: this.img_src+"background9.png",	        sx:0,	sy:0,	width:900,	height:506	},
         {name: "background10",             src: this.img_src+"background10.png",	        sx:0,	sy:0,	width:900,	height:506	},
         {name: "paralaxe1",               src: this.img_src+"paralaxe1.png",	        sx:0,	sy:0,	width:1280,	height:720	},
-
         {name: "planet1",                 src: this.img_src+"planet1.png",  	        sx:0,	sy:0,	width:256,	height:256	},
         {name: "planet2",                 src: this.img_src+"planet2.png",  	        sx:0,	sy:0,	width:256,	height:256	},
         {name: "planet3",                 src: this.img_src+"planet3.png",  	        sx:0,	sy:0,	width:256,	height:256	},

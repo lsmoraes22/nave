@@ -2881,7 +2881,7 @@ class enemy extends character {
         this.haveShot = true                                    //posui tiro
         this.haveTeleguide = false                              //posui lancamento de projetil
         this.type = 'enemy'                                     //enemy or boss
-        this.lifeBossMax = 10                                   //vida total do chefe
+        this.lifeBossMax = 50                                   //vida total do chefe
         this.lifeBossCurrent = this.lifeBossMax                 //vida atual
         this.lifeBossBarr = {
             background: new lifeBoss1({x:null,y:null}),
@@ -3160,7 +3160,6 @@ class robot extends enemy {
             shotDirection: 'h',
             moveSize: moveSize
         })
-        this.lifeBossMax = 1
         this.shotPosAdjust.right.x = 0
         this.shotPosAdjust.right.y = 0
         this.shotPosAdjust.left.x =  0
@@ -3444,7 +3443,8 @@ class boss4 extends enemy {
             shotDirection: 'h',
             moveSize: moveSize
         })
-        this.bodyColision = {x:42, y:6, w:50, h:134}
+        //this.lifeBossMax = 10
+        this.bodyColision = {x:42, y:6, w:270, h:134}
         this.animationToShot = true
         this.type = 'boss'
         this.shotPosAdjust.right.x = -20
