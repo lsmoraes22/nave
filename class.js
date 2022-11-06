@@ -4,7 +4,7 @@ class sprite{
         this.speedAnimation = speedAnimation           //velocidade da animacao 1=100%=60fps; 0.5=50%=30fps
         this.imgName = imgName                         //
         this.position ={x:x, y:y}                      //-scenario.y
-        this.sprite = {                                //
+        this.sprite = {
             img: imgName,                              //nome da imagem
             assetPos: {x:assX, y:assY},                //posicao do quadrante dentro do asset
             cropWidth: gridSize,                       //largura do corte da imagem
@@ -96,18 +96,22 @@ class images{
 class sound{
     constructor({audioName}){
         this.audioName = audioName
+        this.musicOn = false
     }
-
     play = function (){
         snd.audList[this.audioName].play();
     }
-
-    musicPlay = function (){
-        if(snd.audList[this.audioName].currentTime==0 || snd.audList[this.audioName].currentTime==snd.audList[this.audioName].duration){
+    musicPlay= function (){ this.musicOn = true }
+    musicRun = function (){
+      if(this.musicOn){
+        if(snd.audList[this.audioName].currentTime==0 ||
+           snd.audList[this.audioName].currentTime==snd.audList[this.audioName].duration){
             snd.audList[this.audioName].play();
         }
+      }
     }
     stop = function (){
+        this.musicOn = false
         snd.audList[this.audioName].pause();
         snd.audList[this.audioName].currentTime = 0;
     }
@@ -360,7 +364,31 @@ class nave extends character {
                 speedAnimation: 1
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion4'], laserShoot: snd.audList['laserShoot'],}
+        this.sounds = {
+          explosion: [ new sound({audioName:'explosion4'}) ],
+          laserShoot: [
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'}),
+            new sound({audioName:'laserShoot'})
+          ]
+        }
         this.shot = [
             new shot({x: null, y:null}),
             new shot({x: null, y:null}),
@@ -389,7 +417,7 @@ class nave extends character {
     fire(){
         if(this.shotReady){
            this.shot[this.shotCurrent].shotNumber = this.shotNumber;
-           this.sounds.laserShoot.play();
+           this.sounds.laserShoot[this.shotNumber].play();
            if(this.shotCurrent==this.shot.length-1){this.shotCurrent=0;}else{this.shotCurrent++;}
            if(this.nameSprite == 'right'){
                this.shot[this.shotCurrent].position.x = this.position.x+this.bodyColision.x+this.bodyColision.w+scenario.x;
@@ -440,10 +468,21 @@ class nave extends character {
         this.shot[i].upgrade();
       });
     }
-    fury(){this.shotCount=20;this.furyTimeOnOff='on';}
-    damage(damage){ if(this.protection.onOff=='off'){this.lifeBarr -=damage; }}
-    explode(){if(this.protection.onOff=='off'){this.nameSprite = 'explosion'; this.sounds['explosion'].play();}}
-    crash(){this.nameSprite = 'explosion'; this.sounds['explosion'].play();}
+    fury(){
+      this.shotCount=20;this.furyTimeOnOff='on';
+    }
+    damage(damage){
+      if(this.protection.onOff=='off'){this.lifeBarr -=damage; }
+    }
+    explode(){
+      if(this.protection.onOff=='off'){
+        this.nameSprite = 'explosion';
+        this.sounds.explosion[0].play();
+      }
+    }
+    crash(){
+      this.nameSprite = 'explosion'; this.sounds.explosion[0].play();
+    }
     update(){
         this.principal = true;
         if(this.nameSprite !== null){
@@ -567,9 +606,15 @@ class protection extends character {
         })
       }
     }
-    turnOn(){ this.onOff = 'on'; this.nameSprite = "on"; }
-    turnFlickering(){this.nameSprite='flickering';}
-    turnOff(){ this.onOff = 'off'; this.nameSprite = null; }
+    turnOn(){
+      this.onOff = 'on'; this.nameSprite = "on";
+    }
+    turnFlickering(){
+      this.nameSprite='flickering';
+    }
+    turnOff(){
+      this.onOff = 'off'; this.nameSprite = null;
+    }
     update(){
       if(this.nameSprite !== null){
         if(!this.launchReady){
@@ -889,14 +934,64 @@ class shot extends character {
         this.sounds = {}
         this.speedShot = 10
     }
-    r_fire() {this.nameSprite = "r_initial";this.shotReady=false;this.bodyColision.x=0;this.bodyColision.y=15;this.bodyColision.w=35;this.bodyColision.h=3;}
-    l_fire() {this.nameSprite = "l_initial";this.shotReady=false;this.bodyColision.x=0;this.bodyColision.y=15;this.bodyColision.w=35;this.bodyColision.h=3;}
-    u_fire() {this.nameSprite = "u_initial";this.shotReady=false;this.bodyColision.x=15;this.bodyColision.y=0;this.bodyColision.w=3;this.bodyColision.h=35;}
-    d_fire() {this.nameSprite = "d_initial";this.shotReady=false;this.bodyColision.x=15;this.bodyColision.y=0;this.bodyColision.w=3;this.bodyColision.h=35;}
-    ul_fire(){this.nameSprite = "ul_initial";this.shotReady=false;this.bodyColision.x=0;this.bodyColision.y=0;this.bodyColision.w=5;this.bodyColision.h=5;}
-    dl_fire(){this.nameSprite = "dl_initial";this.shotReady=false;this.bodyColision.x=0;this.bodyColision.y=30;this.bodyColision.w=5;this.bodyColision.h=5;}
-    ur_fire(){this.nameSprite = "ur_initial";this.shotReady=false;this.bodyColision.x=30;this.bodyColision.y=0;this.bodyColision.w=5;this.bodyColision.h=5;}
-    dr_fire(){this.nameSprite = "dr_initial";this.shotReady=false;this.bodyColision.x=30;this.bodyColision.y=30;this.bodyColision.w=5;this.bodyColision.h=5;}
+    r_fire() {
+      this.nameSprite = "r_initial";this.shotReady=false;this.bodyColision.x=0;this.bodyColision.y=15;this.bodyColision.w=35;this.bodyColision.h=3;
+    }
+    l_fire() {
+      this.nameSprite = "l_initial";
+      this.shotReady=false;
+      this.bodyColision.x=0;
+      this.bodyColision.y=15;
+      this.bodyColision.w=35;
+      this.bodyColision.h=3;
+    }
+    u_fire() {
+      this.nameSprite = "u_initial";
+      this.shotReady=false;
+      this.bodyColision.x=15;
+      this.bodyColision.y=0;
+      this.bodyColision.w=3;this.bodyColision.h=35;
+    }
+    d_fire() {
+      this.nameSprite = "d_initial";
+      this.shotReady=false;
+      this.bodyColision.x=15;
+      this.bodyColision.y=0;
+      this.bodyColision.w=3;
+      this.bodyColision.h=35;
+    }
+    ul_fire(){
+      this.nameSprite = "ul_initial";
+      this.shotReady=false;
+      this.bodyColision.x=0;
+      this.bodyColision.y=0;
+      this.bodyColision.w=5;
+      this.bodyColision.h=5;
+    }
+    dl_fire(){
+      this.nameSprite = "dl_initial";
+      this.shotReady=false;
+      this.bodyColision.x=0;
+      this.bodyColision.y=30;
+      this.bodyColision.w=5;
+      this.bodyColision.h=5;
+    }
+    ur_fire(){
+      this.nameSprite = "ur_initial";
+      this.shotReady=false;
+      this.bodyColision.x=30;
+      this.bodyColision.y=0;
+      this.bodyColision.w=5;
+      this.bodyColision.h=5;
+    }
+    dr_fire(){
+      this.nameSprite = "dr_initial";
+      this.shotReady=false;
+      this.bodyColision.x=30;
+      this.bodyColision.y=30;
+      this.bodyColision.w=5;
+      this.bodyColision.h=5;
+    }
     impact(){
         if(this.nameSprite == "r_default"){this.nameSprite = "r_impact";}else
         if(this.nameSprite == "l_default"){this.nameSprite = "l_impact";}else
@@ -973,7 +1068,6 @@ class shot extends character {
         } else{ this.shotReady = true; this.positionAbsolute = {x:null,y:null}; }
     }
 }
-
 
 class shot_enemy extends character {
     constructor({x,y,number}){
@@ -1275,14 +1369,38 @@ class shot_enemy extends character {
         this.sounds = {}
         this.speedShot = 10
     }
-    r_fire() {this.nameSprite = "r_initial"; this.shotReady=false;}
-    l_fire() {this.nameSprite = "l_initial"; this.shotReady=false;}
-    u_fire() {this.nameSprite = "u_initial"; this.shotReady=false;}
-    d_fire() {this.nameSprite = "d_initial"; this.shotReady=false;}
-    ul_fire(){this.nameSprite = "ul_initial";this.shotReady=false;}
-    dl_fire(){this.nameSprite = "dl_initial";this.shotReady=false;}
-    ur_fire(){this.nameSprite = "ur_initial";this.shotReady=false;}
-    dr_fire(){this.nameSprite = "dr_initial";this.shotReady=false;}
+    r_fire() {
+      this.nameSprite = "r_initial";
+      this.shotReady=false;
+    }
+    l_fire() {
+      this.nameSprite = "l_initial";
+      this.shotReady=false;
+    }
+    u_fire() {
+      this.nameSprite = "u_initial";
+      this.shotReady=false;
+    }
+    d_fire() {
+      this.nameSprite = "d_initial";
+      this.shotReady=false;
+    }
+    ul_fire(){
+      this.nameSprite = "ul_initial";
+      this.shotReady=false;
+    }
+    dl_fire(){
+      this.nameSprite = "dl_initial";
+      this.shotReady=false;
+    }
+    ur_fire(){
+      this.nameSprite = "ur_initial";
+      this.shotReady=false;
+    }
+    dr_fire(){
+      this.nameSprite = "dr_initial";
+      this.shotReady=false;
+    }
     impact(){
         if(this.nameSprite == "r_default"){this.nameSprite = "r_impact";}else
         if(this.nameSprite == "l_default"){this.nameSprite = "l_impact";}else
@@ -1557,8 +1675,14 @@ class teleguide extends character {
             this.timeToSearch = 0;
         }
     }
-    up_launch() {this.nameSprite='initial_up'; this.launchReady=false;}
-    impact() {this.nameSprite = "explosion";this.positionAbsolute = {x:null,y:null}}
+    up_launch() {
+      this.nameSprite='initial_up';
+      this.launchReady=false;
+    }
+    impact() {
+      this.nameSprite = "explosion";
+      this.positionAbsolute = {x:null,y:null}
+    }
 }
 
 class arrow extends character {
@@ -1647,7 +1771,6 @@ class arrow extends character {
     }
 }
 
-
 class bubble extends character {
     constructor({x,y,speedAnimation}){
         super({x: x,y: y, colx:0, coly:20, colw:35, colh:15})
@@ -1678,8 +1801,6 @@ class bubble extends character {
     }
 }
 
-
-
 class water1 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:11, colw:35, colh:24})
@@ -1709,7 +1830,6 @@ class water1 extends character {
         }
     }
 }
-
 
 class lava extends character {
     constructor({x,y,type}){
@@ -1848,7 +1968,6 @@ class gate extends character {
         this.sprites.implode.sprite.cropHeight = gridSize*2
         this.sprites.implode.sprite.width = gridSize*2
         this.sprites.implode.sprite.height = gridSize*2
-
         this.sounds = {}
     }
     update(){
@@ -2185,7 +2304,13 @@ class tree extends character {
                 speedAnimation: 0.1
             }),
         }
-        this.sounds = {    explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [new sound({audioName:'explosion1'})],
+        }
+    }
+    burn(){
+      this.nameSprite = 'fire';
+      this.sounds.explosion[0].play();
     }
     update(){
         if(this.nameSprite !== null){
@@ -2227,7 +2352,13 @@ class energy_house1 extends character {
                 speedAnimation: 0.1
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName:'explosion1'}) ],
+        }
+    }
+    explode(){
+      this.sounds.explosion[0].play();
+      this.nameSprite = 'destructed';
     }
     update(){
         if(this.nameSprite !== null){
@@ -2269,7 +2400,13 @@ class energy_house2 extends character {
                 speedAnimation: 0.1
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName:'explosion1'}) ],
+        }
+    }
+    explode(){
+      this.sounds.explosion[0].play();
+      this.nameSprite = 'destructed';
     }
     update(){
         if(this.nameSprite !== null){
@@ -2683,7 +2820,9 @@ class tile extends character {
                 speedAnimation: 0.1
             }),
         }
-        this.sounds = {}
+        this.sounds = {
+
+        }
     }
     update(){
         if(this.nameSprite !== null){
@@ -2728,7 +2867,13 @@ class asteroide1 extends character {
                 speedAnimation: 1
             }),
         }
-        this.sounds = {    explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName: 'explosion1'})],
+        }
+    }
+    explode(){
+      this.nameSprite = 'explosion';
+      this.sounds.explosion[0].play();
     }
     reset(){
       this.position.x=this.initialPosition.x;
@@ -2787,7 +2932,13 @@ class asteroide2 extends character {
                 speedAnimation: 1
             }),
         }
-        this.sounds = {    explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName:'explosion1'}), ],
+        }
+    }
+    explode(){
+      this.nameSprite = 'explosion';
+      this.sounds.explosion[0].play();
     }
     reset(){
       this.position.x=this.initialPosition.x;
@@ -2841,7 +2992,13 @@ class satelite extends character {
                 speedAnimation: 1
             }),
         }
-        this.sounds = {    explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName:'explosion1'}), ],
+        }
+    }
+    explode(){
+      this.nameSprite='explosion';
+      this.sounds.explosion[0].play();
     }
     update(){
         if(this.nameSprite !== null){
@@ -2872,8 +3029,8 @@ class enemy extends character {
             up:{x:0,y:0},
             right:{x:0,y:0},
             down:{x:0,y:0},
-            left:{x:0,y:0}
-        }                                                       //ajustar posicao inicial xy do tiro (adiciona o valor xy informado)
+            left:{x:0,y:0},
+          }                                                     //ajustar posicao inicial xy do tiro (adiciona o valor xy informado)
         this.spriteSheet = spriteSheet                          //spriteSheet do inimigo
         this.posXIni = this.position.x                          //posicao inicial do movimento
         this.shotReady = true                                   //tiro preparado
@@ -3171,7 +3328,6 @@ class robot extends enemy {
     }
 }
 
-
 class boss1 extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3241,7 +3397,6 @@ class boss1 extends enemy {
     }
 }
 
-
 class boss2 extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3310,7 +3465,6 @@ class boss2 extends enemy {
         this.sprites.left.sprite.imgFrm = 8
     }
 }
-
 
 class boss3 extends enemy {
     constructor({x, y, moveSize}){
@@ -3431,7 +3585,6 @@ class boss3 extends enemy {
     }
 }
 
-
 class boss4 extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3443,7 +3596,6 @@ class boss4 extends enemy {
             shotDirection: 'h',
             moveSize: moveSize
         })
-        //this.lifeBossMax = 10
         this.bodyColision = {x:42, y:6, w:270, h:134}
         this.animationToShot = true
         this.type = 'boss'
@@ -3451,7 +3603,6 @@ class boss4 extends enemy {
         this.shotPosAdjust.right.y = 145
         this.shotPosAdjust.left.x =  225
         this.shotPosAdjust.left.y = 213
-
         this.haveShot = false;
         this.sprites.stopedLeft.sprite.cropWidth = 318
         this.sprites.stopedLeft.sprite.cropHeight = gridSize*3
@@ -3552,7 +3703,6 @@ class nave_enemy2 extends enemy {
         this.sprites.left.speedAnimation = 0.7
     }
 }
-
 
 class tank extends enemy {
     constructor({x, y, moveSize}){
@@ -3671,6 +3821,10 @@ class life_up extends character {
         }
         this.sounds = { colectable: new sound({audioName:'colectable'}), }
     }
+    caught(){
+      this.sounds['colectable'].play();
+      this.nameSprite = null;
+    }
     update(){
         if(this.nameSprite !== null){
             this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
@@ -3703,6 +3857,10 @@ class jewel extends character {
         }
         this.sounds = { colectable: new sound({audioName:'colectable'}), }
     }
+    caught(){
+      this.sounds['colectable'].play();
+      this.nameSprite = null;
+    }
     update(){
         if(this.nameSprite !== null){
             this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
@@ -3712,7 +3870,6 @@ class jewel extends character {
         }
     }
 }
-
 
 class drone extends character {
     constructor({x, y, moveDirection, moveSize}){
@@ -3749,7 +3906,13 @@ class drone extends character {
                 speedAnimation: 1
             }),
         }
-        this.sounds = {    explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName: 'explosion1'}), ],
+        }
+    }
+    explode(){
+      this.nameSprite='explosion';
+      this.sounds.explosion[0].play();
     }
     update(){
         if(this.nameSprite !== null){
@@ -3824,7 +3987,21 @@ class alien_building1 extends character {
                 speedAnimation: 0.3
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName: 'explosion1'}), ],
+        }
+    }
+    l_damage(){
+      this.nameSprite='r_damage';
+      this.sounds.explosion[0].play();
+    }
+    r_damage(){
+      this.nameSprite='l_damage';
+      this.sounds.explosion[0].play();
+    }
+    destroy(){
+      this.nameSprite='destroyed';
+      this.sounds.explosion[0].play();
     }
     update(){
         if(this.nameSprite !== null){
@@ -3835,7 +4012,6 @@ class alien_building1 extends character {
         }
     }
 }
-
 
 class alien_building2 extends character {
     constructor({x,y}){
@@ -3891,7 +4067,21 @@ class alien_building2 extends character {
                 speedAnimation: 0.3
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName:'explosion1'}), ],
+        }
+    }
+    l_damage(){
+      this.nameSprite='r_damage';
+      this.sounds.explosion[0].play();
+    }
+    r_damage(){
+      this.nameSprite='l_damage';
+      this.sounds.explosion[0].play();
+    }
+    destroy(){
+      this.nameSprite='destroyed';
+      this.sounds.explosion[0].play();
     }
     update(){
         if(this.nameSprite !== null){
@@ -3958,7 +4148,21 @@ class alien_building3 extends character {
                 speedAnimation: 0.3
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName:'explosion1'}), ],
+        }
+    }
+    l_damage(){
+      this.nameSprite='r_damage';
+      this.sounds.explosion[0].play();
+    }
+    r_damage(){
+      this.nameSprite='l_damage';
+      this.sounds.explosion[0].play();
+    }
+    destroy(){
+      this.nameSprite='destroyed';
+      this.sounds.explosion[0].play();
     }
     update(){
         if(this.nameSprite !== null){
@@ -4024,7 +4228,21 @@ class building1 extends character {
                 speedAnimation: 0.3
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName:'explosion1'}) ,] ,
+        }
+    }
+    l_damage(){
+      this.nameSprite='r_damage';
+      this.sounds.explosion[0].play();
+    }
+    r_damage(){
+      this.nameSprite='l_damage';
+      this.sounds.explosion[0].play();
+    }
+    destroy(){
+      this.nameSprite='destroyed';
+      this.sounds.explosion[0].play();
     }
     update(){
         if(this.nameSprite !== null){
@@ -4093,6 +4311,18 @@ class building2 extends character {
         }
         this.sounds = { explosion: snd.audList['explosion1'], }
     }
+    l_damage(){
+      this.nameSprite='r_damage';
+      this.sounds.explosion[0].play();
+    }
+    r_damage(){
+      this.nameSprite='l_damage';
+      this.sounds.explosion[0].play();
+    }
+    destroy(){
+      this.nameSprite='destroyed';
+      this.sounds.explosion[0].play();
+    }
     update(){
         if(this.nameSprite !== null){
             this.sprites[this.nameSprite].sprite.end = this.action(this.sprites[this.nameSprite]);
@@ -4131,7 +4361,9 @@ class play_again extends images {
 }
 
 class full_screen extends images {
-    constructor({x,y}){ super({x: x,y: y, imgName:"full_screen"}) }
+    constructor({x,y}){
+      super({x: x,y: y, imgName:"full_screen"})
+    }
     update(){ this.animation(); }
 }
 
@@ -4183,7 +4415,10 @@ class Life {
         this.width = 15
         this.height = 23
     }
-    update(){this.number=game_lives;this.draw();}
+    update(){
+      this.number=game_lives;
+      this.draw();
+    }
     draw(){
         var s = this.number.toString()
         var l = s.length
@@ -4204,54 +4439,65 @@ class Life {
 }
 
 class btn_a extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "button_a" : "button_a_2") }) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "button_a" : "button_a_2") }) }
     update(){ this.animation(); }
 }
 
 class btn_upleft extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_upleft" : "btn_upleft_2")}) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "btn_upleft" : "btn_upleft_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_up extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_up" : "btn_up_2")}) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "btn_up" : "btn_up_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_upright extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_upright" : "btn_upright_2")}) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "btn_upright" : "btn_upright_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_left extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_left" : "btn_left_2")}) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "btn_left" : "btn_left_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_center extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_center" : "btn_center_2")}) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "btn_center" : "btn_center_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_right extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_right" : "btn_right_2")}) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "btn_right" : "btn_right_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_downleft extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_downleft" : "btn_downleft_2")}) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "btn_downleft" : "btn_downleft_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_down extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_down" : "btn_down_2")}) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "btn_down" : "btn_down_2")}) }
     update(){ this.animation(); }
 }
 
 class btn_downright extends images {
-    constructor({x,y,color}){ super({x: x,y: y, imgName:(color=='b' ? "btn_downright" : "btn_downright_2")}) }
+    constructor({x,y,color}){
+      super({x: x,y: y, imgName:(color=='b' ? "btn_downright" : "btn_downright_2")}) }
     update(){ this.animation(); }
 }
+
 
 let Nave = [];
 let asteroides = [];
@@ -4285,6 +4531,7 @@ let static_objs = [];
 let arrows = [];
 let bubbles = [];
 let lavas = [];
+let music = null;
 
 function resetObjects(){
     scenario.reset();

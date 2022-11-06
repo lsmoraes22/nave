@@ -49,7 +49,12 @@ let scenario = {
 function isEmpty(obj) {
     return Object.keys(obj).length === 0;
 }
-
+function testUndefined(t){
+  if (t === undefined) {
+  return 'Undefined value!';
+}
+  return t;
+}
 function isNull(obj) {
     return obj === null;
 }

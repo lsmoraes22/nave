@@ -16,8 +16,11 @@ function init(level){
             backgrounds = [ new background({imgName: 'scene1'}),]
             nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+            music = new sound({audioName:"theme"})
+            music.musicPlay();
         break;
-        case 20:
+        case 2:
+          music.stop();
           resetObjects();
           scenario.cMin=0;
           scenario.cMax=6;
@@ -28,7 +31,9 @@ function init(level){
             new static_obj({ x:150, y:50, imgName: 'planet4'}),
             new background({ imgName: 'atmosphere'}),
           ]
-          jewels = [ new jewel({x:51*gridSize,y:4*gridSize,number:3})]
+          jewels = [
+            new jewel({x:51*gridSize,y:4*gridSize,number:3}),
+          ]
           life_ups = [ new life_up({x:100*gridSize, y:8*gridSize})]
           tiles = create_greenMountain(-1,9,27,4);
           tiles = tiles.concat(create_greenMountain(45,9,23,4));
@@ -117,7 +122,7 @@ function init(level){
             waters = waters.concat(water1_create(35,9,3));
             waters = waters.concat(water2_create(35,10,3));
             waters = waters.concat(water2_create(35,11,3));
-            tiles = create_greenMountain(7,7,4,4)
+            tiles = create_greenMountain(7,7,4,5)
             tiles = tiles.concat(create_greenMountain(18,-5,8,2));
             tiles = tiles.concat(create_greenMountain(16,2,4,2));
             tiles = tiles.concat(create_greenHill(17,-4,6));
@@ -137,7 +142,6 @@ function init(level){
             shocks = shocks.concat(create_shock_v(54,-19,14,true))
             shocks = shocks.concat(create_shock_h(0,-19,25,true))
             shocks = shocks.concat(create_shock_h(26,-19,28,true))
-
             buildings = create_building(9,2,5)
             buildings = buildings.concat(create_building(25,2,6))
 
@@ -418,7 +422,7 @@ function init(level){
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
-        case 3:
+        case 5:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=2;
@@ -431,7 +435,6 @@ function init(level){
                 new background({ imgName: 'atmosphere'}),
             ]
             enemys = [
-
                 new boss2({x:23*gridSize, y:3*gridSize, moveSize: 100}),
                 new tank       ({x:8*gridSize,  y:9*gridSize,  moveSize: 80}),
                 new tank       ({x:3*gridSize,  y:9*gridSize,  moveSize:100}),
@@ -441,30 +444,22 @@ function init(level){
                 new nave_enemy2({x:20*gridSize, y:-7*gridSize, moveSize: 110}),
                 new nave_enemy2({x:21*gridSize, y:-8*gridSize, moveSize: 100}),
                 new nave_enemy1({x:22*gridSize, y:-9*gridSize, moveSize: 90}),
-
-
                 new nave_enemy2({x:27*gridSize, y:-2*gridSize, moveSize: 200}),
                 new nave_enemy2({x:28*gridSize, y:-3*gridSize, moveSize: 150}),
                 new nave_enemy1({x:29*gridSize, y:-4*gridSize, moveSize: 190}),
-
                 new nave_enemy2({x:43*gridSize, y:-2*gridSize, moveSize: 110}),
                 new nave_enemy2({x:44*gridSize, y:-3*gridSize, moveSize: 100}),
                 new nave_enemy1({x:45*gridSize, y:-4*gridSize, moveSize: 90}),
-
                 new tank       ({x:38*gridSize,  y:9*gridSize,  moveSize: 90}),
                 new tank       ({x:43*gridSize,  y:9*gridSize,  moveSize:110}),
-
             ]
-
             shocks = create_shock_v(20,1,3,true)
             shocks = shocks.concat(create_shock_v(33,1,3,true))
             shocks = shocks.concat(create_shock_h(20,1,14,true))
-
             tiles = create_greenMountain(-1,10,53,3)
             tiles = tiles.concat(create_greenHill(20,4,4))
             tiles = tiles.concat(create_greenHill(33,4,8))
             tiles = tiles.concat(create_greenMountain(20,7,9,5))
-
             Nave = [ new nave({x:200,y:150}) ]
             gates = [ new gate({x:30*gridSize,y:8*gridSize}) ]
             btns = create_joystick("b");
@@ -598,7 +593,52 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 2:
+        case 7:
+          resetObjects();
+          scenario.cMin=0;
+          scenario.cMax=3;
+          scenario.rMin=-3;
+          scenario.rMax=0;
+          backgrounds = [
+              new background({x:0, y:0, imgName: 'background8'}),
+          ]
+          Nave = [ new nave({x:200,y:250}) ]
+          tiles = create_brownMountain(-1,10,10,3);
+          tiles = tiles.concat(   create_brownHill1(65, -1,  3));
+          tiles = tiles.concat(create_brownMountain( -1,  2, 70,  2));
+          tiles = tiles.concat(create_brownMountain(10, -6, 70,  2));
+          tiles = tiles.concat(create_brownMountain(55, -2,  4,  2));
+          tiles = tiles.concat(create_brownMountain(40, -2,  4,  2));
+          tiles = tiles.concat(create_brownMountain(20, -2,  7,  2));
+          tiles = tiles.concat(create_brownMountain(-1,-26, 30,  2));
+          tiles = tiles.concat(create_brownMountain(12,-18,  2, 12));
+          tiles = tiles.concat(create_brownMountain(26,-24,  2, 12));
+          tiles = tiles.concat(create_brownMountain(28,-15, 25,  2));
+          tiles = tiles.concat(create_brownMountain(60,-22,  2, 16));
+          tiles = tiles.concat(create_brownMountain(37,-24,  25, 2));
+          tiles = tiles.concat(create_brownMountain(43, -19,  4,  2));
+          tiles = tiles.concat(create_brownMountain(30, -19,  4,  2));
+          tiles = tiles.concat(create_brownMountain(40,-10,4,2));
+          tiles = tiles.concat(create_brownMountain(50,-10,4,2));
+          tiles = tiles.concat(create_brownMountain(21,9,30,4));
+          tiles = tiles.concat(create_brownMountain(68,9,10,4));
+          tiles = tiles.concat(create_brownMountain(68,-32,  2, 16));
+          tiles = tiles.concat(create_brownMountain(75,-28,  3, 2));
+          tiles = tiles.concat(create_brownMountain(75,-24,  3, 2));
+          tiles = tiles.concat(create_brownMountain(75,-20,  3, 2));
+          tiles = tiles.concat(create_brownMountain(75,-16,  3, 2));
+          tiles = tiles.concat(create_brownMountain(75,-12,  3, 2));
+          lavas = lava1_create(9,11,12);
+          lavas = lavas.concat(lava1_create(51,10,17));
+          lavas = lavas.concat(lava2_create(51,11,17));
+          bubbles = [
+              new bubble({x:10*gridSize, y:10*gridSize, speedAnimation: 0.5}),
+              new bubble({x:13*gridSize, y:10*gridSize, speedAnimation: 0.7}),
+              new bubble({x:19*gridSize, y:10*gridSize, speedAnimation: 0.6 }),
+          ]
+          gates = [ new gate({x:74*gridSize,y:-32*gridSize}) ]
+        break;
+        case 8:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=2;
@@ -650,7 +690,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 8:
+        case 9:
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=6;
@@ -753,7 +793,6 @@ function init(level){
         break;
     }
 }
-
 function create_joystick(color){
     var refjst = {x:30,y:200}
     btns = [
@@ -770,7 +809,6 @@ function create_joystick(color){
     ];
     return btns;
 }
-
 function lava1_create(x,y,number){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -778,7 +816,6 @@ function lava1_create(x,y,number){
     }
     return arr;
 }
-
 function lava2_create(x,y,number){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -786,7 +823,6 @@ function lava2_create(x,y,number){
     }
     return arr;
 }
-
 function water1_create(x,y,number){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -794,7 +830,6 @@ function water1_create(x,y,number){
     }
     return arr;
 }
-
 function water2_create(x,y,number){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -802,7 +837,6 @@ function water2_create(x,y,number){
     }
     return arr;
 }
-
 function create_brownHill1(x,y,number){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -816,7 +850,6 @@ function create_brownHill1(x,y,number){
     }
     return arr;
 }
-
 function create_greenHill(x,y,number){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -830,7 +863,6 @@ function create_greenHill(x,y,number){
     }
     return arr;
 }
-
 function create_building(x,y,number){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -844,8 +876,6 @@ function create_building(x,y,number){
     }
     return arr;
 }
-
-
 function create_alien_building(x,y,number){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -863,7 +893,6 @@ function create_alien_building(x,y,number){
     }
     return arr;
 }
-
 function create_shock_v(x,y,number,continuous){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -881,7 +910,6 @@ function create_shock_v(x,y,number,continuous){
     }
     return arr;
 }
-
 function create_shock_h(x,y,number,continuous){
     var arr = []
     for (let i = 0; i < number; i++) {
@@ -899,7 +927,6 @@ function create_shock_h(x,y,number,continuous){
     }
     return arr;
 }
-
 function create_greenMountain(x,y,numberX,numberY){
 
     var arr = []
@@ -944,8 +971,6 @@ function create_greenMountain(x,y,numberX,numberY){
     }
     return arr;
 }
-
-
 function create_whiteMountain(x,y,numberX,numberY){
 
     var arr = []
@@ -990,7 +1015,6 @@ function create_whiteMountain(x,y,numberX,numberY){
     }
     return arr;
 }
-
 function create_brownMountain(x,y,numberX,numberY){
 
     var arr = []

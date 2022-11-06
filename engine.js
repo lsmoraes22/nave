@@ -65,6 +65,7 @@ function animate(){
                 obj.update();
             }
         });
+        if(!isNull(music)){music.musicRun();}
         /* colision */
         life_ups.forEach(obj =>{
              var p1 = Nave[0].points(1);
@@ -86,13 +87,11 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if(obj.nameSprite == 'default') {
-                  obj.nameSprite = null;
-                  obj.sounds['colectable'].play();
+                  obj.caught();
                   game_lives++;
                 }
              }
         })
-
         jewels.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -113,8 +112,8 @@ function animate(){
                  obj.colision(p8.x,p8.y)
              ){
                  if(obj.nameSprite == 'default') {
-                   obj.nameSprite = null;
-                   obj.sounds['colectable'].play();
+                   //obj.nameSprite = null;
+                   obj.caught();
                    if(obj.number==0){
                      Nave[0].protection.turnOn();
                    } else
@@ -130,7 +129,6 @@ function animate(){
                  }
              }
         })
-
         enemys.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -192,7 +190,6 @@ function animate(){
                  }
              }
              Nave[0].shot.forEach(sht =>{
-
                  var p9  = sht.points(1);
                  var p10 = sht.points(2);
                  var p11 = sht.points(3);
@@ -296,7 +293,6 @@ function animate(){
                  })
              })
         })
-
         asteroides.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -320,7 +316,7 @@ function animate(){
                  if( obj.nameSprite == 'alive' &&
                       Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
                      Nave[0].explode();
-                     obj.nameSprite = 'explosion';
+                     obj.explode();
                  } else if(Nave[0].nameSprite==null){die();}
              }
              Nave[0].shot.forEach(sht =>{
@@ -336,15 +332,12 @@ function animate(){
                      sht.impact_validate()
                  ){
                      if(obj.nameSprite != 'explosion' && obj.nameSprite != null  && !sht.shotReady){
-                         obj.sounds['explosion'].play();
-                         obj.nameSprite = 'explosion';
+                         obj.explode();
                          sht.impact();
                      }
                  }
              })
         })
-
-
         lavas.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -369,7 +362,6 @@ function animate(){
                  } else if(Nave[0].nameSprite==null){die();}
              }
         })
-
         drops.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -402,7 +394,6 @@ function animate(){
                  }
              })
         })
-
         waters.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -427,7 +418,6 @@ function animate(){
                  }
              }
         })
-
         bubbles.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -452,7 +442,6 @@ function animate(){
                  }
              }
         })
-
         tiles.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -494,7 +483,6 @@ function animate(){
                  }
              })
         })
-
         shocks.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -535,7 +523,6 @@ function animate(){
                  }
              })
         })
-
         buildings.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -557,7 +544,7 @@ function animate(){
              ){
                  if(Nave[0].nameSprite != 'explosion' && Nave[0].nameSprite!=null) {
                      Nave[0].crash();
-                     obj.nameSprite='destroyed';
+                     obj.explode();
                  }
              }
              Nave[0].shot.forEach(sht =>{
@@ -576,25 +563,21 @@ function animate(){
                          switch(sht.nameSprite) {
                              case 'r_default':
                                  if(obj.nameSprite == 'alive' || obj.nameSprite=='l_damage'){  //
-                                     obj.nameSprite = 'l_damage';
-                                     sht.impact();
-                                     obj.sounds['explosion'].play();
+                                   obj.r_damage();
+                                   sht.impact();
                                  }else{
-                                     obj.nameSprite='destroyed';
-                                     sht.impact();
-                                     obj.sounds['explosion'].play();
+                                   obj.destroy();
+                                   sht.impact();
                                  }
                              break;
                              case 'l_default':
-                                  if(obj.nameSprite=='alive' || obj.nameSprite=='r_damage'){ //
-                                      obj.nameSprite='r_damage';
-                                        sht.impact();
-                                        obj.sounds['explosion'].play();
-                                  }else{
-                                        obj.nameSprite='destroyed';
-                                        sht.impact();
-                                        obj.sounds['explosion'].play();
-                                  }
+                                if(obj.nameSprite=='alive' || obj.nameSprite=='r_damage'){ //
+                                  obj.l_damage();
+                                  sht.impact();
+                                }else{
+                                  obj.destroy();
+                                  sht.impact();
+                                }
                              break;
                              case 'ul_default':
                              case 'ur_default':
@@ -604,16 +587,14 @@ function animate(){
                              case 'u_default':
                              case 'd_default':
                              case 'd_default':
-                                 obj.nameSprite='destroyed';
-                                 sht.impact();
-                                 obj.sounds['explosion'].play();
+                               obj.destroy();
+                               sht.impact();
                              break;
                          }
                      }
                  }
              })
         })
-
         satelites.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -650,14 +631,12 @@ function animate(){
                      sht.impact_validate()
                  ){
                      if( obj.nameSprite == 'alive') {
-                         obj.nameSprite = 'explosion';
-                         obj.sounds['explosion'].play();
+                         obj.explode();
                          sht.impact();
                      }
                  }
             })
         })
-
         drones.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -667,12 +646,10 @@ function animate(){
              var p6 = Nave[0].points(6);
              var p7 = Nave[0].points(7);
              var p8 = Nave[0].points(8);
-
              var p9  = Nave[0].shot[0].points(1);
              var p10 = Nave[0].shot[0].points(2);
              var p11 = Nave[0].shot[0].points(3);
              var p12 = Nave[0].shot[0].points(4);
-
              if(
                  obj.colision(p1.x,p1.y) ||
                  obj.colision(p2.x,p2.y) ||
@@ -685,9 +662,7 @@ function animate(){
              ){
                  if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' && obj.nameSprite == 'alive' ) {
                      Nave[0].explode();
-                     obj.nameSprite = 'explosion';
                  } else if(Nave[0].nameSprite==null){die();}
-
              }
              Nave[0].shot.forEach(sht =>{
                  var p9  = sht.points(1);
@@ -702,14 +677,12 @@ function animate(){
                      sht.impact_validate()
                  ){
                      if(obj.nameSprite == 'alive' && obj.nameSprite !== null && !sht.shotReady ){
-                         obj.nameSprite = 'explosion';
-                         obj.sounds['explosion'].play();
-                         sht.impact();
+                       obj.explode();
+                       sht.impact();
                      }
                  }
             })
         })
-
         trees.forEach(obj =>{
             var p1 = Nave[0].points(1);
             var p2 = Nave[0].points(2);
@@ -747,11 +720,13 @@ function animate(){
                      obj.colision(p12.x,p12.y)) &&
                      sht.impact_validate()
                  ){
-                     if(obj.nameSprite == 'alive') {obj.nameSprite = 'fire'; obj.sounds['explosion'].play(); sht.impact();}
+                     if(obj.nameSprite == 'alive') {
+                       obj.burn();
+                       sht.impact();
+                     }
                  }
             })
         })
-
         energy_houses.forEach(obj =>{
             var p1 = Nave[0].points(1);
             var p2 = Nave[0].points(2);
@@ -774,8 +749,9 @@ function animate(){
             ){
                 if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' && obj.nameSprite == 'alive') {
                     Nave[0].explode();
-                    //obj.nameSprite = 'destructed';
-                    energy_houses.forEach(obj =>{obj.nameSprite = 'destructed';})
+                    energy_houses.forEach(obj =>{
+                      obj.nameSprite = 'destructed';
+                    })
                     shocks.forEach(obj =>{obj.continuous = true; obj.onOff = 'off';})
                 } else if(Nave[0].nameSprite==null){die();}
             }
@@ -792,14 +768,15 @@ function animate(){
                      sht.impact_validate()
                  ){
                      if(obj.nameSprite == 'alive') {
-                         energy_houses.forEach(obj =>{obj.nameSprite = 'destructed';})
+                         energy_houses.forEach(obj =>{
+                           obj.explode();
+                         })
                          shocks.forEach(obj =>{obj.continuous = true; obj.onOff = 'off';})
-                         obj.sounds['explosion'].play(); sht.impact();
+                         sht.impact();
                      }
                  }
             })
         })
-
         gates.forEach(obj =>{
              var p1 = Nave[0].points(1);
              var p2 = Nave[0].points(2);
@@ -844,7 +821,6 @@ function animate(){
                 mousePosition = {x:null,y:null};
             }
         });
-
         plays.forEach(obj =>{
             if(obj.colision(mousePosition.x,mousePosition.y) || obj.colision(touchLeft.x,touchLeft.y) ){
                 level = 1;
@@ -852,7 +828,6 @@ function animate(){
                 mousePosition = {x:null,y:null};
             }
         });
-
         nexts.forEach(obj =>{
             if(obj.colision(mousePosition.x,mousePosition.y) || obj.colision(touchLeft.x,touchLeft.y) ){
                 level++;
@@ -860,7 +835,6 @@ function animate(){
                 mousePosition = {x:null,y:null};
             }
         });
-
         btns.forEach(obj =>{
           if(Nave[0].nameSprite != 'explosion' && Nave[0].nameSprite != 'invisible' && Nave[0].nameSprite!=null ){
             switch(obj.imgName) {
