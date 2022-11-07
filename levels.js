@@ -19,7 +19,7 @@ function init(level){
             music = new sound({audioName:"theme"})
             music.musicPlay();
         break;
-        case 2:
+        case 20:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -594,6 +594,9 @@ function init(level){
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 7:
+          music.stop();
+          music = new sound({audioName:"base"})
+          music.musicPlay();
           resetObjects();
           scenario.cMin=0;
           scenario.cMax=3;
@@ -602,41 +605,217 @@ function init(level){
           backgrounds = [
               new background({x:0, y:0, imgName: 'background8'}),
           ]
+          drops = [
+              new drop({x:10*gridSize, y:4*gridSize, speedAnimation: 0.1}),
+              new drop({x:13*gridSize, y:4*gridSize, speedAnimation: 0.2}),
+              new drop({x:15*gridSize, y:4*gridSize, speedAnimation: 0.1}),
+              new drop({x:20*gridSize, y:4*gridSize, speedAnimation: 0.15}),
+              new drop({x:16*gridSize, y:4*gridSize, speedAnimation: 0.3}),
+              new drop({x:23*gridSize, y:4*gridSize, speedAnimation: 0.25}),
+              new drop({x:25*gridSize, y:4*gridSize, speedAnimation: 0.3}),
+              new drop({x:26*gridSize, y:4*gridSize, speedAnimation: 0.2}),
+              new drop({x:30*gridSize, y:4*gridSize, speedAnimation: 0.2}),
+              new drop({x:33*gridSize, y:4*gridSize, speedAnimation: 0.4}),
+              new drop({x:35*gridSize, y:4*gridSize, speedAnimation: 0.2}),
+              new drop({x:36*gridSize, y:4*gridSize, speedAnimation: 0.3}),
+              new drop({x:37*gridSize, y:4*gridSize, speedAnimation: 0.25}),
+              new drop({x:38*gridSize, y:4*gridSize, speedAnimation: 0.1}),
+              new drop({x:40*gridSize, y:4*gridSize, speedAnimation: 0.15}),
+              new drop({x:46*gridSize, y:4*gridSize, speedAnimation: 0.34}),
+              new drop({x:48*gridSize, y:4*gridSize, speedAnimation: 0.2}),
+              new drop({x:53*gridSize, y:4*gridSize, speedAnimation: 0.5}),
+              new drop({x:55*gridSize, y:4*gridSize, speedAnimation: 0.4}),
+              new drop({x:56*gridSize, y:4*gridSize, speedAnimation: 0.25}),
+              new drop({x:60*gridSize, y:4*gridSize, speedAnimation: 0.22}),
+              new drop({x:63*gridSize, y:4*gridSize, speedAnimation: 0.3}),
+              new drop({x:65*gridSize, y:4*gridSize, speedAnimation: 0.42}),
+              new drop({x:72*gridSize, y:-4*gridSize, speedAnimation: 0.42}),
+              new drop({x:68*gridSize, y:-4*gridSize, speedAnimation: 0.4}),
+              new drop({x:66*gridSize, y:-4*gridSize, speedAnimation: 0.35}),
+              new drop({x:65*gridSize, y:-4*gridSize, speedAnimation: 0.2}),
+              new drop({x:63*gridSize, y:-4*gridSize, speedAnimation: 0.25}),
+              new drop({x:61*gridSize, y:-4*gridSize, speedAnimation: 0.1}),
+              new drop({x:60*gridSize, y:-4*gridSize, speedAnimation: 0.22}),
+              new drop({x:58*gridSize, y:-4*gridSize, speedAnimation: 0.12}),
+              new drop({x:56*gridSize, y:-4*gridSize, speedAnimation: 0.23}),
+              new drop({x:55*gridSize, y:-4*gridSize, speedAnimation: 0.18}),
+              new drop({x:53*gridSize, y:-4*gridSize, speedAnimation: 0.23}),
+              new drop({x:52*gridSize, y:-4*gridSize, speedAnimation: 0.26}),
+              new drop({x:51*gridSize, y:-4*gridSize, speedAnimation: 0.28}),
+              new drop({x:48*gridSize, y:-4*gridSize, speedAnimation: 0.1}),
+              new drop({x:46*gridSize, y:-4*gridSize, speedAnimation: 0.2}),
+              new drop({x:45*gridSize, y:-4*gridSize, speedAnimation: 0.15}),
+              new drop({x:43*gridSize, y:-4*gridSize, speedAnimation: 0.25}),
+              new drop({x:42*gridSize, y:-4*gridSize, speedAnimation: 0.22}),
+              new drop({x:41*gridSize, y:-4*gridSize, speedAnimation: 0.21}),
+              new drop({x:38*gridSize, y:-4*gridSize, speedAnimation: 0.15}),
+              new drop({x:36*gridSize, y:-4*gridSize, speedAnimation: 0.23}),
+              new drop({x:35*gridSize, y:-4*gridSize, speedAnimation: 0.12}),
+              new drop({x:33*gridSize, y:-4*gridSize, speedAnimation: 0.22}),
+              new drop({x:32*gridSize, y:-4*gridSize, speedAnimation: 0.26}),
+              new drop({x:31*gridSize, y:-4*gridSize, speedAnimation: 0.2}),
+              new drop({x:28*gridSize, y:-4*gridSize, speedAnimation: 0.1}),
+              new drop({x:26*gridSize, y:-4*gridSize, speedAnimation: 0.22}),
+              new drop({x:25*gridSize, y:-4*gridSize, speedAnimation: 0.1}),
+              new drop({x:23*gridSize, y:-4*gridSize, speedAnimation: 0.2}),
+              new drop({x:22*gridSize, y:-4*gridSize, speedAnimation: 0.3}),
+              new drop({x:21*gridSize, y:-4*gridSize, speedAnimation: 0.18}),
+              new drop({x:19*gridSize, y:-4*gridSize, speedAnimation: 0.12}),
+              new drop({x:18*gridSize, y:-4*gridSize, speedAnimation: 0.13}),
+              new drop({x:16*gridSize, y:-4*gridSize, speedAnimation: 0.2}),
+              new drop({x:15*gridSize, y:-4*gridSize, speedAnimation: 0.13}),
+              new drop({x:13*gridSize, y:-4*gridSize, speedAnimation: 0.25}),
+              new drop({x:12*gridSize, y:-4*gridSize, speedAnimation: 0.32}),
+              new drop({x:11*gridSize, y:-4*gridSize, speedAnimation: 0.1}),
+              new drop({x:24*gridSize, y:-24*gridSize, speedAnimation: 0.2}),
+              new drop({x:23*gridSize, y:-24*gridSize, speedAnimation: 0.2}),
+              new drop({x:22*gridSize, y:-24*gridSize, speedAnimation: 0.23}),
+              new drop({x:21*gridSize, y:-24*gridSize, speedAnimation: 0.18}),
+              new drop({x:19*gridSize, y:-24*gridSize, speedAnimation: 0.12}),
+              new drop({x:18*gridSize, y:-24*gridSize, speedAnimation: 0.13}),
+              new drop({x:16*gridSize, y:-24*gridSize, speedAnimation: 0.2}),
+              new drop({x:15*gridSize, y:-24*gridSize, speedAnimation: 0.13}),
+              new drop({x:13*gridSize, y:-24*gridSize, speedAnimation: 0.25}),
+              new drop({x:12*gridSize, y:-24*gridSize, speedAnimation: 0.32}),
+              new drop({x:11*gridSize, y:-24*gridSize, speedAnimation: 0.1}),
+              new drop({x:09*gridSize, y:-24*gridSize, speedAnimation: 0.15}),
+              new drop({x:08*gridSize, y:-24*gridSize, speedAnimation: 0.18}),
+              new drop({x:6*gridSize,  y:-24*gridSize, speedAnimation: 0.23}),
+              new drop({x:5*gridSize,  y:-24*gridSize, speedAnimation: 0.1}),
+              new drop({x:3*gridSize,  y:-24*gridSize, speedAnimation: 0.2}),
+              new drop({x:2*gridSize,  y:-24*gridSize, speedAnimation: 0.25}),
+              new drop({x:1*gridSize,  y:-24*gridSize, speedAnimation: 0.15}),
+              new drop({x:27*gridSize, y:-12*gridSize, speedAnimation: 0.2}),
+              new drop({x:29*gridSize, y:-13*gridSize, speedAnimation: 0.25}),
+              new drop({x:31*gridSize, y:-13*gridSize, speedAnimation: 0.3}),
+              new drop({x:33*gridSize, y:-13*gridSize, speedAnimation: 0.21}),
+              new drop({x:34*gridSize, y:-13*gridSize, speedAnimation: 0.25}),
+              new drop({x:35*gridSize, y:-13*gridSize, speedAnimation: 0.3}),
+              new drop({x:37*gridSize, y:-13*gridSize, speedAnimation: 0.22}),
+              new drop({x:39*gridSize, y:-13*gridSize, speedAnimation: 0.25}),
+              new drop({x:41*gridSize, y:-13*gridSize, speedAnimation: 0.3}),
+              new drop({x:43*gridSize, y:-13*gridSize, speedAnimation: 0.25}),
+              new drop({x:44*gridSize, y:-13*gridSize, speedAnimation: 0.2}),
+              new drop({x:45*gridSize, y:-13*gridSize, speedAnimation: 0.32}),
+              new drop({x:47*gridSize, y:-13*gridSize, speedAnimation: 0.4}),
+              new drop({x:49*gridSize, y:-13*gridSize, speedAnimation: 0.15}),
+              new drop({x:51*gridSize, y:-13*gridSize, speedAnimation: 0.5}),
+              new drop({x:37*gridSize, y:-22*gridSize, speedAnimation: 0.25}),
+              new drop({x:38*gridSize, y:-22*gridSize, speedAnimation: 0.15}),
+              new drop({x:39*gridSize, y:-22*gridSize, speedAnimation: 0.35}),
+              new drop({x:40*gridSize, y:-22*gridSize, speedAnimation: 0.30}),
+              new drop({x:41*gridSize, y:-22*gridSize, speedAnimation: 0.10}),
+              new drop({x:43*gridSize, y:-22*gridSize, speedAnimation: 0.22}),
+              new drop({x:44*gridSize, y:-22*gridSize, speedAnimation: 0.12}),
+              new drop({x:45*gridSize, y:-22*gridSize, speedAnimation: 0.32}),
+              new drop({x:47*gridSize, y:-22*gridSize, speedAnimation: 0.34}),
+              new drop({x:49*gridSize, y:-22*gridSize, speedAnimation: 0.12}),
+              new drop({x:51*gridSize, y:-22*gridSize, speedAnimation: 0.23}),
+              new drop({x:53*gridSize, y:-22*gridSize, speedAnimation: 0.25}),
+              new drop({x:54*gridSize, y:-22*gridSize, speedAnimation: 0.16}),
+              new drop({x:55*gridSize, y:-22*gridSize, speedAnimation: 0.30}),
+              new drop({x:57*gridSize, y:-22*gridSize, speedAnimation: 0.5}),
+              new drop({x:59*gridSize, y:-22*gridSize, speedAnimation: 0.4}),
+              new drop({x:1*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5) }),
+              new drop({x:2*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:3*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:5*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:6*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:7*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5) }),
+              new drop({x:8*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:9*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:12*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:14*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:17*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5) }),
+              new drop({x:18*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:19*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:22*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:24*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:27*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5) }),
+              new drop({x:28*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:29*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:32*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:34*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:37*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5) }),
+              new drop({x:38*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:39*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:42*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:44*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:47*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5) }),
+              new drop({x:48*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:49*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:52*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:54*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:57*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5) }),
+              new drop({x:58*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:59*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:62*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:64*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+              new drop({x:65*gridSize, y:-31*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.5)}),
+          ]
           Nave = [ new nave({x:200,y:250}) ]
           tiles = create_brownMountain(-1,10,10,3);
           tiles = tiles.concat(   create_brownHill1(65, -1,  3));
-          tiles = tiles.concat(create_brownMountain( -1,  2, 70,  2));
-          tiles = tiles.concat(create_brownMountain(10, -6, 70,  2));
-          tiles = tiles.concat(create_brownMountain(55, -2,  4,  2));
-          tiles = tiles.concat(create_brownMountain(40, -2,  4,  2));
-          tiles = tiles.concat(create_brownMountain(20, -2,  7,  2));
-          tiles = tiles.concat(create_brownMountain(-1,-26, 30,  2));
-          tiles = tiles.concat(create_brownMountain(12,-18,  2, 12));
-          tiles = tiles.concat(create_brownMountain(26,-24,  2, 12));
-          tiles = tiles.concat(create_brownMountain(28,-15, 25,  2));
-          tiles = tiles.concat(create_brownMountain(60,-22,  2, 16));
-          tiles = tiles.concat(create_brownMountain(37,-24,  25, 2));
+          tiles = tiles.concat(create_brownMountain(-1,-33,  70,  2));
+          tiles = tiles.concat(create_brownMountain(-1,  2,  70,  2));
+          tiles = tiles.concat(create_brownMountain(10, -6,  70,  2));
+          tiles = tiles.concat(create_brownMountain(55, -2,   4,  2));
+          tiles = tiles.concat(create_brownMountain(40, -2,   4,  2));
+          tiles = tiles.concat(create_brownMountain(20, -2,   7,  2));
+          tiles = tiles.concat(create_brownMountain(-1, -26, 30,  2));
+          tiles = tiles.concat(create_brownMountain(12, -18,  2, 12));
+          tiles = tiles.concat(create_brownMountain(26, -24,  2, 12));
+          tiles = tiles.concat(create_brownMountain(28, -15, 25,  2));
+          tiles = tiles.concat(create_brownMountain(60, -22,  2, 16));
+          tiles = tiles.concat(create_brownMountain(37, -24,  25, 2));
           tiles = tiles.concat(create_brownMountain(43, -19,  4,  2));
           tiles = tiles.concat(create_brownMountain(30, -19,  4,  2));
-          tiles = tiles.concat(create_brownMountain(40,-10,4,2));
-          tiles = tiles.concat(create_brownMountain(50,-10,4,2));
-          tiles = tiles.concat(create_brownMountain(21,9,30,4));
-          tiles = tiles.concat(create_brownMountain(68,9,10,4));
-          tiles = tiles.concat(create_brownMountain(68,-32,  2, 16));
-          tiles = tiles.concat(create_brownMountain(75,-28,  3, 2));
-          tiles = tiles.concat(create_brownMountain(75,-24,  3, 2));
-          tiles = tiles.concat(create_brownMountain(75,-20,  3, 2));
-          tiles = tiles.concat(create_brownMountain(75,-16,  3, 2));
-          tiles = tiles.concat(create_brownMountain(75,-12,  3, 2));
+          tiles = tiles.concat(create_brownMountain(40, -10,  4,  2));
+          tiles = tiles.concat(create_brownMountain(50, -10,  4,  2));
+          tiles = tiles.concat(create_brownMountain(21,   9, 30,  4));
+          tiles = tiles.concat(create_brownMountain(68,   9, 10,  4));
+          tiles = tiles.concat(create_brownMountain(68, -32,  2, 16));
+          tiles = tiles.concat(create_brownMountain(75, -28,  3,  2));
+          tiles = tiles.concat(create_brownMountain(75, -24,  3,  2));
+          tiles = tiles.concat(create_brownMountain(75, -20,  3,  2));
+          tiles = tiles.concat(create_brownMountain(75, -16,  3,  2));
+          tiles = tiles.concat(create_brownMountain(75, -12,  3,  2));
           lavas = lava1_create(9,11,12);
           lavas = lavas.concat(lava1_create(51,10,17));
           lavas = lavas.concat(lava2_create(51,11,17));
           bubbles = [
-              new bubble({x:10*gridSize, y:10*gridSize, speedAnimation: 0.5}),
-              new bubble({x:13*gridSize, y:10*gridSize, speedAnimation: 0.7}),
-              new bubble({x:19*gridSize, y:10*gridSize, speedAnimation: 0.6 }),
+            new bubble({x:10*gridSize, y:10*gridSize, speedAnimation: 0.5}),
+            new bubble({x:13*gridSize, y:10*gridSize, speedAnimation: 0.7}),
+            new bubble({x:19*gridSize, y:10*gridSize, speedAnimation: 0.6 }),
+            new bubble({x:53*gridSize, y:9*gridSize,  speedAnimation: 0.5}),
+            new bubble({x:59*gridSize, y:9*gridSize,  speedAnimation: 0.7}),
+            new bubble({x:62*gridSize, y:9*gridSize,  speedAnimation: 0.6 }),
           ]
+          enemys = [
+
+            new robot ({x:76*gridSize, y:-25*gridSize, moveSize:22}),
+            new robot ({x:76*gridSize, y:-21*gridSize, moveSize:22}),
+            new robot ({x:76*gridSize, y:-17*gridSize, moveSize:22}),
+            new robot ({x:76*gridSize, y:-25*gridSize, moveSize:22}),
+            new robot ({x:76*gridSize, y:-21*gridSize, moveSize:22}),
+            new robot ({x:76*gridSize, y:-17*gridSize, moveSize:22}),
+            new robot ({x:76*gridSize, y:-13*gridSize, moveSize:22}),
+            new boss1 ({x:8*gridSize, y:-28*gridSize, moveSize:122}),
+          ]
+          jewels = [
+            new jewel({x:72*gridSize,  y:  8*gridSize, number:3}),
+            new jewel({x: 4*gridSize,  y: -2*gridSize, number:3}),
+            new jewel({x:58*gridSize,  y: -8*gridSize, number:3}),
+            new jewel({x:58*gridSize,  y:-28*gridSize, number:3}),
+          ]
+          life_ups = [ new life_up({ x:3*gridSize,  y:-28*gridSize }), ]
           gates = [ new gate({x:74*gridSize,y:-32*gridSize}) ]
+          btns = create_joystick("b");
+          lifes = [ new Life({x:38, y:8}) ]
+          painels = [ new painel({x:0, y:0}), ]
+          barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+          barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+          fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 8:
             resetObjects();

@@ -105,8 +105,8 @@ class sound{
     musicRun = function (){
       if(this.musicOn){
         if(snd.audList[this.audioName].currentTime==0 ||
-           snd.audList[this.audioName].currentTime==snd.audList[this.audioName].duration){
-            snd.audList[this.audioName].play();
+          snd.audList[this.audioName].currentTime==snd.audList[this.audioName].duration){
+          snd.audList[this.audioName].play();
         }
       }
     }
