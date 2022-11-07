@@ -24,7 +24,7 @@ function init(level){
             music = new sound({audioName:"theme"})
             music.musicPlay();
         break;
-        case 2:
+        case 20:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -966,6 +966,31 @@ function init(level){
               new asteroide2({x:136*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
               new asteroide1({x:138*gridSize,y:-7*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
               new asteroide2({x:139*gridSize,y:-9*gridSize,direction:"d",speed: getRandomArbitrary(2, 6)}),
+            ]
+            Nave = [ new nave({x:200,y:150}) ]
+            jewels = [
+              new jewel({x:62*gridSize, y:4*gridSize, number:1})
+            ]
+            gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
+            btns = create_joystick("w");
+            lifes = [ new Life({x:38, y:8}) ]
+            painels = [ new painel({x:0, y:0}), ]
+            barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+            barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+            fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+        break;
+        case 2:
+            music.stop();
+            resetObjects();
+            scenario.cMin=0;
+            scenario.cMax=3;
+            scenario.rMin=0;
+            scenario.rMax=0;
+            backgrounds = [
+              new background({x:0, y:0, imgName: 'background10'}),
+            ]
+            enemys = [
+              new boss3({x:35*gridSize, y:4*gridSize, moveSize:80})
             ]
             Nave = [ new nave({x:200,y:150}) ]
             jewels = [
