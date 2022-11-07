@@ -19,7 +19,7 @@ function init(level){
             music = new sound({audioName:"theme"})
             music.musicPlay();
         break;
-        case 20:
+        case 2:
           music.stop();
           resetObjects();
           scenario.cMin=0;
