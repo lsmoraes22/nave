@@ -1,17 +1,22 @@
 function init(level){
     switch(level) {
         case 'game_over':
+            music.stop();
             resetObjects();
+            music = new sound({audioName:"game_over"})
+            music.musicPlay();
             backgrounds = [ new background({imgName: 'game-over'}),]
             play_agains = [ new play_again({x:140, y:240}), ]
         break;
         case 0:
+            if(!isNull(music)){music.stop();}
             resetObjects();
             backgrounds = [ new background({ imgName: 'title'}),]
             plays = [ new play({x:190, y:250, imgName:"play"}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 1:
+            if(!isNull(music)){music.stop();}
             resetObjects();
             backgrounds = [ new background({imgName: 'scene1'}),]
             nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
@@ -97,6 +102,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         case 3:
+            music.stop();
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -252,6 +258,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:100, y:10}), ]
         break;
         case 4:
+            music.stop();
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -423,6 +430,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         case 5:
+            music.stop();
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=2;
@@ -470,6 +478,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         case 6:
+            music.stop();
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -595,8 +604,6 @@ function init(level){
         break;
         case 7:
           music.stop();
-          music = new sound({audioName:"base"})
-          music.musicPlay();
           resetObjects();
           scenario.cMin=0;
           scenario.cMax=3;
@@ -818,6 +825,7 @@ function init(level){
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 8:
+            music.stop();
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=2;
@@ -870,6 +878,7 @@ function init(level){
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 9:
+            music.stop();
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=6;
