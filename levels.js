@@ -979,7 +979,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 2:
+        case 10:
             music.stop();
             resetObjects();
             scenario.cMin=0;
