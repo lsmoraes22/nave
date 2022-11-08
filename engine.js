@@ -242,7 +242,7 @@ function animate(){
                  ){
                      if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
                          if(tlg.nameSprite != 'explosion' && tlg.nameSprite !== null && tlg.nameSprite !== null && !tlg.shotReady ){
-                              Nave[0].damage(5*obj.shotNumber);
+                             Nave[0].damage(5*obj.shotNumber);
                              tlg.impact();
                          }
                      }
@@ -281,14 +281,16 @@ function animate(){
                      var p10 = sht.points(2);
                      var p11 = sht.points(3);
                      var p12 = sht.points(4);
-                     if(
-                         tlg.colision(p9.x,p9.y) ||
-                         tlg.colision(p10.x,p10.y) ||
-                         tlg.colision(p11.x,p11.y) ||
-                         tlg.colision(p12.x,p12.y)
-                     ){
-                         tlg.impact();
-                         sht.impact();
+                     if(tlg.nameSprite != 'explosion'){
+                       if(
+                           tlg.colision(p9.x,p9.y) ||
+                           tlg.colision(p10.x,p10.y) ||
+                           tlg.colision(p11.x,p11.y) ||
+                           tlg.colision(p12.x,p12.y)
+                       ){
+                           tlg.impact();
+                           sht.impact();
+                       }
                      }
                  })
              })

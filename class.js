@@ -1667,7 +1667,7 @@ class teleguide extends character {
                 if(this.position.x >canvas.width+scenario.x+50 || this.position.y >canvas.height+scenario.y+50 ){this.launchReady = true;}
                 if(this.position.x <scenario.x-50 || this.position.y <scenario.y-50 ){this.launchReady = true;}
                 this.timeToSearch++;
-                if(this.timeToSearch==300){this.impact();}
+                //if(this.timeToSearch==300){this.impact();}
             }
         }else{
             this.launchReady = true;
