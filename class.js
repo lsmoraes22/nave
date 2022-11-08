@@ -3416,6 +3416,15 @@ class boss2 extends enemy {
         this.shotPosAdjust.left.x =  25
         this.shotPosAdjust.left.y = 13
 
+        this.sprites.explosion.sprite.img        = 'boss2'
+        this.sprites.explosion.sprite.cropWidth  = gridSize*4
+        this.sprites.explosion.sprite.cropHeight = gridSize*4
+        this.sprites.explosion.sprite.width      = gridSize*4
+        this.sprites.explosion.sprite.height     = gridSize*4
+        this.sprites.explosion.sprite.assetPos.x = 19
+        this.sprites.explosion.speedAnimation    = 1
+        this.sprites.explosion.sprite.imgFrm     = 45
+
         this.sprites.stopedLeft.sprite.cropWidth = gridSize*4
         this.sprites.stopedLeft.sprite.cropHeight = gridSize*4
         this.sprites.stopedLeft.sprite.width = gridSize*4
