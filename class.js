@@ -3499,15 +3499,6 @@ class boss3 extends enemy {
         this.launchPosAdjust.up.x = 175
         this.launchPosAdjust.up.y = 12
 
-        this.sprites.explosion.sprite.img        = 'boss3'
-        this.sprites.explosion.sprite.cropWidth  = gridSize*9
-        this.sprites.explosion.sprite.cropHeight = gridSize*5
-        this.sprites.explosion.sprite.width      = gridSize*9
-        this.sprites.explosion.sprite.height     = gridSize*5
-        this.sprites.explosion.sprite.assetPos.x = 4
-        this.sprites.explosion.speedAnimation    = 1
-        this.sprites.explosion.sprite.imgFrm     = 45
-
         this.sprites.stopedLeft.sprite.cropWidth = gridSize*9
         this.sprites.stopedLeft.sprite.cropHeight = gridSize*5
         this.sprites.stopedLeft.sprite.width = gridSize*9
@@ -3622,6 +3613,16 @@ class boss4 extends enemy {
         this.shotPosAdjust.left.x =  225
         this.shotPosAdjust.left.y = 213
         this.haveShot = false;
+
+        this.sprites.explosion.sprite.img        = 'boss4'
+        this.sprites.explosion.sprite.cropWidth  = 318
+        this.sprites.explosion.sprite.cropHeight = gridSize*3
+        this.sprites.explosion.sprite.width      = 318
+        this.sprites.explosion.sprite.height     = gridSize*3
+        this.sprites.explosion.sprite.assetPos.x = 4
+        this.sprites.explosion.speedAnimation    = 1
+        this.sprites.explosion.sprite.imgFrm     = 45
+
         this.sprites.stopedLeft.sprite.cropWidth = 318
         this.sprites.stopedLeft.sprite.cropHeight = gridSize*3
         this.sprites.stopedLeft.sprite.width = 318
