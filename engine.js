@@ -18,6 +18,7 @@ function animate(){
         c.clearRect(0,0, canvas.width, canvas.height);
         scenario.update();
         backgrounds.forEach(obj =>{obj.update();})
+        static_objs.forEach(obj =>{obj.update();})
         paralaxes.forEach(obj =>{obj.update();})
         arrows.forEach(obj =>{obj.update();})
         trees.forEach(obj =>{obj.update();})
@@ -32,7 +33,6 @@ function animate(){
         drops.forEach(obj =>{obj.update();})
         energy_houses.forEach(obj =>{obj.update();})
         shocks.forEach(obj =>{obj.update();})
-        static_objs.forEach(obj =>{obj.update();})
         enemys.forEach(obj =>{obj.update();})
         buildings.forEach(obj =>{ obj.update(); })
         waters.forEach(obj =>{obj.update();})
@@ -281,7 +281,7 @@ function animate(){
                      var p10 = sht.points(2);
                      var p11 = sht.points(3);
                      var p12 = sht.points(4);
-                     if(tlg.nameSprite != 'explosion'){
+                     if(tlg.nameSprite != 'explosion' && (p9.y!=0 && p9.x!=0) ){
                        if(
                            tlg.colision(p9.x,p9.y) ||
                            tlg.colision(p10.x,p10.y) ||

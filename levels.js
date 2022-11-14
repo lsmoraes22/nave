@@ -824,7 +824,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 2:
+        case 8:
             music.stop();
             resetObjects();
             scenario.cMin=0;
@@ -979,7 +979,217 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 10:
+        case 2:
+          music.stop();
+          resetObjects();
+          scenario.cMin=0;
+          scenario.cMax=6;
+          scenario.rMin=0;
+          scenario.rMax=0;
+          backgrounds = [
+            new background({x:0, y:0, imgName: 'background10'}),
+          ]
+          static_objs = [
+            new static_obj({x:150, y:180, imgName: 'planet11'}),
+            new static_obj({x:0, y:330, imgName: 'orbit'}),
+          ]
+          Nave = [ new nave({x:200,y:150}) ]
+          jewels = [
+            new jewel({x:62*gridSize, y:4*gridSize, number:1})
+          ]
+          satelites = [
+            new satelite({x:10*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:12*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:13*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:15*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:16*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:18*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:20*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:21*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:22*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:23*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:24*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:26*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:28*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:30*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:31*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:32*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:33*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:34*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:35*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:36*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:37*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:38*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:39*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:40*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:41*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:42*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:43*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:44*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:45*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:46*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:47*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:48*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:49*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:50*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+            new satelite({x:51*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:52*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:53*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:54*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:55*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:56*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:57*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:58*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:59*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:60*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+            new satelite({x:61*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:62*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:63*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:64*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:65*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:66*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:67*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:68*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:69*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:70*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+            new satelite({x:71*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:72*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:73*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:74*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:75*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:76*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:77*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:78*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:79*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:80*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+            new satelite({x:81*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:82*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:83*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:84*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:85*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:86*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:87*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:88*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:89*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:90*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+            new satelite({x:91*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:92*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:93*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:94*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:95*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:96*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:97*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:98*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:99*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:100*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+            new satelite({x:101*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:102*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:103*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:104*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:105*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:106*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:107*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:108*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:109*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:110*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+            new satelite({x:111*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:112*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:113*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:114*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:115*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:116*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:117*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:118*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:119*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:120*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+            new satelite({x:121*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:122*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:123*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:124*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:125*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:126*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:127*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:128*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:129*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:130*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+            new satelite({x:131*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:132*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:133*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:134*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:135*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:136*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:137*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:138*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:139*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+            new satelite({x:140*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
+
+
+
+          ]
+          gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
+          btns = create_joystick("w");
+          lifes = [ new Life({x:38, y:8}) ]
+          painels = [ new painel({x:0, y:0}), ]
+          barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+          barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+          fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+        break;
+        case 11:
+          music.stop();
+          resetObjects();
+          scenario.cMin=0;
+          scenario.cMax=3;
+          scenario.rMin=0;
+          scenario.rMax=0;
+          backgrounds = [
+            new background({x:0, y:0, imgName: 'background2'}),
+            new background({x:0, y:0, imgName: 'atmosphere'}),
+          ]
+          tiles = create_whiteMountain(-1,9,27,4);
+          tiles = tiles.concat(create_whiteMountain(45,9,23,4));
+          tiles = tiles.concat(create_whiteMountain(67,7,12,6));
+          tiles = tiles.concat(create_whiteMountain(77,9,11,3));
+          tiles = tiles.concat(create_whiteMountain(75,-1,12,6));
+          tiles = tiles.concat(create_whiteMountain(87,7,12,6));
+          tiles = tiles.concat(create_whiteMountain(140,9,15,3));
+          tiles = tiles.concat(create_whiteMountain(118,9,12,4));
+          waters = water1_create(26,10,19);
+          waters = waters.concat(water2_create(26,11,19));
+          waters = waters.concat(water1_create(99,10,19));
+          waters = waters.concat(water2_create(99,11,19));
+          waters = waters.concat(water1_create(130,10,10));
+          waters = waters.concat(water2_create(130,11,10));
+          buildings = create_alien_building(9,4,5);
+          buildings = buildings.concat(create_alien_building(49,4,5));
+          buildings = buildings.concat(create_alien_building(69,4,3));
+          buildings = buildings.concat(create_alien_building(92,4,3));
+          buildings = buildings.concat(create_alien_building(92,4,3));
+          buildings = buildings.concat(create_alien_building(122,6,3));
+          shocks = create_shock_v(82,5,4);
+          Nave = [ new nave({x:200,y:150}) ]
+          jewels = [
+            new jewel({x:62*gridSize, y:4*gridSize, number:1})
+          ]
+          gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
+          btns = create_joystick("b");
+          lifes = [ new Life({x:38, y:8}) ]
+          painels = [ new painel({x:0, y:0}), ]
+          barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+          barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+          fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+        break;
+        case 12:
+        break;
+        case 13:
             music.stop();
             resetObjects();
             scenario.cMin=0;
@@ -987,7 +1197,8 @@ function init(level){
             scenario.rMin=0;
             scenario.rMax=0;
             backgrounds = [
-              new background({x:0, y:0, imgName: 'background10'}),
+              new background({x:0, y:0, imgName: 'background2'}),
+              new background({x:0, y:0, imgName: 'atmosphere'}),
             ]
             enemys = [
               new boss3({x:35*gridSize, y:4*gridSize, moveSize:80})
@@ -996,7 +1207,7 @@ function init(level){
             jewels = [
               new jewel({x:62*gridSize, y:4*gridSize, number:1})
             ]
-            gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
+            gates = [ new gate({x:15*gridSize,y:6*gridSize}) ]
             btns = create_joystick("w");
             lifes = [ new Life({x:38, y:8}) ]
             painels = [ new painel({x:0, y:0}), ]
