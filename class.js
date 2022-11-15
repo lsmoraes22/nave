@@ -3017,6 +3017,7 @@ class enemy extends character {
         this.shotNumber = shotNumber                          //tipo de tiro
         this.shotDirection = shotDirection                    //h: horizontal, v: vertical, d: diagonal
         this.launchDirection = 'up'                           //h: horizontal, v: vertical, d: diagonal
+        this.speedMove = 2                                    //velocidade do movimento
         this.shotPosIni = {left:{x:0,y:0}, right:{x:0,y:0}}   //posicao inicial xy do tiro
         this.launchPosIni = {
             up:{x:0,y:0},
@@ -3266,7 +3267,11 @@ class enemy extends character {
                 }
             }
             if(this.nameSprite=='left' || this.nameSprite=='right'){
-                if (this.move=='left'){ this.position.x-=2; } else if (this.move=='right'){ this.position.x+=2; }
+                if (this.move=='left'){
+                  this.position.x-=this.speedMove;
+                } else if (this.move=='right'){
+                  this.position.x+=this.speedMove;
+                }
             }
             if(this.type == 'enemy'){
                 if(this.posXIni>=this.position.x+this.moveSize ){
@@ -3286,11 +3291,11 @@ class enemy extends character {
                     if(this.posXIni>=this.position.x+this.moveSize ){
                         this.nameSprite = 'stopedRight';
                         this.move='right';
-                        this.position.x += 2;
+                        this.position.x += this.speedMove;
                     } else if(this.posXIni<=this.position.x-this.moveSize){
                         this.nameSprite = 'stopedLeft';
                         this.move='left';
-                        this.position.x -= 2;
+                        this.position.x -= this.speedMove;
                     }
                 }
             }
@@ -3327,7 +3332,6 @@ class robot extends enemy {
         this.sprites.left.speedAnimation = 0.1
     }
 }
-
 class boss1 extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3396,7 +3400,6 @@ class boss1 extends enemy {
         this.sprites.left.sprite.imgFrm = 8
     }
 }
-
 class boss2 extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3474,7 +3477,6 @@ class boss2 extends enemy {
         this.sprites.left.sprite.imgFrm = 8
     }
 }
-
 class boss3 extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3602,7 +3604,6 @@ class boss3 extends enemy {
         ]
     }
 }
-
 class boss4 extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3687,7 +3688,6 @@ class boss4 extends enemy {
         this.sprites.left.sprite.imgFrm = 4
     }
 }
-
 class nave_enemy1 extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3711,7 +3711,6 @@ class nave_enemy1 extends enemy {
         this.sprites.left.speedAnimation = 0.7
     }
 }
-
 class nave_enemy2 extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3731,7 +3730,6 @@ class nave_enemy2 extends enemy {
         this.sprites.left.speedAnimation = 0.7
     }
 }
-
 class tank extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3752,6 +3750,48 @@ class tank extends enemy {
         this.sprites.left.sprite.imgFrm = 1
     }
 }
+
+
+class tripod extends enemy {
+    constructor({x, y, moveSize}){
+        super({
+            x: x,
+            y: y,
+            spriteSheet: 'tripod',
+            shotNumber: 4,
+            shotCount:14,
+            shotDirection: 'd',
+            moveSize: moveSize
+        })
+        this.speedMove = 1
+        this.bodyColision = {x:0, y:17, w: 35, h: 18};
+        this.sprites.explosion.sprite.img        = 'tripod'
+        this.sprites.explosion.sprite.cropWidth  = gridSize*2
+        this.sprites.explosion.sprite.cropHeight = gridSize*2
+        this.sprites.explosion.sprite.width      = gridSize*2
+        this.sprites.explosion.sprite.height     = gridSize*2
+        this.sprites.explosion.sprite.assetPos.x = 11
+        this.sprites.explosion.speedAnimation    = 1
+        this.sprites.explosion.sprite.imgFrm     = 15
+
+        this.sprites.right.sprite.cropWidth = gridSize*2
+        this.sprites.right.sprite.cropHeight = gridSize*2
+        this.sprites.right.sprite.width = gridSize*2
+        this.sprites.right.sprite.height = gridSize*2
+        this.sprites.right.sprite.assetPos.x = 6
+        this.sprites.right.speedAnimation = 0.12
+        this.sprites.right.sprite.imgFrm = 6
+
+        this.sprites.left.sprite.cropWidth = gridSize*2
+        this.sprites.left.sprite.cropHeight = gridSize*2
+        this.sprites.left.sprite.width = gridSize*2
+        this.sprites.left.sprite.height = gridSize*2
+        this.sprites.left.sprite.assetPos.x = 0
+        this.sprites.left.speedAnimation = 0.12
+        this.sprites.left.sprite.imgFrm = 6
+    }
+}
+
 
 class static_obj {
     constructor({x,y,imgName}){

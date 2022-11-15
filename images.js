@@ -44,6 +44,7 @@ class imageCanvas {
         {name: "boss3",                   src: this.img_src+"boss3.png",	            sx:0,	sy:0,	width:35,	height:35	},
         {name: "boss3_explosion",         src: this.img_src+"boss3_explosion.png",	  sx:0,	sy:0,	width:35,	height:35	},
         {name: "boss4",                   src: this.img_src+"boss4.png",	            sx:0,	sy:0,	width:35,	height:35	},
+        {name: "tripod",                  src: this.img_src+"tripod.png",	            sx:0,	sy:0,	width:70,	height:70	},
         {name: "full_screen",             src: this.img_src+"full_screen.png",	      sx:0,	sy:0,	width:35,	height:35	},
         {name: "fury",                    src: this.img_src+"fury.png",	              sx:0,	sy:0,	width:35,	height:35	},
         {name: "energy_house",            src: this.img_src+"energy_house.png",	      sx:0,	sy:0,	width:35,	height:35	},

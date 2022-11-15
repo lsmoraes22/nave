@@ -150,7 +150,6 @@ function init(level){
             shocks = shocks.concat(create_shock_h(26,-19,28,true))
             buildings = create_building(9,2,5)
             buildings = buildings.concat(create_building(25,2,6))
-
             enemys = [
                 new tank({x:21*gridSize, y:-6*gridSize, moveSize: 70}),
                 new robot({x:21*gridSize, y:7*gridSize, moveSize: 80}),
@@ -979,7 +978,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 2:
+        case 10:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -995,7 +994,10 @@ function init(level){
           ]
           Nave = [ new nave({x:200,y:150}) ]
           jewels = [
-            new jewel({x:62*gridSize, y:4*gridSize, number:1})
+            new jewel({x:30*gridSize, y:getRandomArbitrary(2,10)*gridSize, number:1}),
+            new jewel({x:65*gridSize, y:getRandomArbitrary(2,10)*gridSize, number:1}),
+            new jewel({x:95*gridSize, y:getRandomArbitrary(2,10)*gridSize, number:1}),
+            new jewel({x:125*gridSize, y:getRandomArbitrary(2,10)*gridSize, number:1}),
           ]
           satelites = [
             new satelite({x:10*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
@@ -1120,7 +1122,7 @@ function init(level){
             new satelite({x:128*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
             new satelite({x:129*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
             new satelite({x:130*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
-
+/**/
             new satelite({x:131*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
             new satelite({x:132*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
             new satelite({x:133*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
@@ -1131,10 +1133,11 @@ function init(level){
             new satelite({x:138*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
             new satelite({x:139*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
             new satelite({x:140*gridSize,y:getRandomArbitrary(2,10)*gridSize}),
-
-
-
           ]
+          shocks = create_shock_h(149, 5, 4, true);
+          shocks = shocks.concat(create_shock_v(149, 5, 4, true));
+          shocks = shocks.concat(create_shock_h(149, 8, 4, true));
+          shocks = shocks.concat(create_shock_v(149+3, 5, 4, true));
           gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
           btns = create_joystick("w");
           lifes = [ new Life({x:38, y:8}) ]
@@ -1143,7 +1146,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 11:
+        case 2:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -1178,6 +1181,9 @@ function init(level){
           Nave = [ new nave({x:200,y:150}) ]
           jewels = [
             new jewel({x:62*gridSize, y:4*gridSize, number:1})
+          ]
+          enemys = [
+              new tripod({x:12*gridSize, y:7*gridSize, moveSize: 70}),
           ]
           gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
           btns = create_joystick("b");

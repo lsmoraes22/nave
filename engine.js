@@ -154,9 +154,18 @@ function animate(){
                  obj.colision(p7.x,p7.y) ||
                  obj.colision(p8.x,p8.y)
              ){
-                 if( obj.nameSprite != 'explosion' && obj.nameSprite != null && Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion') {
+                 if(
+                     obj.nameSprite != 'explosion' &&
+                     obj.nameSprite != null &&
+                     Nave[0].nameSprite != null &&
+                     Nave[0].nameSprite != 'explosion'
+                   ) {
                      Nave[0].explode();
-                     if(obj.type=='enemy'){obj.nameSprite = 'explosion';}else {obj.lifeBossCurrent--;}
+                     if(obj.type=='enemy'){
+                       obj.nameSprite = 'explosion';
+                     } else {
+                       obj.lifeBossCurrent--;
+                     }
                  }
              }
              if(obj.haveTeleguide){
@@ -202,7 +211,10 @@ function animate(){
                      sht.impact_validate()
                  ){
                      if(
-                     obj.nameSprite != 'explosion' && obj.nameSprite !== null && !sht.shotReady ){
+                       obj.nameSprite != 'explosion' &&
+                       obj.nameSprite !== null &&
+                       !sht.shotReady
+                     ){
                          if(obj.type == 'boss' ){
                              obj.lifeBossCurrent--;
                              if(obj.lifeBossCurrent==0){
@@ -616,8 +628,12 @@ function animate(){
                  obj.colision(p7.x,p7.y) ||
                  obj.colision(p8.x,p8.y)
              ){
-                 if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' && obj.nameSprite == 'alive' ) {
+                 if(
+                   Nave[0].nameSprite != null &&
+                   Nave[0].nameSprite != 'explosion' &&
+                   obj.nameSprite == 'alive' ) {
                      Nave[0].explode();
+                     obj.explode();
                  }
              }
              Nave[0].shot.forEach(sht =>{
@@ -638,6 +654,15 @@ function animate(){
                      }
                  }
             })
+
+        })
+        countSatelites = Object.keys(satelites).length;
+        countSatelitesNull = 0;
+        satelites.forEach(sht=>{
+          countSatelitesNull += (sht.nameSprite == null ? 1 : 0 );
+          if( countSatelites==countSatelitesNull ){
+            shocks.forEach(s =>{s.continuous = true; s.onOff = 'off';})
+          }
         })
         drones.forEach(obj =>{
              var p1 = Nave[0].points(1);
