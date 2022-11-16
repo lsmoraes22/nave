@@ -3584,7 +3584,6 @@ class boss3 extends enemy {
         this.sprites.left.sprite.assetPos.y = 0
         this.sprites.left.speedAnimation = 0.4
         this.sprites.left.sprite.imgFrm = 1
-
         this.teleguides = [
             new teleguide({x:null,y:null}),
             new teleguide({x:null,y:null}),
@@ -3750,45 +3749,106 @@ class tank extends enemy {
         this.sprites.left.sprite.imgFrm = 1
     }
 }
-
-
-class tripod extends enemy {
+class antiaerea extends enemy {
     constructor({x, y, moveSize}){
         super({
             x: x,
             y: y,
-            spriteSheet: 'tripod',
+            spriteSheet: 'antiaerea',
             shotNumber: 4,
             shotCount:14,
             shotDirection: 'd',
             moveSize: moveSize
         })
+        this.haveShot = false
+        this.haveTeleguide = true
         this.speedMove = 1
-        this.bodyColision = {x:0, y:17, w: 35, h: 18};
-        this.sprites.explosion.sprite.img        = 'tripod'
+        this.type = 'boss'
+        this.launchPosAdjust.up.x = 50
+        this.launchPosAdjust.up.y = -20
+        this.bodyColision = {x:0, y:10, w: 70, h: 60};
+        this.sprites.explosion.sprite.img        = 'antiaerea'
         this.sprites.explosion.sprite.cropWidth  = gridSize*2
         this.sprites.explosion.sprite.cropHeight = gridSize*2
         this.sprites.explosion.sprite.width      = gridSize*2
         this.sprites.explosion.sprite.height     = gridSize*2
-        this.sprites.explosion.sprite.assetPos.x = 11
+        this.sprites.explosion.sprite.assetPos.x = 1
         this.sprites.explosion.speedAnimation    = 1
         this.sprites.explosion.sprite.imgFrm     = 15
 
+        this.sprites.right.sprite.img        = 'antiaerea'
         this.sprites.right.sprite.cropWidth = gridSize*2
         this.sprites.right.sprite.cropHeight = gridSize*2
         this.sprites.right.sprite.width = gridSize*2
         this.sprites.right.sprite.height = gridSize*2
-        this.sprites.right.sprite.assetPos.x = 6
+        this.sprites.right.sprite.assetPos.x = 0
         this.sprites.right.speedAnimation = 0.12
-        this.sprites.right.sprite.imgFrm = 6
+        this.sprites.right.sprite.imgFrm = 1
 
+        this.sprites.left.sprite.img        = 'antiaerea'
         this.sprites.left.sprite.cropWidth = gridSize*2
         this.sprites.left.sprite.cropHeight = gridSize*2
         this.sprites.left.sprite.width = gridSize*2
         this.sprites.left.sprite.height = gridSize*2
         this.sprites.left.sprite.assetPos.x = 0
         this.sprites.left.speedAnimation = 0.12
-        this.sprites.left.sprite.imgFrm = 6
+        this.sprites.left.sprite.imgFrm = 1
+
+        this.sprites.stopedLeft.sprite.cropWidth = gridSize*2
+        this.sprites.stopedLeft.sprite.cropHeight = gridSize*2
+        this.sprites.stopedLeft.sprite.width = gridSize*2
+        this.sprites.stopedLeft.sprite.height = gridSize*2
+        this.sprites.stopedLeft.sprite.assetPos.x = 0
+        this.sprites.stopedLeft.sprite.assetPos.y = 0
+        this.sprites.stopedLeft.speedAnimation = 0.1
+        this.sprites.stopedLeft.sprite.imgFrm = 1
+        this.sprites.stopedLeft.sprite.next = 'open'
+
+        this.sprites.open.sprite.cropWidth = gridSize*2
+        this.sprites.open.sprite.cropHeight = gridSize*2
+        this.sprites.open.sprite.width = gridSize*2
+        this.sprites.open.sprite.height = gridSize*2
+        this.sprites.open.sprite.assetPos.x = 0
+        this.sprites.open.sprite.assetPos.y = 0
+        this.sprites.open.speedAnimation = 0.01
+        this.sprites.open.sprite.imgFrm = 1
+        this.sprites.open.sprite.next = 'close'
+
+        this.sprites.close.sprite.cropWidth = gridSize*2
+        this.sprites.close.sprite.cropHeight = gridSize*2
+        this.sprites.close.sprite.width = gridSize*2
+        this.sprites.close.sprite.height = gridSize*2
+        this.sprites.close.sprite.assetPos.x = 0
+        this.sprites.close.sprite.assetPos.y = 0
+        this.sprites.close.speedAnimation = 0.01
+        this.sprites.close.sprite.imgFrm = 1
+
+        this.sprites.stopedRight.sprite.cropWidth = gridSize*2
+        this.sprites.stopedRight.sprite.cropHeight = gridSize*2
+        this.sprites.stopedRight.sprite.width = gridSize*2
+        this.sprites.stopedRight.sprite.height = gridSize*2
+        this.sprites.stopedRight.sprite.assetPos.x = 0
+        this.sprites.stopedRight.sprite.assetPos.y = 0
+        this.sprites.stopedRight.speedAnimation = 0.1
+        this.sprites.stopedRight.sprite.imgFrm = 1
+        this.sprites.stopedRight.sprite.next = 'open'
+        this.teleguides = [
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null}),
+            new teleguide({x:null,y:null})
+        ]
     }
 }
 

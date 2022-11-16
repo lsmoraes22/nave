@@ -1183,7 +1183,7 @@ function init(level){
             new jewel({x:62*gridSize, y:4*gridSize, number:1})
           ]
           enemys = [
-              new tripod({x:12*gridSize, y:7*gridSize, moveSize: 70}),
+              new antiaerea({x:12*gridSize, y:7*gridSize, moveSize: 70}),
           ]
           gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
           btns = create_joystick("b");
