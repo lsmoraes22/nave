@@ -45,7 +45,6 @@ class sprite{
         }
     }
 }
-
 class images{
     constructor({x, y, imgName}){
         this.imgName = imgName
@@ -92,7 +91,6 @@ class images{
            }
     }
 }
-
 class sound{
     constructor({audioName}){
         this.audioName = audioName
@@ -119,7 +117,6 @@ class sound{
         snd.audList[this.audioName].pause();
     }
 }
-
 class character {                                              //personagem
     constructor({x, y, colx, coly, colw, colh}){
         this.position = {x: x, y: y}
@@ -227,7 +224,6 @@ class character {                                              //personagem
         return ret;
     }
 }
-
 class nave extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:4, coly:4, colw:26, colh:31})
@@ -365,7 +361,7 @@ class nave extends character {
             }),
         }
         this.sounds = {
-          explosion: [ new sound({audioName:'explosion4'}) ],
+          explosion: [ new sound({audioName:'explosion1'}) ],
           laserShoot: [
             new sound({audioName:'laserShoot'}),
             new sound({audioName:'laserShoot'}),
@@ -387,7 +383,8 @@ class nave extends character {
             new sound({audioName:'laserShoot'}),
             new sound({audioName:'laserShoot'}),
             new sound({audioName:'laserShoot'})
-          ]
+          ],
+          damage: [new sound({audioName:'hitHurt_2'})]
         }
         this.shot = [
             new shot({x: null, y:null}),
@@ -472,7 +469,7 @@ class nave extends character {
       this.shotCount=20;this.furyTimeOnOff='on';
     }
     damage(damage){
-      if(this.protection.onOff=='off'){this.lifeBarr -=damage; }
+      if(this.protection.onOff=='off'){this.lifeBarr -=damage; this.sounds.damage[0].play();}
     }
     explode(){
       if(this.protection.onOff=='off'){
@@ -534,8 +531,6 @@ class nave extends character {
         }
     }
 }
-
-
 class fury extends character {
     constructor({x,y}){
       super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -570,7 +565,6 @@ class fury extends character {
       }
     }
 }
-
 class protection extends character {
     constructor({x,y}){
       super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -633,7 +627,6 @@ class protection extends character {
       }
     }
 }
-
 class shot extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -1068,7 +1061,6 @@ class shot extends character {
         } else{ this.shotReady = true; this.positionAbsolute = {x:null,y:null}; }
     }
 }
-
 class shot_enemy extends character {
     constructor({x,y,number}){
         super({x: x,y: y, colx:15, coly:15, colw:5, colh:5})
@@ -1432,7 +1424,6 @@ class shot_enemy extends character {
         }else{ this.shotReady = true; this.position = {x:null,y:null}; }
     }
 }
-
 class teleguide extends character {
     constructor({x, y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -1647,7 +1638,7 @@ class teleguide extends character {
                 speedAnimation: 1
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion1'], }
+        this.sounds = { impact: snd.audList['hitHurt_1'], }
     }
     update(){
         if(this.nameSprite !== null){
@@ -1681,10 +1672,10 @@ class teleguide extends character {
     }
     impact() {
       this.nameSprite = "explosion";
-      this.positionAbsolute = {x:null,y:null}
+      this.positionAbsolute = {x:null,y:null};
+      this.sounds.impact.play();
     }
 }
-
 class arrow extends character {
     constructor({x,y,direction}){
         super({x: x,y: y, colx:0, coly:11, colw:35, colh:24})
@@ -1770,7 +1761,6 @@ class arrow extends character {
         }
     }
 }
-
 class bubble extends character {
     constructor({x,y,speedAnimation}){
         super({x: x,y: y, colx:0, coly:20, colw:35, colh:15})
@@ -1800,7 +1790,6 @@ class bubble extends character {
         }
     }
 }
-
 class water1 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:11, colw:35, colh:24})
@@ -1830,7 +1819,6 @@ class water1 extends character {
         }
     }
 }
-
 class lava extends character {
     constructor({x,y,type}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -1872,7 +1860,6 @@ class lava extends character {
         }
     }
 }
-
 class drop extends character {
     constructor({x,y, speedAnimation}){
         super({x: x,y: y, colx:10, coly:10, colw:15, colh:15})
@@ -1927,7 +1914,6 @@ class drop extends character {
         }
     }
 }
-
 class gate extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:20, coly:20, colw:30, colh:30})
@@ -1979,7 +1965,6 @@ class gate extends character {
         }
     }
 }
-
 class shock_v extends character {
     constructor({x,y,shockNumber,continuous}){
         super({x: x,y: y, colx:12, coly:12, colw:10, colh:10})
@@ -2111,7 +2096,6 @@ class shock_v extends character {
         }
     }
 }
-
 class shock_h extends character {
     constructor({x,y,shockNumber,continuous}){
         super({x: x,y: y, colx:12, coly:12, colw:10, colh:10})
@@ -2243,7 +2227,6 @@ class shock_h extends character {
         }
     }
 }
-
 class water2 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -2273,7 +2256,6 @@ class water2 extends character {
         }
     }
 }
-
 class tree extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:5, coly:2, colw:25, colh:33})
@@ -2321,7 +2303,6 @@ class tree extends character {
         }
     }
 }
-
 class energy_house1 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:5, coly:2, colw:25, colh:33})
@@ -2369,7 +2350,6 @@ class energy_house1 extends character {
         }
     }
 }
-
 class energy_house2 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:5, coly:2, colw:25, colh:33})
@@ -2417,7 +2397,6 @@ class energy_house2 extends character {
         }
     }
 }
-
 class tile extends character {
     constructor({x,y,tileName}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -2833,7 +2812,6 @@ class tile extends character {
         }
     }
 }
-
 class asteroide1 extends character {
     constructor({x,y,direction,speed}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -2898,7 +2876,6 @@ class asteroide1 extends character {
         }
     }
 }
-
 class asteroide2 extends character {
     constructor({x,y,direction,speed}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -2961,7 +2938,6 @@ class asteroide2 extends character {
         }
     }
 }
-
 class satelite extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -3009,7 +2985,6 @@ class satelite extends character {
         }
     }
 }
-
 class enemy extends character {
     constructor({x, y, spriteSheet, shotNumber, shotCount, shotDirection, moveSize}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -3025,6 +3000,7 @@ class enemy extends character {
             down:{x:0,y:0},
             left:{x:0,y:0}
         }
+        this.actionAfterBossDeath = 'offEnergy'                 //acao apos a morte do boss
         this.shotPosAdjust = {left:{x:0,y:0}, right:{x:0,y:0}}  //ajustar posicao inicial xy do tiro (adiciona o valor xy informado)
         this.launchPosAdjust = {
             up:{x:0,y:0},
@@ -3165,7 +3141,10 @@ class enemy extends character {
                 speedAnimation: 1
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: snd.audList['explosion1'],
+          damage: snd.audList['hitHurt_1'],
+        }
         this.shot = [
             new shot_enemy({x: null, y:null, number: this.shotNumber}),
             new shot_enemy({x: null, y:null, number: this.shotNumber}),
@@ -3309,8 +3288,11 @@ class enemy extends character {
         this.shot.forEach(sht =>{sht.update();})
         this.teleguides.forEach(tlg =>{tlg.update();})
     }
+    damage(){
+      this.lifeBossCurrent--;
+      this.sounds.damage.play();
+    }
 }
-
 class robot extends enemy {
     constructor({x, y, moveSize}){
         super({
@@ -3763,6 +3745,9 @@ class antiaerea extends enemy {
         this.haveShot = false
         this.haveTeleguide = true
         this.speedMove = 1
+        this.lifeBossMax = 25
+        this.lifeBossCurrent = this.lifeBossMax
+        this.actionAfterBossDeath = ''
         this.type = 'boss'
         this.launchPosAdjust.up.x = 50
         this.launchPosAdjust.up.y = -20
@@ -3851,8 +3836,6 @@ class antiaerea extends enemy {
         ]
     }
 }
-
-
 class static_obj {
     constructor({x,y,imgName}){
         this.position = {
@@ -3873,7 +3856,6 @@ class static_obj {
         this.frames++;
     }
 }
-
 class background{
     constructor({imgName}){
         this.position = {
@@ -3894,7 +3876,6 @@ class background{
         this.frames++;
     }
 }
-
 class paralaxe{
     constructor({imgName}){
         this.imgName = imgName,
@@ -3927,7 +3908,6 @@ class paralaxe{
         this.frames++;
     }
 }
-
 class life_up extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -3962,7 +3942,6 @@ class life_up extends character {
         }
     }
 }
-
 class jewel extends character {
     constructor({x,y,number}){
         super({x: x,y: y, colx:5, coly:2, colw:25, colh:33})
@@ -3998,7 +3977,6 @@ class jewel extends character {
         }
     }
 }
-
 class drone extends character {
     constructor({x, y, moveDirection, moveSize}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -4060,7 +4038,6 @@ class drone extends character {
         }
     }
 }
-
 class alien_building1 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -4140,7 +4117,6 @@ class alien_building1 extends character {
         }
     }
 }
-
 class alien_building2 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -4220,8 +4196,6 @@ class alien_building2 extends character {
         }
     }
 }
-
-
 class alien_building3 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -4301,7 +4275,6 @@ class alien_building3 extends character {
         }
     }
 }
-
 class building1 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -4381,8 +4354,6 @@ class building1 extends character {
         }
     }
 }
-
-
 class building2 extends character {
     constructor({x,y}){
         super({x: x,y: y, colx:0, coly:0, colw:35, colh:35})
@@ -4460,7 +4431,6 @@ class building2 extends character {
         }
     }
 }
-
 class play extends images {
     constructor({x,y,imgName}){
         super({x: x-scenario.x,y: y-scenario.y, imgName:"play"})
@@ -4469,7 +4439,6 @@ class play extends images {
         this.animation();
     }
 }
-
 class btn_next extends images {
     constructor({x,y,imgName}){
         super({x: x-scenario.x,y: y-scenario.y, imgName: "next" })
@@ -4478,7 +4447,6 @@ class btn_next extends images {
         this.animation();
     }
 }
-
 class play_again extends images {
     constructor({x,y,imgName}){
         super({x: x,y: y, imgName:"play-again"})
@@ -4487,50 +4455,40 @@ class play_again extends images {
         this.animation();
     }
 }
-
 class full_screen extends images {
     constructor({x,y}){
       super({x: x,y: y, imgName:"full_screen"})
     }
     update(){ this.animation(); }
 }
-
 class painel extends images {
     constructor({x,y}){ super({x: x,y: y, imgName:"painel"}) }
     update(){ this.animation(); }
 }
-
 class barraVida2 extends images {
     constructor({x,y}){ super({x: x,y: y, imgName: "barraVida2"}) }
     update(){ this.animation();}
 }
-
 class barraVida1 extends images {
     constructor({x,y}){ super({x: x,y: y, imgName: "barraVida1"}) }
     update(){ this.animation(); }
 }
-
 class lifeBoss1 extends images {
     constructor({x,y}){ super({x: x,y: y, imgName: "lifeBoss1"}) }
     update(){ this.animation(); }
 }
-
 class lifeBoss2 extends images {
     constructor({x,y}){ super({x: x,y: y, imgName: "lifeBoss2"}) }
     update(){ this.animation(); }
 }
-
 class barraSuperTiro1 extends images {
     constructor({x,y}){ super({x: x,y: y, imgName: "barraSuperTiro1"}) }
     update(){ this.animation(); }
 }
-
 class barraSuperTiro2 extends images {
     constructor({x,y}){ super({x: x,y: y, imgName: "barraSuperTiro2"}) }
     update(){ this.animation(); }
 }
-
-
 class Life {
     constructor({x,y}){
         this.position = {
@@ -4565,67 +4523,56 @@ class Life {
         }
     }
 }
-
 class btn_a extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "button_a" : "button_a_2") }) }
     update(){ this.animation(); }
 }
-
 class btn_upleft extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "btn_upleft" : "btn_upleft_2")}) }
     update(){ this.animation(); }
 }
-
 class btn_up extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "btn_up" : "btn_up_2")}) }
     update(){ this.animation(); }
 }
-
 class btn_upright extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "btn_upright" : "btn_upright_2")}) }
     update(){ this.animation(); }
 }
-
 class btn_left extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "btn_left" : "btn_left_2")}) }
     update(){ this.animation(); }
 }
-
 class btn_center extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "btn_center" : "btn_center_2")}) }
     update(){ this.animation(); }
 }
-
 class btn_right extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "btn_right" : "btn_right_2")}) }
     update(){ this.animation(); }
 }
-
 class btn_downleft extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "btn_downleft" : "btn_downleft_2")}) }
     update(){ this.animation(); }
 }
-
 class btn_down extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "btn_down" : "btn_down_2")}) }
     update(){ this.animation(); }
 }
-
 class btn_downright extends images {
     constructor({x,y,color}){
       super({x: x,y: y, imgName:(color=='b' ? "btn_downright" : "btn_downright_2")}) }
     update(){ this.animation(); }
 }
-
 
 let Nave = [];
 let asteroides = [];
@@ -4696,14 +4643,12 @@ function resetObjects(){
     lavas = [];
     drops = [];
 }
-
 function die(){
     resetObjects();
     game_lives--;
     init(level);
     scenario.reset();
 }
-
 const keys = {
     right: {pressed: false},
     up:    {pressed: false},
@@ -4720,5 +4665,4 @@ const keys = {
         this.s.pressed = false;
     }
 }
-
 function nextLevel(){level++;}

@@ -24,7 +24,7 @@ function init(level){
             music = new sound({audioName:"theme"})
             music.musicPlay();
         break;
-        case 20:
+        case 2:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -460,6 +460,7 @@ function init(level){
                 new tank       ({x:38*gridSize,  y:9*gridSize,  moveSize: 90}),
                 new tank       ({x:43*gridSize,  y:9*gridSize,  moveSize:110}),
             ]
+            life_ups = [ new life_up({x:10*gridSize, y:8*gridSize})]
             shocks = create_shock_v(20,1,3,true)
             shocks = shocks.concat(create_shock_v(33,1,3,true))
             shocks = shocks.concat(create_shock_h(20,1,14,true))
@@ -477,6 +478,153 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         case 6:
+            music.stop();
+            resetObjects();
+            scenario.cMin=0;
+            scenario.cMax=6;
+            scenario.rMin=0;
+            scenario.rMax=0;
+            backgrounds = [
+                new background({x:0, y:0, imgName: 'background8'}),
+            ]
+            life_ups = [
+              new life_up({x:37*gridSize, y:3*gridSize})
+            ]
+            jewels = [
+              new jewel({x:107*gridSize, y:3*gridSize, number:3}),
+              new jewel({x:69*gridSize,  y:3*gridSize, number:3}),
+              new jewel({x:90*gridSize,  y:3*gridSize, number:3}),
+            ]
+            tiles = create_brownMountain(-1,10,158,2)
+            tiles = tiles.concat(create_brownMountain(-1,-1,158,3))
+            tiles = tiles.concat(create_brownHill1( 27, 5, 5))
+            tiles = tiles.concat(create_brownHill1( 37, 5, 5))
+            tiles = tiles.concat(create_brownHill1( 49, 5, 5))
+            tiles = tiles.concat(create_brownHill1( 60, 5, 5))
+            tiles = tiles.concat(create_brownHill1( 69, 5, 5))
+            tiles = tiles.concat(create_brownHill1( 80, 5, 5))
+            tiles = tiles.concat(create_brownHill1( 90, 5, 5))
+            tiles = tiles.concat(create_brownHill1(107, 5, 5))
+            tiles = tiles.concat(create_brownHill1(127, 5, 5))
+            drops = [
+
+                new drop({x:12*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:13*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:14*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:15*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:16*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:17*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:18*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:19*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:21*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:22*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:23*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:24*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:30*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:31*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:32*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:33*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:34*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:40*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:41*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:42*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:43*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:44*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:45*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:46*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:52*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:53*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:54*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:55*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:56*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:57*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:58*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:62*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:63*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:64*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:65*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:66*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:67*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:71*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:72*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:73*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:74*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:75*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:76*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:77*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:82*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:83*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:84*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:85*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:86*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:87*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:92*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:93*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:94*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:95*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:96*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:97*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:98*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:99*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:100*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:101*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:102*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:103*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:104*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:109*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:100*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:111*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:112*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:113*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:114*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:115*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:116*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:117*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:118*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:119*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:110*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:121*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:122*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:123*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:124*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+  //              new drop({x:125*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+  //              new drop({x:126*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+  //              new drop({x:127*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+  //              new drop({x:128*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:129*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:130*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+
+                new drop({x:131*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:132*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:133*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:134*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:135*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:136*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:137*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:138*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:139*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+                new drop({x:140*gridSize, y:2*gridSize, speedAnimation: getRandomArbitrary(0.1, 0.35)}),
+            ]
+            Nave = [ new nave({x:200,y:150}) ]
+            gates = [ new gate({x:150*gridSize,y:7*gridSize}) ]
+            btns = create_joystick("b");
+            lifes = [ new Life({x:38, y:8}) ]
+            painels = [ new painel({x:0, y:0}), ]
+            barraVidas1  = [ new barraVida1({x:70, y:2}), ]
+            barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+            fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+        break;
+        case 7:
             music.stop();
             resetObjects();
             scenario.cMin=0;
@@ -557,6 +705,7 @@ function init(level){
                 new drop({x:45*gridSize, y:3*gridSize, speedAnimation: 0.08}),
             ]
             gates = [ new gate({x:32*gridSize,y:6*gridSize}) ]
+            life_ups = [ new life_up({x:25*gridSize, y:6*gridSize}) ]
             lavas = lava1_create(0,9, 19)
             lavas = lavas.concat(lava2_create(0,10, 19))
             lavas = lavas.concat(lava2_create(0,11, 19))
@@ -601,7 +750,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 7:
+        case 8:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -798,7 +947,6 @@ function init(level){
             new bubble({x:62*gridSize, y:9*gridSize,  speedAnimation: 0.6 }),
           ]
           enemys = [
-
             new robot ({x:76*gridSize, y:-25*gridSize, moveSize:22}),
             new robot ({x:76*gridSize, y:-21*gridSize, moveSize:22}),
             new robot ({x:76*gridSize, y:-17*gridSize, moveSize:22}),
@@ -823,7 +971,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 8:
+        case 9:
             music.stop();
             resetObjects();
             scenario.cMin=0;
@@ -876,7 +1024,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 9:
+        case 10:
             music.stop();
             resetObjects();
             scenario.cMin=0;
@@ -970,6 +1118,9 @@ function init(level){
             jewels = [
               new jewel({x:62*gridSize, y:4*gridSize, number:1})
             ]
+            life_ups = [
+              new life_up({x:90*gridSize, y:3*gridSize})
+            ]
             gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
             btns = create_joystick("w");
             lifes = [ new Life({x:38, y:8}) ]
@@ -978,7 +1129,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 10:
+        case 11:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -989,6 +1140,7 @@ function init(level){
             new background({x:0, y:0, imgName: 'background10'}),
           ]
           static_objs = [
+            new static_obj({x:300, y:120, imgName: 'planet2'}),
             new static_obj({x:150, y:180, imgName: 'planet11'}),
             new static_obj({x:0, y:330, imgName: 'orbit'}),
           ]
@@ -1146,44 +1298,53 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 2:
+        case 12:
           music.stop();
           resetObjects();
           scenario.cMin=0;
-          scenario.cMax=3;
+          scenario.cMax=6;
           scenario.rMin=0;
           scenario.rMax=0;
           backgrounds = [
             new background({x:0, y:0, imgName: 'background2'}),
-            new background({x:0, y:0, imgName: 'atmosphere'}),
           ]
-          tiles = create_whiteMountain(-1,9,27,4);
-          tiles = tiles.concat(create_whiteMountain(45,9,23,4));
-          tiles = tiles.concat(create_whiteMountain(67,7,12,6));
-          tiles = tiles.concat(create_whiteMountain(77,9,11,3));
-          tiles = tiles.concat(create_whiteMountain(75,-1,12,6));
-          tiles = tiles.concat(create_whiteMountain(87,7,12,6));
-          tiles = tiles.concat(create_whiteMountain(140,9,15,3));
-          tiles = tiles.concat(create_whiteMountain(118,9,12,4));
-          waters = water1_create(26,10,19);
-          waters = waters.concat(water2_create(26,11,19));
-          waters = waters.concat(water1_create(99,10,19));
-          waters = waters.concat(water2_create(99,11,19));
-          waters = waters.concat(water1_create(130,10,10));
-          waters = waters.concat(water2_create(130,11,10));
+          static_objs = [
+            new static_obj({x:300, y:120, imgName: 'planet2'}),
+            new static_obj({x:150, y:180, imgName: 'planet11'}),
+            new static_obj({x:0, y:0, imgName: 'atmosphere'}),
+          ]
+          tiles = create_whiteMountain(-1,9,158,4);
           buildings = create_alien_building(9,4,5);
           buildings = buildings.concat(create_alien_building(49,4,5));
-          buildings = buildings.concat(create_alien_building(69,4,3));
-          buildings = buildings.concat(create_alien_building(92,4,3));
-          buildings = buildings.concat(create_alien_building(92,4,3));
+          buildings = buildings.concat(create_alien_building(69,4,5));
+          buildings = buildings.concat(create_alien_building(92,4,5));
           buildings = buildings.concat(create_alien_building(122,6,3));
-          shocks = create_shock_v(82,5,4);
+          shocks = create_shock_v(82,1,8);
+          shocks = shocks.concat(create_shock_v(22,1,8));
+          shocks = shocks.concat(create_shock_v(49,1,3));
+          shocks = shocks.concat(create_shock_v(69,1,3));
+          shocks = shocks.concat(create_shock_v(92,1,3));
+          shocks = shocks.concat(create_shock_v(122,1,5));
+          shocks = shocks.concat(create_shock_v(103,1,8));
+          shocks = shocks.concat(create_shock_v(135,1,8));
           Nave = [ new nave({x:200,y:150}) ]
           jewels = [
-            new jewel({x:62*gridSize, y:4*gridSize, number:1})
+            new jewel({x:62*gridSize, y:4*gridSize, number:1}),
+            new jewel({x:121*gridSize, y:4*gridSize, number:1}),
+            new jewel({x:124*gridSize, y:4*gridSize, number:3}),
           ]
+          life_ups = [ new life_up({x:28*gridSize, y:7*gridSize})]
           enemys = [
               new antiaerea({x:12*gridSize, y:7*gridSize, moveSize: 70}),
+              new antiaerea({x:32*gridSize, y:7*gridSize, moveSize: 50}),
+              new antiaerea({x:39*gridSize, y:7*gridSize, moveSize: 45}),
+              new antiaerea({x:53*gridSize, y:7*gridSize, moveSize: 40}),
+              new antiaerea({x:63*gridSize, y:7*gridSize, moveSize: 50}),
+              new antiaerea({x:88*gridSize, y:7*gridSize, moveSize: 45}),
+              new antiaerea({x:95*gridSize, y:7*gridSize, moveSize: 50}),
+              new antiaerea({x:108*gridSize, y:7*gridSize, moveSize: 52}),
+              new antiaerea({x:126*gridSize, y:7*gridSize, moveSize: 42}),
+              new antiaerea({x:138*gridSize, y:7*gridSize, moveSize: 40}),
           ]
           gates = [ new gate({x:150*gridSize,y:6*gridSize}) ]
           btns = create_joystick("b");
@@ -1193,28 +1354,42 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 12:
-        break;
         case 13:
             music.stop();
             resetObjects();
             scenario.cMin=0;
-            scenario.cMax=3;
+            scenario.cMax=2;
             scenario.rMin=0;
             scenario.rMax=0;
             backgrounds = [
               new background({x:0, y:0, imgName: 'background2'}),
-              new background({x:0, y:0, imgName: 'atmosphere'}),
+            ]
+            static_objs = [
+              new static_obj({x:300, y:120, imgName: 'planet2'}),
+              new static_obj({x:150, y:180, imgName: 'planet11'}),
+              new static_obj({x:0, y:0, imgName: 'atmosphere'}),
             ]
             enemys = [
-              new boss3({x:35*gridSize, y:4*gridSize, moveSize:80})
+              new boss3({x:35*gridSize, y:4*gridSize, moveSize:80}),
+              new antiaerea({x:15*gridSize, y:8*gridSize, moveSize:80})
             ]
             Nave = [ new nave({x:200,y:150}) ]
             jewels = [
               new jewel({x:62*gridSize, y:4*gridSize, number:1})
             ]
-            gates = [ new gate({x:15*gridSize,y:6*gridSize}) ]
-            btns = create_joystick("w");
+            life_ups = [
+              new life_up({x:17*gridSize, y:8*gridSize})
+            ]
+            tiles = create_whiteMountain(-1,10,58,3)
+            shocks = create_shock_h(47,5,4,true)
+            shocks = shocks.concat(create_shock_v(47,5,4,true))
+            shocks = shocks.concat(create_shock_v(50,5,4,true))
+            shocks = shocks.concat(create_shock_h(47,8,4,true))
+            shocks = shocks.concat(create_shock_v(32,3,6,true))
+            shocks = shocks.concat(create_shock_v(32,9,2,true))
+            shocks = shocks.concat(create_shock_h(32,3,14,true))
+            gates = [ new gate({x:48*gridSize,y:6*gridSize}) ]
+            btns = create_joystick("b");
             lifes = [ new Life({x:38, y:8}) ]
             painels = [ new painel({x:0, y:0}), ]
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
