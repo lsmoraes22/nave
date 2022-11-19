@@ -3698,7 +3698,7 @@ class nave_enemy2 extends enemy {
             x: x,
             y: y,
             spriteSheet: 'nave_enemy2',
-            shotNumber: 3,
+            shotNumber: 2,
             shotCount:14,
             shotDirection: 'h',
             moveSize: moveSize
@@ -3717,7 +3717,7 @@ class tank extends enemy {
             x: x,
             y: y,
             spriteSheet: 'assets',
-            shotNumber: 4,
+            shotNumber: 1,
             shotCount:14,
             shotDirection: 'd',
             moveSize: moveSize
