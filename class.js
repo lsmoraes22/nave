@@ -1410,14 +1410,14 @@ class shot_enemy extends character {
                 if(this.sprites[this.nameSprite].sprite.end){
                     this.nameSprite = this.sprites[this.nameSprite].sprite.next;
                 }
-                if(this.nameSprite == 'r_default'){ this.position.x-=this.speedShot;}
-                if(this.nameSprite == 'l_default'){ this.position.x+=this.speedShot;}
-                if(this.nameSprite == 'u_default'){ this.position.y-=this.speedShot;}
-                if(this.nameSprite == 'd_default'){ this.position.y+=this.speedShot;}
-                if(this.nameSprite == 'ul_default'){ this.position.y-=this.speedShot; this.position.x-=this.speedShot;}
-                if(this.nameSprite == 'dl_default'){ this.position.y+=this.speedShot; this.position.x-=this.speedShot;}
-                if(this.nameSprite == 'ur_default'){ this.position.y-=this.speedShot; this.position.x+=this.speedShot;}
-                if(this.nameSprite == 'dr_default'){ this.position.y+=this.speedShot; this.position.x+=this.speedShot;}
+                if(this.nameSprite == 'r_default'){ this.position.x-=this.speedShot;this.bodyColision = {x:0, y:15, w: 5, h: 5};}
+                if(this.nameSprite == 'l_default'){ this.position.x+=this.speedShot;this.bodyColision = {x:30, y:15, w: 5, h: 5};}
+                if(this.nameSprite == 'u_default'){ this.position.y-=this.speedShot;this.bodyColision = {x:15, y:0, w: 5, h: 5};}
+                if(this.nameSprite == 'd_default'){ this.position.y+=this.speedShot;this.bodyColision = {x:15, y:30, w: 5, h: 5};}
+                if(this.nameSprite == 'ul_default'){ this.position.y-=this.speedShot; this.position.x-=this.speedShot;this.bodyColision = {x:0, y:0, w: 5, h: 5};}
+                if(this.nameSprite == 'dl_default'){ this.position.y+=this.speedShot; this.position.x-=this.speedShot;this.bodyColision = {x:0, y:30, w: 5, h: 5};}
+                if(this.nameSprite == 'ur_default'){ this.position.y-=this.speedShot; this.position.x+=this.speedShot;this.bodyColision = {x:30, y:0, w: 5, h: 5};}
+                if(this.nameSprite == 'dr_default'){ this.position.y+=this.speedShot; this.position.x+=this.speedShot;this.bodyColision = {x:30, y:30, w: 5, h: 5};}
             }
             if(this.position.x >canvas.width+scenario.x+50 || this.position.y >canvas.height+scenario.y+50 )
             {this.shotReady = true;}
@@ -3680,6 +3680,7 @@ class nave_enemy1 extends enemy {
             shotDirection: 'h',
             moveSize: moveSize
         })
+        this.bodyColision = {x:0, y:11, w: 35, h: 13};
         this.lifeBossMax = 1
         this.shotPosAdjust.right.x = -20
         this.shotPosAdjust.right.y = 3
@@ -3698,7 +3699,7 @@ class nave_enemy2 extends enemy {
             x: x,
             y: y,
             spriteSheet: 'nave_enemy2',
-            shotNumber: 2,
+            shotNumber: 1,
             shotCount:14,
             shotDirection: 'h',
             moveSize: moveSize

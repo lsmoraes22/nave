@@ -14,6 +14,8 @@ function animate(){
     then = now - (elapsed % fpsInterval);
     if(pause==false){
       if(screen.width>screen.height){
+        canvas.width = (screen.width<=900 ? screen.width : 900)  //640;   //innerWidth; 1024
+        canvas.height = (screen.height<=400 ? screen.height : 400) // 360;  //innerHeight;  576
         document.getElementById('turn_device').style.display = 'none';
         c.clearRect(0,0, canvas.width, canvas.height);
         scenario.update();
@@ -691,6 +693,7 @@ function animate(){
              ){
                  if(Nave[0].nameSprite != null && Nave[0].nameSprite != 'explosion' && obj.nameSprite == 'alive' ) {
                      Nave[0].explode();
+                     obj.explode();
                  } //else if(Nave[0].nameSprite==null){die();}
              }
              Nave[0].shot.forEach(sht =>{

@@ -118,7 +118,8 @@ function init(level){
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
             jewels = [
-              new jewel({x:24*gridSize, y:-6*gridSize, number:0})
+              //new jewel({x:24*gridSize, y:-6*gridSize, number:0}),
+              new jewel({x:4*gridSize, y:6*gridSize, number:0}),
             ]
             life_ups = [ new life_up({x:27*gridSize, y:6*gridSize})]
             gates = [ new gate({x:52*gridSize,y:5*gridSize}) ]
