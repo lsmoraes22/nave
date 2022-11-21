@@ -24,7 +24,7 @@ function init(level){
             music = new sound({audioName:"theme"})
             music.musicPlay();
         break;
-        case 2:
+        case 20:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -118,7 +118,6 @@ function init(level){
                 new paralaxe({imgName: 'paralaxe1'}),
             ]
             jewels = [
-              //new jewel({x:24*gridSize, y:-6*gridSize, number:0}),
               new jewel({x:4*gridSize, y:6*gridSize, number:0}),
             ]
             life_ups = [ new life_up({x:27*gridSize, y:6*gridSize})]
@@ -479,6 +478,22 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         case 6:
+          if(!isNull(music)){music.stop();}
+          resetObjects();
+          backgrounds = [ new background({imgName: 'scene2'}),]
+          nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
+          fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+          music = new sound({audioName:"theme"})
+          music.musicPlay();
+        break;
+        case 7:
+          resetObjects();
+          backgrounds = [ new background({imgName: 'scene3'}),]
+          nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
+          fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+          music = new sound({audioName:"theme"})
+        break;
+        case 8:
             music.stop();
             resetObjects();
             scenario.cMin=0;
@@ -625,7 +640,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 7:
+        case 9:
             music.stop();
             resetObjects();
             scenario.cMin=0;
@@ -751,7 +766,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 8:
+        case 10:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -972,7 +987,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 9:
+        case 11:
             music.stop();
             resetObjects();
             scenario.cMin=0;
@@ -1025,7 +1040,16 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 10:
+        case 12:
+          if(!isNull(music)){music.stop();}
+          resetObjects();
+          backgrounds = [ new background({imgName: 'scene4'}),]
+          nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
+          fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+          music = new sound({audioName:"theme"})
+          music.musicPlay();
+        break;
+        case 13:
             music.stop();
             resetObjects();
             scenario.cMin=0;
@@ -1130,7 +1154,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 11:
+        case 14:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -1299,7 +1323,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 12:
+        case 15:
           music.stop();
           resetObjects();
           scenario.cMin=0;
@@ -1355,7 +1379,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
-        case 13:
+        case 16:
             music.stop();
             resetObjects();
             scenario.cMin=0;

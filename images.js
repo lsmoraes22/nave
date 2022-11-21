@@ -107,6 +107,7 @@ class imageCanvas {
         {name: "scene1",                  src: this.img_src+"scene1.png",	            sx:0,	sy:0,	width:900,	height:506	},
         {name: "scene2",                  src: this.img_src+"scene2.png",	            sx:0,	sy:0,	width:900,	height:506	},
         {name: "scene3",                  src: this.img_src+"scene3.png",	            sx:0,	sy:0,	width:900,	height:506	},
+        {name: "scene4",                  src: this.img_src+"scene4.png",	            sx:0,	sy:0,	width:900,	height:506	},
         {name: "game-over",               src: this.img_src+"game-over.png",	        sx:0,	sy:0,	width:900,	height:506	},
     ];
 
