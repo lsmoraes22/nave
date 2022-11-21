@@ -1,4 +1,10 @@
 function init(level){
+    if(number_shows_sdk==max_shows_sdk){
+        //sdk.showBanner();
+        number_shows_sdk = 1;
+    } else {
+        number_shows_sdk++;
+    }
     switch(level) {
         case 'game_over':
             music.stop();
@@ -24,7 +30,7 @@ function init(level){
             music = new sound({audioName:"theme"})
             music.musicPlay();
         break;
-        case 20:
+        case 2:
           music.stop();
           resetObjects();
           scenario.cMin=0;

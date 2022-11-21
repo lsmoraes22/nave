@@ -20,6 +20,8 @@ function preload() {
 const gravity = 0;
 let naveSpeedMove = 5;                             //velocida de movimento da nave
 let varScore = 0;
+let number_shows_sdk = 5;                          //numero atual de execucao
+let max_shows_sdk = 5;                             //vezes a serem executadas ate o anuncio
 let game_lives_initial = 3;
 let game_lives = game_lives_initial;
 let level = 0;

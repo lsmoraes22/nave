@@ -28,6 +28,34 @@ display: none;
 </style>
 </head>
 <body>
+  <script type = "text/javascript" >
+  /*
+window.SDK_OPTIONS = {
+  gameId: "nxbjvq102wgp7lwg9ceck6bsh6lwujj8",
+  onEvent: function (a) {
+     switch (a.name) {
+        case "SDK_GAME_PAUSE":
+           game.pausar();
+           break;
+        case "SDK_GAME_START":
+           game.startar();
+           break;
+        case "SDK_READY":
+
+           break;
+        case "SDK_ERROR":
+
+           break;
+     }
+  }
+};
+(function (a, b, c) {
+var d = a.getElementsByTagName(b)[0];
+a.getElementById(c) || (a = a.createElement(b), a.id = c,
+a.src = "https://api.gamemonetize.com/sdk.js", d.parentNode.insertBefore(a, d))
+})(document, "script", "gamemonetize-sdk");
+/**/
+</script>
 <canvas id=canvas >Your browser don't suport canvas tag!</canvas>
 <div id=turn_device ><img src='images/background7.png'></div>
 <script type="text/javascript" src="images.js" ></script>
