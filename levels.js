@@ -1424,18 +1424,20 @@ function init(level){
     }
 }
 function create_joystick(color){
-    var refjst = {x:30,y:200}
+    var refjst = {x:30,y:100}
+    var sBtn = 65; //comprimento curto
+    var lBtn = 95; //comprimento longo
     btns = [
-        new btn_a({x:refjst.x+canvas.width-170,y:refjst.y+30, color:color}),
+        new btn_a({x:refjst.x+canvas.width-170,y:refjst.y+130, color:color}),
         new btn_upleft({x:refjst.x,y:refjst.y, color:color}),
-        new btn_up({x:refjst.x+65,y:refjst.y, color:color}),
-        new btn_upright({x:refjst.x+95,y:refjst.y, color:color}),
-        new btn_left({x:refjst.x,y:refjst.y+65, color:color}),
-        new btn_center({x:refjst.x+65,y:refjst.y+65, color:color}),
-        new btn_right({x:refjst.x+95,y:refjst.y+65, color:color}),
-        new btn_downleft({x:refjst.x,y:refjst.y+95, color:color}),
-        new btn_down({x:refjst.x+65,y:refjst.y+95, color:color}),
-        new btn_downright({x:refjst.x+95,y:refjst.y+95, color:color}),
+        new btn_up({x:refjst.x+sBtn+sBtn,y:refjst.y, color:color}),
+        new btn_upright({x:refjst.x+lBtn+lBtn,y:refjst.y, color:color}),
+        new btn_left({x:refjst.x,y:refjst.y+sBtn+sBtn, color:color}),
+        new btn_center({x:refjst.x+sBtn+sBtn,y:refjst.y+sBtn+sBtn, color:color}),
+        new btn_right({x:refjst.x+lBtn+lBtn,y:refjst.y+sBtn+sBtn, color:color}),
+        new btn_downleft({x:refjst.x,y:refjst.y+lBtn+lBtn, color:color}),
+        new btn_down({x:refjst.x+sBtn+sBtn,y:refjst.y+lBtn+lBtn, color:color}),
+        new btn_downright({x:refjst.x+lBtn+lBtn,y:refjst.y+lBtn+lBtn, color:color}),
     ];
     return btns;
 }
