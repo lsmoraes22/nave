@@ -836,6 +836,7 @@ function animate(){
              if(!obj.nameSprite){
                  level++;
                  init(level);
+
              }
         })
         /* colision */

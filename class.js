@@ -4417,7 +4417,7 @@ class building2 extends character {
     }
     r_damage(){
       this.nameSprite='l_damage';
-      this.sounds.explosion[0].play();
+      this.sounds.explosion.play();
     }
     destroy(){
       this.nameSprite='destroyed';
@@ -4643,6 +4643,7 @@ function resetObjects(){
     bubbles = [];
     lavas = [];
     drops = [];
+    if(level>0){anuncio();}
 }
 function die(){
     resetObjects();

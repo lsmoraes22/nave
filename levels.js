@@ -1,10 +1,4 @@
 function init(level){
-    if(number_shows_sdk==max_shows_sdk){
-        //sdk.showBanner();
-        number_shows_sdk = 1;
-    } else {
-        number_shows_sdk++;
-    }
     switch(level) {
         case 'game_over':
             music.stop();
@@ -31,7 +25,7 @@ function init(level){
             music.musicPlay();
         break;
         case 2:
-          music.stop();
+          if(!isNull(music)){music.stop();music = null;}
           resetObjects();
           scenario.cMin=0;
           scenario.cMax=6;
@@ -108,7 +102,7 @@ function init(level){
           barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         case 3:
-            music.stop();
+            if(!isNull(music)){music.stop();music = null;}
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -263,7 +257,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:100, y:10}), ]
         break;
         case 4:
-            music.stop();
+            if(!isNull(music)){music.stop();music = null;}
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -435,7 +429,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         case 5:
-            music.stop();
+            if(!isNull(music)){music.stop();music = null;}
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=2;
@@ -484,7 +478,7 @@ function init(level){
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
         break;
         case 6:
-          if(!isNull(music)){music.stop();}
+          if(!isNull(music)){music.stop();music = null;}
           resetObjects();
           backgrounds = [ new background({imgName: 'scene2'}),]
           nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
@@ -493,6 +487,7 @@ function init(level){
           music.musicPlay();
         break;
         case 7:
+          if(!isNull(music)){music.stop();music = null;}
           resetObjects();
           backgrounds = [ new background({imgName: 'scene3'}),]
           nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
@@ -500,7 +495,7 @@ function init(level){
           music = new sound({audioName:"theme"})
         break;
         case 8:
-            music.stop();
+            if(!isNull(music)){music.stop();music = null;}
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=6;
@@ -647,7 +642,7 @@ function init(level){
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 9:
-            music.stop();
+            if(!isNull(music)){music.stop();music = null;}
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=3;
@@ -773,7 +768,7 @@ function init(level){
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 10:
-          music.stop();
+          if(!isNull(music)){music.stop();music = null;}
           resetObjects();
           scenario.cMin=0;
           scenario.cMax=3;
@@ -994,7 +989,7 @@ function init(level){
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 11:
-            music.stop();
+            if(!isNull(music)){music.stop();music = null;}
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=2;
@@ -1047,7 +1042,7 @@ function init(level){
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 12:
-          if(!isNull(music)){music.stop();}
+          if(!isNull(music)){music.stop();music = null;}
           resetObjects();
           backgrounds = [ new background({imgName: 'scene4'}),]
           nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
@@ -1056,7 +1051,7 @@ function init(level){
           music.musicPlay();
         break;
         case 13:
-            music.stop();
+            if(!isNull(music)){music.stop();music = null;}
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=6;
@@ -1161,7 +1156,7 @@ function init(level){
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 14:
-          if(!isNull(music)){music.stop();}
+          if(!isNull(music)){music.stop();music = null;}
           resetObjects();
           backgrounds = [ new background({imgName: 'scene5'}),]
           nexts = [ new btn_next({x:40, y:100, imgName:"next"}), ]
@@ -1170,7 +1165,7 @@ function init(level){
           music.musicPlay();
         break;
         case 15:
-          music.stop();
+          if(!isNull(music)){music.stop();music = null;}
           resetObjects();
           scenario.cMin=0;
           scenario.cMax=6;
@@ -1339,7 +1334,7 @@ function init(level){
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 16:
-          music.stop();
+          if(!isNull(music)){music.stop();music = null;}
           resetObjects();
           scenario.cMin=0;
           scenario.cMax=6;
@@ -1395,7 +1390,7 @@ function init(level){
           fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 17:
-            music.stop();
+            if(!isNull(music)){music.stop();music = null;}
             resetObjects();
             scenario.cMin=0;
             scenario.cMax=2;

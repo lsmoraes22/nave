@@ -48,6 +48,15 @@ let scenario = {
         this.r = 0;
     }
 };
+function anuncio(){
+  if(number_shows_sdk==max_shows_sdk){
+      //sdk.showBanner(); //merchan
+      number_shows_sdk = 1;
+  } else {
+      number_shows_sdk++;
+  }
+}
+
 function isEmpty(obj) {
     return Object.keys(obj).length === 0;
 }
@@ -85,10 +94,6 @@ function fullScreen(){
     }
 }
 
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-}
-
-
-function pausar(){pause=true;}
-function startar(){pause=false;}
+function getRandomArbitrary(min, max) { return Math.random() * (max - min) + min; }
+function pausar(){pause=true;if(!isNull(music)){music.pause();}}
+function startar(){pause=false;if(!isNull(music)){music.musicPlay();music.play();}}
