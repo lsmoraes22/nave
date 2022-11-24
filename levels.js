@@ -7,6 +7,7 @@ function init(level){
             music.musicPlay();
             backgrounds = [ new background({imgName: 'game-over'}),]
             play_agains = [ new play_again({x:140, y:240}), ]
+            fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
         case 0:
             if(!isNull(music)){music.stop();}
@@ -1429,6 +1430,15 @@ function init(level){
             painels = [ new painel({x:0, y:0}), ]
             barraVidas1  = [ new barraVida1({x:70, y:2}), ]
             barraVidas2  = [ new barraVida2({x:80, y:11}), ]
+            fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
+        break;
+        case 18:
+            music.stop();
+            resetObjects();
+            music = new sound({audioName:"game_over"})
+            music.musicPlay();
+            backgrounds = [ new background({imgName: 'final'}),]
+            play_agains = [ new play_again({x:10, y:200}), ]
             fulls = [ new full_screen({x:canvas.width-70, y:10}), ]
         break;
     }

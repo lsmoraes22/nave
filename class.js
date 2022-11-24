@@ -245,7 +245,7 @@ class nave extends character {
                 imgName:"assets",
                 assX:0,
                 assY:0,
-                imgFrm:15,
+                imgFrm:50,
                 loop: false,
                 next: null,                                    //informa a proxima animacao apos o fim da atual
                 end:  false,
@@ -3032,6 +3032,18 @@ class enemy extends character {
         this.launchCount = 6                                    //quantodade de lancamentos simultaneos
         this.move = 'right';                                    //direcao do movimento
         this.sprites = {
+            empty: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName: this.spriteSheet,
+                assX:8,
+                assY:0,
+                imgFrm:2,
+                loop: false,
+                next: 'close',
+                end: false,
+                speedAnimation: 0.05
+            }),
             open: new sprite({
                 x:this.position.x,
                 y:this.position.y,
@@ -3140,9 +3152,107 @@ class enemy extends character {
                 end:  false,
                 speedAnimation: 1
             }),
+            explosion2: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName: "assets",
+                assX:0,
+                assY:0,
+                imgFrm:15,
+                loop: false,
+                next: null,                                    //informa a proxima animacao apos o fim da atual
+                end:  false,
+                speedAnimation: 1
+            }),
+            explosion3: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName: "assets",
+                assX:0,
+                assY:0,
+                imgFrm:15,
+                loop: false,
+                next: null,                                    //informa a proxima animacao apos o fim da atual
+                end:  false,
+                speedAnimation: 1
+            }),
+            explosion4: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName: "assets",
+                assX:0,
+                assY:0,
+                imgFrm:15,
+                loop: false,
+                next: null,                                    //informa a proxima animacao apos o fim da atual
+                end:  false,
+                speedAnimation: 1
+            }),
+            explosion5: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName: "assets",
+                assX:0,
+                assY:0,
+                imgFrm:15,
+                loop: false,
+                next: null,                                    //informa a proxima animacao apos o fim da atual
+                end:  false,
+                speedAnimation: 1
+            }),
+            explosion6: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName: "assets",
+                assX:0,
+                assY:0,
+                imgFrm:15,
+                loop: false,
+                next: null,                                    //informa a proxima animacao apos o fim da atual
+                end:  false,
+                speedAnimation: 1
+            }),
+            explosion7: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName: "assets",
+                assX:0,
+                assY:0,
+                imgFrm:15,
+                loop: false,
+                next: null,                                    //informa a proxima animacao apos o fim da atual
+                end:  false,
+                speedAnimation: 1
+            }),
+            explosion8: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName: "assets",
+                assX:0,
+                assY:0,
+                imgFrm:15,
+                loop: false,
+                next: null,                                    //informa a proxima animacao apos o fim da atual
+                end:  false,
+                speedAnimation: 1
+            }),
+            explosion9: new sprite({
+                x:this.position.x,
+                y:this.position.y,
+                imgName: "assets",
+                assX:0,
+                assY:0,
+                imgFrm:15,
+                loop: false,
+                next: null,                                    //informa a proxima animacao apos o fim da atual
+                end:  false,
+                speedAnimation: 1
+            }),
         }
         this.sounds = {
-          explosion: snd.audList['explosion1'],
+          explosion:  snd.audList['explosion1'],
+          explosion2: snd.audList['explosion1'],
+          explosion3: snd.audList['explosion1'],
           damage: snd.audList['hitHurt_1'],
         }
         this.shot = [
@@ -3287,6 +3397,14 @@ class enemy extends character {
         if(this.timeLaunch==0){ this.launchReady=true; }
         this.shot.forEach(sht =>{sht.update();})
         this.teleguides.forEach(tlg =>{tlg.update();})
+        if(this.nameSprite == 'explosion2'){this.sounds['explosion2'].play();this.sprites.empty.sprite.next = 'explosion3';}
+        if(this.nameSprite == 'explosion3'){this.sounds['explosion3'].play();this.sprites.empty.sprite.next = 'explosion4';}
+        if(this.nameSprite == 'explosion4'){this.sounds['explosion2'].play();this.sprites.empty.sprite.next = 'explosion5';}
+        if(this.nameSprite == 'explosion5'){this.sounds['explosion3'].play();this.sprites.empty.sprite.next = 'explosion6';}
+        if(this.nameSprite == 'explosion6'){this.sounds['explosion2'].play();this.sprites.empty.sprite.next = 'explosion7';}
+        if(this.nameSprite == 'explosion7'){this.sounds['explosion3'].play();this.sprites.empty.sprite.next = 'explosion8';}
+        if(this.nameSprite == 'explosion8'){this.sounds['explosion2'].play();this.sprites.empty.sprite.next = 'explosion9';}
+        if(this.nameSprite == 'explosion9'){this.sounds['explosion3'].play();this.sprites.empty.sprite.next = null;}
     }
     damage(){
       this.lifeBossCurrent--;
@@ -3398,8 +3516,18 @@ class boss2 extends enemy {
         this.type = 'boss'
         this.shotPosAdjust.right.x = 10
         this.shotPosAdjust.right.y = 13
-        this.shotPosAdjust.left.x =  25
+        this.shotPosAdjust.left.x =  5
         this.shotPosAdjust.left.y = 13
+
+        this.sprites.empty.sprite.img        = 'boss2'
+        this.sprites.empty.sprite.cropWidth  = gridSize*4
+        this.sprites.empty.sprite.cropHeight = gridSize*4
+        this.sprites.empty.sprite.width      = gridSize*4
+        this.sprites.empty.sprite.height     = gridSize*4
+        this.sprites.empty.sprite.assetPos.x = 8
+        this.sprites.empty.sprite.next       = 'explosion2'
+        this.sprites.empty.speedAnimation    = 1
+        this.sprites.empty.sprite.imgFrm     = 1
 
         this.sprites.explosion.sprite.img        = 'boss2'
         this.sprites.explosion.sprite.cropWidth  = gridSize*4
@@ -3407,8 +3535,89 @@ class boss2 extends enemy {
         this.sprites.explosion.sprite.width      = gridSize*4
         this.sprites.explosion.sprite.height     = gridSize*4
         this.sprites.explosion.sprite.assetPos.x = 19
+        this.sprites.explosion.sprite.next       = 'empty'
         this.sprites.explosion.speedAnimation    = 1
-        this.sprites.explosion.sprite.imgFrm     = 45
+        this.sprites.explosion.sprite.imgFrm     = 15
+
+        this.sprites.explosion2.sprite.img        = 'boss2'
+        this.sprites.explosion2.sprite.cropWidth  = gridSize*4
+        this.sprites.explosion2.sprite.cropHeight = gridSize*4
+        this.sprites.explosion2.sprite.width      = gridSize*4
+        this.sprites.explosion2.sprite.height     = gridSize*4
+        this.sprites.explosion2.sprite.assetPos.x = 34
+        this.sprites.explosion2.sprite.next       = 'empty'
+        this.sprites.explosion2.speedAnimation    = 1
+        this.sprites.explosion2.sprite.imgFrm     = 15
+
+        this.sprites.explosion3.sprite.img        = 'boss2'
+        this.sprites.explosion3.sprite.cropWidth  = gridSize*4
+        this.sprites.explosion3.sprite.cropHeight = gridSize*4
+        this.sprites.explosion3.sprite.width      = gridSize*4
+        this.sprites.explosion3.sprite.height     = gridSize*4
+        this.sprites.explosion3.sprite.assetPos.x = 49
+        this.sprites.explosion3.sprite.next       = 'empty'
+        this.sprites.explosion3.speedAnimation    = 1
+        this.sprites.explosion3.sprite.imgFrm     = 15
+
+        this.sprites.explosion4.sprite.img        = 'boss2'
+        this.sprites.explosion4.sprite.cropWidth  = gridSize*4
+        this.sprites.explosion4.sprite.cropHeight = gridSize*4
+        this.sprites.explosion4.sprite.width      = gridSize*4
+        this.sprites.explosion4.sprite.height     = gridSize*4
+        this.sprites.explosion4.sprite.assetPos.x = 19
+        this.sprites.explosion4.sprite.next       = 'empty'
+        this.sprites.explosion4.speedAnimation    = 1
+        this.sprites.explosion4.sprite.imgFrm     = 15
+
+        this.sprites.explosion5.sprite.img        = 'boss2'
+        this.sprites.explosion5.sprite.cropWidth  = gridSize*4
+        this.sprites.explosion5.sprite.cropHeight = gridSize*4
+        this.sprites.explosion5.sprite.width      = gridSize*4
+        this.sprites.explosion5.sprite.height     = gridSize*4
+        this.sprites.explosion5.sprite.assetPos.x = 34
+        this.sprites.explosion5.sprite.next       = 'empty'
+        this.sprites.explosion5.speedAnimation    = 1
+        this.sprites.explosion5.sprite.imgFrm     = 15
+
+        this.sprites.explosion6.sprite.img        = 'boss2'
+        this.sprites.explosion6.sprite.cropWidth  = gridSize*4
+        this.sprites.explosion6.sprite.cropHeight = gridSize*4
+        this.sprites.explosion6.sprite.width      = gridSize*4
+        this.sprites.explosion6.sprite.height     = gridSize*4
+        this.sprites.explosion6.sprite.assetPos.x = 49
+        this.sprites.explosion6.sprite.next       = 'empty'
+        this.sprites.explosion6.speedAnimation    = 1
+        this.sprites.explosion6.sprite.imgFrm     = 15
+
+        this.sprites.explosion7.sprite.img        = 'boss2'
+        this.sprites.explosion7.sprite.cropWidth  = gridSize*4
+        this.sprites.explosion7.sprite.cropHeight = gridSize*4
+        this.sprites.explosion7.sprite.width      = gridSize*4
+        this.sprites.explosion7.sprite.height     = gridSize*4
+        this.sprites.explosion7.sprite.assetPos.x = 19
+        this.sprites.explosion7.sprite.next       = 'empty'
+        this.sprites.explosion7.speedAnimation    = 1
+        this.sprites.explosion7.sprite.imgFrm     = 15
+
+        this.sprites.explosion8.sprite.img        = 'boss2'
+        this.sprites.explosion8.sprite.cropWidth  = gridSize*4
+        this.sprites.explosion8.sprite.cropHeight = gridSize*4
+        this.sprites.explosion8.sprite.width      = gridSize*4
+        this.sprites.explosion8.sprite.height     = gridSize*4
+        this.sprites.explosion8.sprite.assetPos.x = 34
+        this.sprites.explosion8.sprite.next       = 'empty'
+        this.sprites.explosion8.speedAnimation    = 1
+        this.sprites.explosion8.sprite.imgFrm     = 15
+
+        this.sprites.explosion9.sprite.img        = 'boss2'
+        this.sprites.explosion9.sprite.cropWidth  = gridSize*4
+        this.sprites.explosion9.sprite.cropHeight = gridSize*4
+        this.sprites.explosion9.sprite.width      = gridSize*4
+        this.sprites.explosion9.sprite.height     = gridSize*4
+        this.sprites.explosion9.sprite.assetPos.x = 49
+        this.sprites.explosion9.sprite.next       = null
+        this.sprites.explosion9.speedAnimation    = 1
+        this.sprites.explosion9.sprite.imgFrm     = 15
 
         this.sprites.stopedLeft.sprite.cropWidth = gridSize*4
         this.sprites.stopedLeft.sprite.cropHeight = gridSize*4
@@ -3483,14 +3692,106 @@ class boss3 extends enemy {
         this.launchPosAdjust.up.x = 175
         this.launchPosAdjust.up.y = 12
 
+        this.sprites.empty.sprite.img        = 'boss3'
+        this.sprites.empty.sprite.cropWidth  = gridSize*9
+        this.sprites.empty.sprite.cropHeight = gridSize*5
+        this.sprites.empty.sprite.width      = gridSize*9
+        this.sprites.empty.sprite.height     = gridSize*5
+        this.sprites.empty.sprite.assetPos.x = 0
+        this.sprites.empty.sprite.assetPos.y = 0
+        this.sprites.empty.sprite.next       = 'explosion2'
+        this.sprites.empty.speedAnimation    = 1
+        this.sprites.empty.sprite.imgFrm     = 1
+
         this.sprites.explosion.sprite.img        = 'boss3_explosion'
         this.sprites.explosion.sprite.cropWidth  = gridSize*9
         this.sprites.explosion.sprite.cropHeight = gridSize*5
         this.sprites.explosion.sprite.width      = gridSize*9
         this.sprites.explosion.sprite.height     = gridSize*5
+        this.sprites.explosion.sprite.next       = 'empty'
         this.sprites.explosion.sprite.assetPos.x = 0
         this.sprites.explosion.speedAnimation    = 1
-        this.sprites.explosion.sprite.imgFrm     = 135
+        this.sprites.explosion.sprite.imgFrm     = 15
+
+        this.sprites.explosion2.sprite.img        = 'boss3_explosion'
+        this.sprites.explosion2.sprite.cropWidth  = gridSize*9
+        this.sprites.explosion2.sprite.cropHeight = gridSize*5
+        this.sprites.explosion2.sprite.width      = gridSize*9
+        this.sprites.explosion2.sprite.height     = gridSize*5
+        this.sprites.explosion2.sprite.next       = 'empty'
+        this.sprites.explosion2.sprite.assetPos.x = 15
+        this.sprites.explosion2.speedAnimation    = 1
+        this.sprites.explosion2.sprite.imgFrm     = 15
+
+        this.sprites.explosion3.sprite.img        = 'boss3_explosion'
+        this.sprites.explosion3.sprite.cropWidth  = gridSize*9
+        this.sprites.explosion3.sprite.cropHeight = gridSize*5
+        this.sprites.explosion3.sprite.width      = gridSize*9
+        this.sprites.explosion3.sprite.height     = gridSize*5
+        this.sprites.explosion3.sprite.next       = 'empty'
+        this.sprites.explosion3.sprite.assetPos.x = 30
+        this.sprites.explosion3.speedAnimation    = 1
+        this.sprites.explosion3.sprite.imgFrm     = 15
+
+        this.sprites.explosion4.sprite.img        = 'boss3_explosion'
+        this.sprites.explosion4.sprite.cropWidth  = gridSize*9
+        this.sprites.explosion4.sprite.cropHeight = gridSize*5
+        this.sprites.explosion4.sprite.width      = gridSize*9
+        this.sprites.explosion4.sprite.height     = gridSize*5
+        this.sprites.explosion4.sprite.next       = 'empty'
+        this.sprites.explosion4.sprite.assetPos.x = 45
+        this.sprites.explosion4.speedAnimation    = 1
+        this.sprites.explosion4.sprite.imgFrm     = 15
+
+        this.sprites.explosion5.sprite.img        = 'boss3_explosion'
+        this.sprites.explosion5.sprite.cropWidth  = gridSize*9
+        this.sprites.explosion5.sprite.cropHeight = gridSize*5
+        this.sprites.explosion5.sprite.width      = gridSize*9
+        this.sprites.explosion5.sprite.height     = gridSize*5
+        this.sprites.explosion5.sprite.next       = 'empty'
+        this.sprites.explosion5.sprite.assetPos.x = 60
+        this.sprites.explosion5.speedAnimation    = 1
+        this.sprites.explosion5.sprite.imgFrm     = 15
+
+        this.sprites.explosion6.sprite.img        = 'boss3_explosion'
+        this.sprites.explosion6.sprite.cropWidth  = gridSize*9
+        this.sprites.explosion6.sprite.cropHeight = gridSize*5
+        this.sprites.explosion6.sprite.width      = gridSize*9
+        this.sprites.explosion6.sprite.height     = gridSize*5
+        this.sprites.explosion6.sprite.next       = 'empty'
+        this.sprites.explosion6.sprite.assetPos.x = 75
+        this.sprites.explosion6.speedAnimation    = 1
+        this.sprites.explosion6.sprite.imgFrm     = 15
+
+        this.sprites.explosion7.sprite.img        = 'boss3_explosion'
+        this.sprites.explosion7.sprite.cropWidth  = gridSize*9
+        this.sprites.explosion7.sprite.cropHeight = gridSize*5
+        this.sprites.explosion7.sprite.width      = gridSize*9
+        this.sprites.explosion7.sprite.height     = gridSize*5
+        this.sprites.explosion7.sprite.next       = 'empty'
+        this.sprites.explosion7.sprite.assetPos.x = 90
+        this.sprites.explosion7.speedAnimation    = 1
+        this.sprites.explosion7.sprite.imgFrm     = 15
+
+        this.sprites.explosion8.sprite.img        = 'boss3_explosion'
+        this.sprites.explosion8.sprite.cropWidth  = gridSize*9
+        this.sprites.explosion8.sprite.cropHeight = gridSize*5
+        this.sprites.explosion8.sprite.width      = gridSize*9
+        this.sprites.explosion8.sprite.height     = gridSize*5
+        this.sprites.explosion8.sprite.next       = 'empty'
+        this.sprites.explosion8.sprite.assetPos.x = 105
+        this.sprites.explosion8.speedAnimation    = 1
+        this.sprites.explosion8.sprite.imgFrm     = 15
+
+        this.sprites.explosion9.sprite.img        = 'boss3_explosion'
+        this.sprites.explosion9.sprite.cropWidth  = gridSize*9
+        this.sprites.explosion9.sprite.cropHeight = gridSize*5
+        this.sprites.explosion9.sprite.width      = gridSize*9
+        this.sprites.explosion9.sprite.height     = gridSize*5
+        this.sprites.explosion9.sprite.next       = null
+        this.sprites.explosion9.sprite.assetPos.x = 120
+        this.sprites.explosion9.speedAnimation    = 1
+        this.sprites.explosion9.sprite.imgFrm     = 15
 
         this.sprites.stopedLeft.sprite.cropWidth = gridSize*9
         this.sprites.stopedLeft.sprite.cropHeight = gridSize*5
@@ -3605,14 +3906,105 @@ class boss4 extends enemy {
         this.shotPosAdjust.left.y = 213
         this.haveShot = false;
 
+        this.sprites.empty.sprite.img        = 'boss4'
+        this.sprites.empty.sprite.cropWidth  = 318
+        this.sprites.empty.sprite.cropHeight = gridSize*3
+        this.sprites.empty.sprite.width      = 318
+        this.sprites.empty.sprite.height     = gridSize*3
+        this.sprites.empty.sprite.assetPos.x = 0
+        this.sprites.empty.sprite.next       = 'explosion2'
+        this.sprites.empty.speedAnimation    = 1
+        this.sprites.empty.sprite.imgFrm     = 1
+
         this.sprites.explosion.sprite.img        = 'boss4'
         this.sprites.explosion.sprite.cropWidth  = 318
         this.sprites.explosion.sprite.cropHeight = gridSize*3
         this.sprites.explosion.sprite.width      = 318
         this.sprites.explosion.sprite.height     = gridSize*3
         this.sprites.explosion.sprite.assetPos.x = 4
+        this.sprites.explosion.sprite.next       = 'empty'
         this.sprites.explosion.speedAnimation    = 1
-        this.sprites.explosion.sprite.imgFrm     = 45
+        this.sprites.explosion.sprite.imgFrm     = 15
+
+        this.sprites.explosion2.sprite.img        = 'boss4'
+        this.sprites.explosion2.sprite.cropWidth  = 318
+        this.sprites.explosion2.sprite.cropHeight = gridSize*3
+        this.sprites.explosion2.sprite.width      = 318
+        this.sprites.explosion2.sprite.height     = gridSize*3
+        this.sprites.explosion2.sprite.assetPos.x = 19
+        this.sprites.explosion2.sprite.next       = 'empty'
+        this.sprites.explosion2.speedAnimation    = 1
+        this.sprites.explosion2.sprite.imgFrm     = 15
+
+        this.sprites.explosion3.sprite.img        = 'boss4'
+        this.sprites.explosion3.sprite.cropWidth  = 318
+        this.sprites.explosion3.sprite.cropHeight = gridSize*3
+        this.sprites.explosion3.sprite.width      = 318
+        this.sprites.explosion3.sprite.height     = gridSize*3
+        this.sprites.explosion3.sprite.assetPos.x = 34
+        this.sprites.explosion3.sprite.next       = 'empty'
+        this.sprites.explosion3.speedAnimation    = 1
+        this.sprites.explosion3.sprite.imgFrm     = 15
+
+        this.sprites.explosion4.sprite.img        = 'boss4'
+        this.sprites.explosion4.sprite.cropWidth  = 318
+        this.sprites.explosion4.sprite.cropHeight = gridSize*3
+        this.sprites.explosion4.sprite.width      = 318
+        this.sprites.explosion4.sprite.height     = gridSize*3
+        this.sprites.explosion4.sprite.assetPos.x = 4
+        this.sprites.explosion4.sprite.next       = 'empty'
+        this.sprites.explosion4.speedAnimation    = 1
+        this.sprites.explosion4.sprite.imgFrm     = 15
+
+        this.sprites.explosion5.sprite.img        = 'boss4'
+        this.sprites.explosion5.sprite.cropWidth  = 318
+        this.sprites.explosion5.sprite.cropHeight = gridSize*3
+        this.sprites.explosion5.sprite.width      = 318
+        this.sprites.explosion5.sprite.height     = gridSize*3
+        this.sprites.explosion5.sprite.assetPos.x = 19
+        this.sprites.explosion5.sprite.next       = 'empty'
+        this.sprites.explosion5.speedAnimation    = 1
+        this.sprites.explosion5.sprite.imgFrm     = 15
+
+        this.sprites.explosion6.sprite.img        = 'boss4'
+        this.sprites.explosion6.sprite.cropWidth  = 318
+        this.sprites.explosion6.sprite.cropHeight = gridSize*3
+        this.sprites.explosion6.sprite.width      = 318
+        this.sprites.explosion6.sprite.height     = gridSize*3
+        this.sprites.explosion6.sprite.assetPos.x = 34
+        this.sprites.explosion6.sprite.next       = 'empty'
+        this.sprites.explosion6.speedAnimation    = 1
+        this.sprites.explosion6.sprite.imgFrm     = 15
+
+        this.sprites.explosion7.sprite.img        = 'boss4'
+        this.sprites.explosion7.sprite.cropWidth  = 318
+        this.sprites.explosion7.sprite.cropHeight = gridSize*3
+        this.sprites.explosion7.sprite.width      = 318
+        this.sprites.explosion7.sprite.height     = gridSize*3
+        this.sprites.explosion7.sprite.assetPos.x = 4
+        this.sprites.explosion7.sprite.next       = 'empty'
+        this.sprites.explosion7.speedAnimation    = 1
+        this.sprites.explosion7.sprite.imgFrm     = 15
+
+        this.sprites.explosion8.sprite.img        = 'boss4'
+        this.sprites.explosion8.sprite.cropWidth  = 318
+        this.sprites.explosion8.sprite.cropHeight = gridSize*3
+        this.sprites.explosion8.sprite.width      = 318
+        this.sprites.explosion8.sprite.height     = gridSize*3
+        this.sprites.explosion8.sprite.assetPos.x = 19
+        this.sprites.explosion8.sprite.next       = 'empty'
+        this.sprites.explosion8.speedAnimation    = 1
+        this.sprites.explosion8.sprite.imgFrm     = 15
+
+        this.sprites.explosion9.sprite.img        = 'boss4'
+        this.sprites.explosion9.sprite.cropWidth  = 318
+        this.sprites.explosion9.sprite.cropHeight = gridSize*3
+        this.sprites.explosion9.sprite.width      = 318
+        this.sprites.explosion9.sprite.height     = gridSize*3
+        this.sprites.explosion9.sprite.assetPos.x = 34
+        this.sprites.explosion9.sprite.next       = null
+        this.sprites.explosion9.speedAnimation    = 1
+        this.sprites.explosion9.sprite.imgFrm     = 15
 
         this.sprites.stopedLeft.sprite.cropWidth = 318
         this.sprites.stopedLeft.sprite.cropHeight = gridSize*3
@@ -4643,7 +5035,7 @@ function resetObjects(){
     bubbles = [];
     lavas = [];
     drops = [];
-    if(level>0){anuncio();}
+    anuncio();
 }
 function die(){
     resetObjects();

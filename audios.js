@@ -17,7 +17,6 @@ class audioCanvas {
         this.audList['powerUp']    = new Audio(this.aud_src+'powerUp.ogg');
         this.audList['theme']      = new Audio(this.aud_src+'theme.ogg');
     }
-
-    pauseArray(item){item.pause();}
-    pauseAll(){this.audList.forEach(pauseArray)};
+    pauseArray(item){item.forEach(obj =>{obj.pause();} );}
+    pauseAll(){this.audList.forEach(obj =>{obj.pause();})};
 }

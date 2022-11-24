@@ -10,10 +10,8 @@ c.fillText("Loading...", canvas.width/2, canvas.height/2);
 function preload() {
     img = new imageCanvas();
     img.preloadImage(img.resources);
-
     snd = new audioCanvas();
     snd.preloadAudio();
-
     return true;
 }
 
@@ -95,5 +93,5 @@ function fullScreen(){
 }
 
 function getRandomArbitrary(min, max) { return Math.random() * (max - min) + min; }
-function pausar(){pause=true;if(!isNull(music)){music.pause();}}
+function pausar(){pause=true;if(!isNull(music)){music.pause();}snd.pauseAll();}
 function startar(){pause=false;if(!isNull(music)){music.musicPlay();music.play();}}
