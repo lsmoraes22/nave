@@ -1,7 +1,8 @@
 function init(level){
+    anuncio();
     switch(level) {
         case 'game_over':
-            music.stop();
+            if(!isNull(music)){music.stop();music = null;}
             resetObjects();
             music = new sound({audioName:"game_over"})
             music.musicPlay();

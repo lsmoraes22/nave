@@ -18,11 +18,10 @@ function preload() {
 const gravity = 0;
 let naveSpeedMove = 5;                             //velocida de movimento da nave
 let varScore = 0;
-let number_shows_sdk = 5;                          //numero atual de execucao
-let max_shows_sdk = 5;                             //vezes a serem executadas ate o anuncio
-let game_lives_initial = 3;
+let game_lives_initial = 5;
 let game_lives = game_lives_initial;
 let level = 0;
+let timeMerchan = new Date().getTime();
 let touchPosition1 = {};
 let mousePosition = {};
 let touchPosition2 = {};
@@ -46,24 +45,26 @@ let scenario = {
         this.r = 0;
     }
 };
-function anuncio(){
-  if(number_shows_sdk==max_shows_sdk){
-      //sdk.showBanner(); //merchan
-      number_shows_sdk = 1;
-  } else {
-      number_shows_sdk++;
-  }
-}
 
 function isEmpty(obj) {
     return Object.keys(obj).length === 0;
 }
+
 function testUndefined(t){
-  if (t === undefined) {
-  return 'Undefined value!';
+  if (typeof t !== 'undefined') {
+    return false;
+  }
+  return true;
 }
-  return t;
+
+function anuncio(){
+  var t = new Date().getTime();
+  if(t>timeMerchan+60000){
+    if(typeof sdk !== 'undefined'){sdk.showBanner();}else{console.log('sdk not defined');} //merchan
+    timeMerchan=t;
+  }
 }
+
 function isNull(obj) {
     return obj === null;
 }

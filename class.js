@@ -4801,7 +4801,9 @@ class building2 extends character {
                 speedAnimation: 0.3
             }),
         }
-        this.sounds = { explosion: snd.audList['explosion1'], }
+        this.sounds = {
+          explosion: [ new sound({audioName:'explosion1'}) ,] ,
+        }
     }
     l_damage(){
       this.nameSprite='r_damage';
@@ -4809,7 +4811,7 @@ class building2 extends character {
     }
     r_damage(){
       this.nameSprite='l_damage';
-      this.sounds.explosion.play();
+      this.sounds.explosion[0].play();
     }
     destroy(){
       this.nameSprite='destroyed';
@@ -5035,7 +5037,6 @@ function resetObjects(){
     bubbles = [];
     lavas = [];
     drops = [];
-    anuncio();
 }
 function die(){
     resetObjects();
