@@ -119,8 +119,8 @@ class sound{
 }
 class character {                                              //personagem
     constructor({x, y, colx, coly, colw, colh}){
-        this.position = {x: x, y: y}
-        this.positionAbsolute = {x: x, y: y}
+        this.position = {x: x, y: y}                           //posicao no cenario
+        this.positionAbsolute = {x: x, y: y}                   //posicao na tela
         this.scenario = {
              x: Math.floor(x/canvas.width),
              y: Math.floor(y/canvas.height)

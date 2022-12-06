@@ -1445,7 +1445,7 @@ function init(level){
     }
 }
 function create_joystick(color){
-    var refjst = {x:30,y:100}
+    var refjst = {x:0,y:100}
     var sBtn = 65; //comprimento curto
     var lBtn = 95; //comprimento longo
     btns = [
